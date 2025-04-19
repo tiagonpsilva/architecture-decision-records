@@ -1,0 +1,39 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Arquitetura de Micro-frontends
+
+Person(user, "Usuário", "Usuário da aplicação")
+
+System_Boundary(c1, "Sistema Frontend") {
+    Container(shell, "Shell Application", "React + TypeScript", "Aplicação principal que orquestra os micro-frontends")
+    
+    Container(auth_mfe, "Auth MFE", "React + TypeScript", "Micro-frontend de autenticação")
+    Container(profile_mfe, "Profile MFE", "React + TypeScript", "Micro-frontend de perfil do usuário")
+    Container(products_mfe, "Products MFE", "Vue.js", "Micro-frontend de produtos")
+    Container(orders_mfe, "Orders MFE", "React + TypeScript", "Micro-frontend de pedidos")
+    Container(analytics_mfe, "Analytics MFE", "Angular", "Micro-frontend de analytics")
+    
+    Container(shared_lib, "Shared Library", "NPM Package", "Biblioteca compartilhada de componentes e utilitários")
+}
+
+System_Ext(api_gateway, "API Gateway", "Gateway para microsserviços")
+
+Rel(user, shell, "Acessa", "HTTPS")
+Rel(shell, auth_mfe, "Carrega", "Module Federation")
+Rel(shell, profile_mfe, "Carrega", "Module Federation")
+Rel(shell, products_mfe, "Carrega", "Module Federation")
+Rel(shell, orders_mfe, "Carrega", "Module Federation")
+Rel(shell, analytics_mfe, "Carrega", "Module Federation")
+
+Rel(auth_mfe, shared_lib, "Utiliza", "NPM")
+Rel(profile_mfe, shared_lib, "Utiliza", "NPM")
+Rel(products_mfe, shared_lib, "Utiliza", "NPM")
+Rel(orders_mfe, shared_lib, "Utiliza", "NPM")
+Rel(analytics_mfe, shared_lib, "Utiliza", "NPM")
+
+Rel(shell, api_gateway, "Comunica", "HTTPS/REST")
+
+@enduml 

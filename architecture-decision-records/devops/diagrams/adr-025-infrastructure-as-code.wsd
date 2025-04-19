@@ -1,0 +1,26 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title Arquitetura de Infraestrutura como Código
+
+Person(devops, "DevOps Engineer", "Responsável por manter a infraestrutura")
+Person(dev, "Desenvolvedor", "Desenvolve e deploya aplicações")
+
+System_Boundary(iac, "Infraestrutura como Código") {
+    Container(terraform, "Terraform", "HCL", "Gerenciamento principal de infraestrutura")
+    Container(cdk, "AWS CDK", "TypeScript", "Recursos específicos e complexos")
+    Container(modules, "Módulos Terraform", "HCL", "Componentes reutilizáveis")
+    Container(state, "Estado Terraform", "S3 + DynamoDB", "Estado e lock distribuído")
+}
+
+System_Ext(ci, "CI/CD Pipeline", "GitHub Actions")
+System_Ext(aws, "AWS Cloud", "Infraestrutura alvo")
+
+Rel(devops, terraform, "Desenvolve e aplica", "git push")
+Rel(dev, ci, "Commit/PR", "git push")
+Rel(ci, terraform, "Executa", "plan/apply")
+Rel(terraform, modules, "Utiliza", "module source")
+Rel(terraform, state, "Gerencia estado", "read/write")
+Rel(terraform, aws, "Provisiona", "API calls")
+Rel(cdk, aws, "Provisiona", "API calls")
+@enduml 
