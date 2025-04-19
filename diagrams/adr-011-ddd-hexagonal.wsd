@@ -1,71 +1,12 @@
 @startuml "DDD e Arquitetura Hexagonal"
 
-!theme plain
-skinparam backgroundColor white
+[Camada de Interfaces] as interfaces
+[Camada de Aplicação] as app
+[Camada de Domínio] as domain
+[Camada de Infraestrutura] as infra
 
-' Definição de cores
-!define CORE_COLOR #FFEBCD
-!define APP_COLOR #98FB98
-!define INFRA_COLOR #E0FFFF
-!define INTERFACE_COLOR #DDA0DD
-
-' Configurações de estilo
-skinparam component {
-    BackgroundColor white
-    BorderColor black
-    ArrowColor black
-}
-
-package "Camada de Domínio" as domain #CORE_COLOR {
-    [Agregados] as agg
-    [Entidades] as ent
-    [Objetos de Valor] as vo
-    [Eventos de Domínio] as events
-    [Serviços de Domínio] as services
-    [Interfaces de Repositório] as repos
-}
-
-package "Camada de Aplicação" as app #APP_COLOR {
-    [Casos de Uso] as usecases
-    [Serviços de Aplicação] as appservices
-    [DTOs] as dtos
-}
-
-package "Camada de Infraestrutura" as infra #INFRA_COLOR {
-    [Implementações de Repositório] as repoimpl
-    [Serviços Externos] as extservices
-    [Adaptadores de Banco] as dbadapters
-    [Adaptadores de Mensageria] as mqadapters
-}
-
-package "Camada de Interfaces" as interfaces #INTERFACE_COLOR {
-    [Controladores REST] as rest
-    [Resolvers GraphQL] as graphql
-    [Serviços gRPC] as grpc
-    [Handlers de Mensagens] as msghandlers
-}
-
-' Relacionamentos
 interfaces --> app
 app --> domain
 infra --> domain
-
-rest --> usecases
-graphql --> usecases
-grpc --> usecases
-msghandlers --> usecases
-
-usecases --> appservices
-appservices --> services
-appservices --> repos
-
-repoimpl --> repos
-dbadapters --> repos
-mqadapters --> repos
-
-agg --> ent
-agg --> vo
-ent --> vo
-services --> events
 
 @enduml 
