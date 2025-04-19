@@ -1,0 +1,64 @@
+@startuml "Arquitetura WebSocket"
+
+!define RECTANGLE class
+
+skinparam {
+    BackgroundColor transparent
+    ArrowColor #2C3E50
+    BorderColor #2C3E50
+    FontColor #2C3E50
+    FontSize 14
+}
+
+rectangle "WebSocket Architecture" {
+    package "Client Side" as CS #E3F2FD {
+        RECTANGLE "Web Client" as WC #90CAF9 {
+            + Connection
+            + Event Handling
+            + Reconnection
+        }
+        
+        RECTANGLE "State Management" as SM #90CAF9 {
+            + Real-time Data
+            + UI Updates
+            + Offline Mode
+        }
+    }
+    
+    package "Server Side" as SS #FFF3E0 {
+        RECTANGLE "WebSocket Server" as WS #FFB74D {
+            + Connection Pool
+            + Protocol
+            + Channels
+        }
+        
+        RECTANGLE "Message Handler" as MH #FFB74D {
+            + Business Logic
+            + Event Processing
+            + Broadcasting
+        }
+    }
+    
+    package "Infrastructure" as INF #E8F5E9 {
+        RECTANGLE "Scaling" as SC #81C784 {
+            + Load Balancer
+            + Redis Pub/Sub
+            + Clustering
+        }
+        
+        RECTANGLE "Monitoring" as MON #81C784 {
+            + Metrics
+            + Health Checks
+            + Logging
+        }
+    }
+}
+
+WC -[#2196F3]-> SM : "Updates"
+WC -[#2196F3]-> WS : "Connects"
+WS -[#FF9800]-> MH : "Routes"
+MH -[#FF9800]-> SC : "Scales"
+SC -[#4CAF50]-> MON : "Tracks"
+WS -[#4CAF50]-> MON : "Reports"
+
+@enduml 

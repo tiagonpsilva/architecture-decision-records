@@ -54,6 +54,10 @@ Padrões específicos:
   - Testes críticos de negócio
   - Smoke tests em produção
 
+## 📊 Diagrama
+
+![Diagrama de Padrões de Teste](diagrams/adr-015-test-patterns.png)
+
 ## 📊 Consequências
 
 ### Positivas

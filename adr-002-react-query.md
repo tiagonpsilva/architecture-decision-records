@@ -32,6 +32,10 @@ Justificativas:
 - Gerenciamento automático de dados obsoletos
 - Suporte a infinite scroll e pagination
 
+## 📊 Diagrama
+
+![Diagrama de Arquitetura React Query](diagrams/adr-002-react-query.png)
+
 ## 📊 Consequências
 
 ### Positivas

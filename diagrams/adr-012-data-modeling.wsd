@@ -1,0 +1,70 @@
+@startuml "Arquitetura de Modelagem de Dados"
+
+!define RECTANGLE class
+
+skinparam {
+    BackgroundColor transparent
+    ArrowColor #2C3E50
+    BorderColor #2C3E50
+    FontColor #2C3E50
+    FontSize 14
+}
+
+rectangle "Data Modeling Architecture" {
+    package "Domain Layer" as DL #E3F2FD {
+        RECTANGLE "Entities" as ENT #90CAF9 {
+            + Core Models
+            + Value Objects
+            + Aggregates
+        }
+        
+        RECTANGLE "Repositories" as REP #90CAF9 {
+            + Data Access
+            + CRUD Operations
+            + Query Methods
+        }
+    }
+    
+    package "Data Access" as DA #FFF3E0 {
+        RECTANGLE "ORM/ODM" as ORM #FFB74D {
+            + Entity Mapping
+            + Relationships
+            + Validation
+        }
+        
+        RECTANGLE "Query Builder" as QB #FFB74D {
+            + SQL Generation
+            + Optimization
+            + Caching
+        }
+    }
+    
+    package "Storage" as ST #E8F5E9 {
+        RECTANGLE "Relational" as REL #81C784 {
+            + Tables
+            + Indexes
+            + Constraints
+        }
+        
+        RECTANGLE "Document" as DOC #81C784 {
+            + Collections
+            + Schemas
+            + Indexes
+        }
+        
+        RECTANGLE "Cache" as CAC #81C784 {
+            + Key-Value
+            + TTL
+            + Invalidation
+        }
+    }
+}
+
+ENT -[#2196F3]-> REP : "Uses"
+REP -[#2196F3]-> ORM : "Maps"
+ORM -[#FF9800]-> QB : "Generates"
+QB -[#FF9800]-> REL : "Executes"
+QB -[#FF9800]-> DOC : "Queries"
+ORM -[#4CAF50]-> CAC : "Caches"
+
+@enduml 

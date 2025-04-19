@@ -51,6 +51,10 @@ Padrões de Mensagem:
 - Queries (direct + reply-to)
 - Notifications (fanout exchange)
 
+## 📊 Diagrama
+
+![Diagrama de Padrões de Mensageria com RabbitMQ](diagrams/adr-016-rabbitmq.png)
+
 ## 📊 Consequências
 
 ### Positivas

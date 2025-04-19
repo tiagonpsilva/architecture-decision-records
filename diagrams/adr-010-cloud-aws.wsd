@@ -1,0 +1,77 @@
+@startuml "Arquitetura AWS Cloud"
+
+!define RECTANGLE class
+
+skinparam {
+    BackgroundColor transparent
+    ArrowColor #2C3E50
+    BorderColor #2C3E50
+    FontColor #2C3E50
+    FontSize 14
+}
+
+rectangle "AWS Cloud Architecture" {
+    package "Frontend" as FE #E3F2FD {
+        RECTANGLE "CloudFront" as CF #90CAF9 {
+            + CDN
+            + SSL/TLS
+            + Edge Locations
+        }
+        
+        RECTANGLE "S3" as S3 #90CAF9 {
+            + Static Files
+            + Versioning
+            + Lifecycle
+        }
+    }
+    
+    package "Application" as APP #FFF3E0 {
+        RECTANGLE "API Gateway" as APIG #FFB74D {
+            + REST/HTTP APIs
+            + WebSocket
+            + Authorization
+        }
+        
+        RECTANGLE "ECS/EKS" as ECS #FFB74D {
+            + Containers
+            + Orchestration
+            + Auto Scaling
+        }
+        
+        RECTANGLE "Lambda" as LAM #FFB74D {
+            + Functions
+            + Event Driven
+            + Serverless
+        }
+    }
+    
+    package "Data & Storage" as DS #E8F5E9 {
+        RECTANGLE "RDS" as RDS #81C784 {
+            + Databases
+            + Replicas
+            + Backups
+        }
+        
+        RECTANGLE "DynamoDB" as DDB #81C784 {
+            + NoSQL
+            + DAX
+            + Streams
+        }
+        
+        RECTANGLE "ElastiCache" as EC #81C784 {
+            + Redis/Memcached
+            + Caching
+            + Session
+        }
+    }
+}
+
+CF -[#2196F3]-> S3 : "Serves"
+CF -[#2196F3]-> APIG : "Routes"
+APIG -[#FF9800]-> ECS : "Container Apps"
+APIG -[#FF9800]-> LAM : "Functions"
+ECS -[#4CAF50]-> RDS : "Persists"
+ECS -[#4CAF50]-> DDB : "NoSQL Data"
+LAM -[#4CAF50]-> EC : "Caches"
+
+@enduml 

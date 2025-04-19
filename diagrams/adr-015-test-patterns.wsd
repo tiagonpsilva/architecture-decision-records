@@ -1,0 +1,64 @@
+@startuml "Arquitetura de Testes"
+
+!define RECTANGLE class
+
+skinparam {
+    BackgroundColor transparent
+    ArrowColor #2C3E50
+    BorderColor #2C3E50
+    FontColor #2C3E50
+    FontSize 14
+}
+
+rectangle "Test Architecture" {
+    package "Unit Tests" as UT #E3F2FD {
+        RECTANGLE "Test Cases" as TC #90CAF9 {
+            + Functions
+            + Classes
+            + Components
+        }
+        
+        RECTANGLE "Mocks" as MCK #90CAF9 {
+            + Dependencies
+            + Services
+            + Data
+        }
+    }
+    
+    package "Integration Tests" as IT #FFF3E0 {
+        RECTANGLE "API Tests" as AT #FFB74D {
+            + Endpoints
+            + Flows
+            + Security
+        }
+        
+        RECTANGLE "Service Tests" as ST #FFB74D {
+            + Dependencies
+            + Database
+            + External
+        }
+    }
+    
+    package "E2E Tests" as ET #E8F5E9 {
+        RECTANGLE "UI Tests" as UIT #81C784 {
+            + User Flows
+            + Visual Tests
+            + Performance
+        }
+        
+        RECTANGLE "System Tests" as SYT #81C784 {
+            + Full Stack
+            + Data Flow
+            + Integration
+        }
+    }
+}
+
+TC -[#2196F3]-> MCK : "Uses"
+AT -[#2196F3]-> ST : "Validates"
+ST -[#FF9800]-> UIT : "Supports"
+UIT -[#FF9800]-> SYT : "Complements"
+TC -[#4CAF50]-> AT : "Builds On"
+SYT -[#4CAF50]-> TC : "Verifies"
+
+@enduml 

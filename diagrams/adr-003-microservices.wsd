@@ -1,0 +1,64 @@
+@startuml "Arquitetura de Microsserviços"
+
+!define RECTANGLE class
+
+skinparam {
+    BackgroundColor transparent
+    ArrowColor #2C3E50
+    BorderColor #2C3E50
+    FontColor #2C3E50
+    FontSize 14
+}
+
+rectangle "Arquitetura de Microsserviços" {
+    package "Frontend" as FE #E3F2FD {
+        RECTANGLE "SPA" as SPA #90CAF9 {
+            + React/Angular
+            + API Gateway Client
+            + State Management
+        }
+    }
+    
+    package "API Gateway" as AG #FFF3E0 {
+        RECTANGLE "Gateway" as GW #FFB74D {
+            + Routing
+            + Load Balancing
+            + Authentication
+        }
+        
+        RECTANGLE "Circuit Breaker" as CB #FFB74D {
+            + Fallback
+            + Timeout
+            + Retry Policy
+        }
+    }
+    
+    package "Serviços" as SV #E8F5E9 {
+        RECTANGLE "Auth Service" as AUTH #81C784 {
+            + Identity
+            + Access Control
+            + JWT
+        }
+        
+        RECTANGLE "Business Services" as BIZ #81C784 {
+            + Domain Logic
+            + Data Access
+            + Events
+        }
+        
+        RECTANGLE "Support Services" as SUP #81C784 {
+            + Logging
+            + Monitoring
+            + Configuration
+        }
+    }
+}
+
+SPA -[#2196F3]-> GW : "HTTP/WS"
+GW -[#2196F3]-> CB : "Protects"
+CB -[#FF9800]-> AUTH : "Validates"
+CB -[#FF9800]-> BIZ : "Routes"
+BIZ -[#4CAF50]-> SUP : "Uses"
+AUTH -[#4CAF50]-> SUP : "Uses"
+
+@enduml 

@@ -1,0 +1,66 @@
+@startuml "React Query Architecture"
+
+!define RECTANGLE class
+
+skinparam {
+    BackgroundColor transparent
+    ArrowColor #2C3E50
+    BorderColor #2C3E50
+    FontColor #2C3E50
+    FontSize 14
+}
+
+rectangle "React Query Architecture" {
+    package "Application Layer" as AL #E3F2FD {
+        RECTANGLE "React Components" as RC #90CAF9 {
+            + useQuery()
+            + useMutation()
+            + useInfiniteQuery()
+        }
+    }
+    
+    package "React Query Layer" as RQL #FFF3E0 {
+        RECTANGLE "Query Client" as QC #FFB74D {
+            + Cache Management
+            + State Management
+            + Background Updates
+        }
+        
+        RECTANGLE "Query Cache" as CACHE #FFB74D {
+            + Query Keys
+            + Query Data
+            + Query Status
+        }
+        
+        RECTANGLE "Mutations" as MUT #FFB74D {
+            + Optimistic Updates
+            + Cache Updates
+            + Rollbacks
+        }
+    }
+    
+    package "Data Layer" as DL #E8F5E9 {
+        RECTANGLE "API Client" as API #81C784 {
+            + HTTP Requests
+            + Error Handling
+            + Response Transform
+        }
+        
+        RECTANGLE "Server" as SRV #81C784 {
+            + REST Endpoints
+            + GraphQL
+            + WebSocket
+        }
+    }
+}
+
+RC -[#2196F3]-> QC : "Queries/Mutations"
+QC -[#2196F3]-> CACHE : "Manages"
+QC -[#2196F3]-> MUT : "Handles"
+QC -[#4CAF50]-> API : "Fetches Data"
+API -[#4CAF50]-> SRV : "HTTP/WS"
+SRV -[#4CAF50]-> API : "Response"
+API -[#4CAF50]-> QC : "Data"
+CACHE -[#FF9800]-> RC : "Updates UI"
+
+@enduml 

@@ -1,0 +1,74 @@
+@startuml "MongoDB Profile Architecture"
+
+!define RECTANGLE class
+
+skinparam {
+    BackgroundColor transparent
+    ArrowColor #2C3E50
+    BorderColor #2C3E50
+    FontColor #2C3E50
+    FontSize 14
+}
+
+rectangle "MongoDB Profile Architecture" {
+    package "Application Layer" as AL #E3F2FD {
+        RECTANGLE "Profile Service" as PS #90CAF9 {
+            + Create Profile
+            + Update Profile
+            + Query Profiles
+            + Aggregate Data
+        }
+        
+        RECTANGLE "Cache Layer" as CL #90CAF9 {
+            + Redis Cache
+            + Cache Strategy
+            + TTL Management
+        }
+    }
+    
+    package "Data Layer" as DL #FFF3E0 {
+        RECTANGLE "MongoDB Cluster" as MC #FFB74D {
+            + Primary Node
+            + Secondary Nodes
+            + Arbiter
+        }
+        
+        RECTANGLE "Collections" as COL #FFB74D {
+            + Profiles
+            + Preferences
+            + Settings
+            + Analytics
+        }
+        
+        RECTANGLE "Indexes" as IDX #FFB74D {
+            + Compound Indexes
+            + Geospatial
+            + Text Search
+            + TTL Indexes
+        }
+    }
+    
+    package "Infrastructure" as INF #E8F5E9 {
+        RECTANGLE "Monitoring" as MON #81C784 {
+            + Performance
+            + Alerts
+            + Metrics
+        }
+        
+        RECTANGLE "Backup" as BAK #81C784 {
+            + Snapshots
+            + Point-in-time
+            + Restore
+        }
+    }
+}
+
+PS -[#2196F3]-> CL : "Cache First"
+PS -[#2196F3]-> MC : "CRUD Operations"
+MC -[#2196F3]-> COL : "Stores"
+COL -[#FF9800]-> IDX : "Optimized by"
+MC -[#4CAF50]-> MON : "Monitored by"
+MC -[#4CAF50]-> BAK : "Backed up by"
+CL -[#FF9800]-> PS : "Fast Reads"
+
+@enduml 

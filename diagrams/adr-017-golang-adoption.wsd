@@ -1,0 +1,64 @@
+@startuml "Arquitetura Go"
+
+!define RECTANGLE class
+
+skinparam {
+    BackgroundColor transparent
+    ArrowColor #2C3E50
+    BorderColor #2C3E50
+    FontColor #2C3E50
+    FontSize 14
+}
+
+rectangle "Go Architecture" {
+    package "Application" as APP #E3F2FD {
+        RECTANGLE "HTTP Server" as HS #90CAF9 {
+            + Routing
+            + Middleware
+            + Handlers
+        }
+        
+        RECTANGLE "Business Logic" as BL #90CAF9 {
+            + Services
+            + Domain
+            + Use Cases
+        }
+    }
+    
+    package "Infrastructure" as INF #FFF3E0 {
+        RECTANGLE "Database" as DB #FFB74D {
+            + SQL
+            + NoSQL
+            + Cache
+        }
+        
+        RECTANGLE "External Services" as ES #FFB74D {
+            + gRPC
+            + REST
+            + Message Queue
+        }
+    }
+    
+    package "Tools" as TLS #E8F5E9 {
+        RECTANGLE "Build" as BLD #81C784 {
+            + Compiler
+            + Dependencies
+            + Binary
+        }
+        
+        RECTANGLE "Testing" as TST #81C784 {
+            + Unit Tests
+            + Benchmarks
+            + Coverage
+        }
+    }
+}
+
+HS -[#2196F3]-> BL : "Uses"
+BL -[#2196F3]-> DB : "Persists"
+BL -[#FF9800]-> ES : "Integrates"
+HS -[#FF9800]-> ES : "Calls"
+BLD -[#4CAF50]-> HS : "Compiles"
+TST -[#4CAF50]-> BL : "Validates"
+
+@enduml 

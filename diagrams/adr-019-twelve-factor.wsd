@@ -1,0 +1,64 @@
+@startuml "Arquitetura 12-Factor"
+
+!define RECTANGLE class
+
+skinparam {
+    BackgroundColor transparent
+    ArrowColor #2C3E50
+    BorderColor #2C3E50
+    FontColor #2C3E50
+    FontSize 14
+}
+
+rectangle "12-Factor Architecture" {
+    package "Application Core" as AC #E3F2FD {
+        RECTANGLE "Codebase" as CB #90CAF9 {
+            + Version Control
+            + Single Repo
+            + Multiple Deploys
+        }
+        
+        RECTANGLE "Dependencies" as DEP #90CAF9 {
+            + Explicit Deps
+            + Isolated Deps
+            + Build Tools
+        }
+    }
+    
+    package "Configuration" as CONF #FFF3E0 {
+        RECTANGLE "Config" as CFG #FFB74D {
+            + Env Variables
+            + Strict Separation
+            + No Credentials
+        }
+        
+        RECTANGLE "Backing Services" as BS #FFB74D {
+            + Attached Resources
+            + Resource URLs
+            + Swappable
+        }
+    }
+    
+    package "Process & Deployment" as PD #E8F5E9 {
+        RECTANGLE "Processes" as PROC #81C784 {
+            + Stateless
+            + Share Nothing
+            + Port Binding
+        }
+        
+        RECTANGLE "Operations" as OPS #81C784 {
+            + Disposability
+            + Logs
+            + Admin Tasks
+        }
+    }
+}
+
+CB -[#2196F3]-> DEP : "Manages"
+DEP -[#2196F3]-> CFG : "Uses"
+CFG -[#FF9800]-> BS : "Connects"
+BS -[#FF9800]-> PROC : "Supports"
+PROC -[#4CAF50]-> OPS : "Enables"
+OPS -[#4CAF50]-> CB : "Maintains"
+
+@enduml 

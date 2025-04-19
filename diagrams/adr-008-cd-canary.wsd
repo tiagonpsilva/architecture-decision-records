@@ -1,0 +1,73 @@
+@startuml "Canary Deployment Architecture"
+
+!define RECTANGLE class
+
+skinparam {
+    BackgroundColor transparent
+    ArrowColor #2C3E50
+    BorderColor #2C3E50
+    FontColor #2C3E50
+    FontSize 14
+}
+
+rectangle "Canary Deployment Architecture" {
+    package "CI/CD Pipeline" as CICD #E3F2FD {
+        RECTANGLE "Build Stage" as BS #90CAF9 {
+            + Source Code
+            + Tests
+            + Artifacts
+        }
+        
+        RECTANGLE "Deployment Stage" as DS #90CAF9 {
+            + Version Control
+            + Configuration
+            + Rollback Plan
+        }
+    }
+    
+    package "Production Environment" as PE #FFF3E0 {
+        RECTANGLE "Load Balancer" as LB #FFB74D {
+            + Traffic Split
+            + Health Checks
+            + Route Rules
+        }
+        
+        RECTANGLE "Stable Version" as SV #FFB74D {
+            + Current Release
+            + 90% Traffic
+            + Known State
+        }
+        
+        RECTANGLE "Canary Version" as CV #FFB74D {
+            + New Release
+            + 10% Traffic
+            + Under Test
+        }
+    }
+    
+    package "Monitoring" as MON #E8F5E9 {
+        RECTANGLE "Metrics" as MET #81C784 {
+            + Performance
+            + Errors
+            + Business KPIs
+        }
+        
+        RECTANGLE "Analysis" as ANA #81C784 {
+            + Comparison
+            + Thresholds
+            + Decisions
+        }
+    }
+}
+
+BS -[#2196F3]-> DS : "Promotes"
+DS -[#2196F3]-> CV : "Deploys New"
+DS -[#2196F3]-> SV : "Updates Stable"
+LB -[#FF9800]-> SV : "90% Traffic"
+LB -[#FF9800]-> CV : "10% Traffic"
+CV -[#4CAF50]-> MET : "Monitored"
+SV -[#4CAF50]-> MET : "Baseline"
+MET -[#4CAF50]-> ANA : "Analyzed"
+ANA -[#FF9800]-> DS : "Promotes/Rollbacks"
+
+@enduml 

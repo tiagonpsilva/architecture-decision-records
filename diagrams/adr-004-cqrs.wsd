@@ -1,0 +1,77 @@
+@startuml "Arquitetura CQRS"
+
+!define RECTANGLE class
+
+skinparam {
+    BackgroundColor transparent
+    ArrowColor #2C3E50
+    BorderColor #2C3E50
+    FontColor #2C3E50
+    FontSize 14
+}
+
+rectangle "CQRS Architecture" {
+    package "Command Side" as CS #E3F2FD {
+        RECTANGLE "Command API" as CAPI #90CAF9 {
+            + Write Operations
+            + Validation
+            + Authorization
+        }
+        
+        RECTANGLE "Command Handlers" as CH #90CAF9 {
+            + Business Logic
+            + Domain Rules
+            + Event Generation
+        }
+        
+        RECTANGLE "Write Database" as WDB #90CAF9 {
+            + Normalized Data
+            + ACID Transactions
+            + Event Store
+        }
+    }
+    
+    package "Query Side" as QS #FFF3E0 {
+        RECTANGLE "Query API" as QAPI #FFB74D {
+            + Read Operations
+            + Filtering
+            + Pagination
+        }
+        
+        RECTANGLE "Query Handlers" as QH #FFB74D {
+            + Data Aggregation
+            + Optimized Queries
+            + Caching
+        }
+        
+        RECTANGLE "Read Database" as RDB #FFB74D {
+            + Denormalized Data
+            + Optimized Views
+            + Fast Reads
+        }
+    }
+    
+    package "Event Bus" as EB #E8F5E9 {
+        RECTANGLE "Event Publisher" as EP #81C784 {
+            + Event Distribution
+            + Retry Logic
+            + Dead Letter
+        }
+        
+        RECTANGLE "Event Subscribers" as ES #81C784 {
+            + Event Processing
+            + View Updates
+            + External Systems
+        }
+    }
+}
+
+CAPI -[#2196F3]-> CH : "Executes"
+CH -[#2196F3]-> WDB : "Persists"
+CH -[#FF9800]-> EP : "Publishes Events"
+EP -[#FF9800]-> ES : "Notifies"
+ES -[#4CAF50]-> RDB : "Updates Views"
+QAPI -[#4CAF50]-> QH : "Queries"
+QH -[#4CAF50]-> RDB : "Reads"
+
+@enduml 

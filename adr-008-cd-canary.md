@@ -30,6 +30,10 @@ Justificativas:
 - Capacidade de teste A/B
 - Deploy contínuo mais seguro
 
+## 📊 Diagrama
+
+![Diagrama de Arquitetura Canary Deployment](diagrams/adr-008-cd-canary.png)
+
 ## 📊 Consequências
 
 ### Positivas

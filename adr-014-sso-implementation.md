@@ -39,6 +39,59 @@ Padrões específicos:
 - MFA obrigatório para acessos críticos
 - Refresh tokens com rotação
 
+## 📊 Diagrama
+
+```plantuml
+@startuml
+skinparam backgroundColor transparent
+skinparam defaultTextAlignment center
+skinparam componentStyle uml2
+
+!define RECTANGLE class
+
+title Arquitetura Single Sign-On (SSO)
+
+package "Frontend" {
+    [Web App] as webapp
+    [Mobile App] as mobile
+}
+
+package "Backend" {
+    [API Gateway] as gateway
+    [Microserviços] as services
+}
+
+package "Keycloak SSO" {
+    [Identity Provider] as idp
+    database "User Store" as userstore
+}
+
+actor "Usuário" as user
+
+user --> webapp : 1. Acessa
+user --> mobile : 1. Acessa
+webapp --> gateway : 2. Request
+mobile --> gateway : 2. Request
+gateway --> idp : 3. Redirect para login
+idp --> userstore : 4. Valida credenciais
+idp --> gateway : 5. Token JWT
+gateway --> services : 6. Request + Token
+services --> gateway : 7. Response
+gateway --> webapp : 8. Response
+gateway --> mobile : 8. Response
+
+note right of idp
+  OAuth 2.0 + OpenID Connect
+  - Authorization Code Flow
+  - PKCE para mobile
+  - MFA quando necessário
+end note
+
+@enduml
+```
+
+![Diagrama de Arquitetura SSO](diagrams/adr-014-sso-implementation.png)
+
 ## 📊 Consequências
 
 ### Positivas

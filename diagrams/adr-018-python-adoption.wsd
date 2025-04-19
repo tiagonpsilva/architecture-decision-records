@@ -1,0 +1,64 @@
+@startuml "Arquitetura Python"
+
+!define RECTANGLE class
+
+skinparam {
+    BackgroundColor transparent
+    ArrowColor #2C3E50
+    BorderColor #2C3E50
+    FontColor #2C3E50
+    FontSize 14
+}
+
+rectangle "Python Architecture" {
+    package "Data Science" as DS #E3F2FD {
+        RECTANGLE "ML/AI" as ML #90CAF9 {
+            + Models
+            + Training
+            + Inference
+        }
+        
+        RECTANGLE "Data Processing" as DP #90CAF9 {
+            + ETL
+            + Analysis
+            + Visualization
+        }
+    }
+    
+    package "Web Services" as WS #FFF3E0 {
+        RECTANGLE "FastAPI" as FA #FFB74D {
+            + REST APIs
+            + WebSocket
+            + OpenAPI
+        }
+        
+        RECTANGLE "Background Tasks" as BT #FFB74D {
+            + Celery
+            + Queue
+            + Workers
+        }
+    }
+    
+    package "Infrastructure" as INF #E8F5E9 {
+        RECTANGLE "Storage" as ST #81C784 {
+            + SQL
+            + NoSQL
+            + Object Store
+        }
+        
+        RECTANGLE "Deployment" as DEP #81C784 {
+            + Docker
+            + Poetry
+            + CI/CD
+        }
+    }
+}
+
+ML -[#2196F3]-> DP : "Uses"
+DP -[#2196F3]-> ST : "Stores"
+FA -[#FF9800]-> ML : "Serves"
+FA -[#FF9800]-> BT : "Offloads"
+BT -[#4CAF50]-> ST : "Processes"
+DEP -[#4CAF50]-> FA : "Deploys"
+
+@enduml 

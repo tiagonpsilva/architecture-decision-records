@@ -1,0 +1,72 @@
+@startuml "Arquitetura OAuth/OpenID"
+
+!define RECTANGLE class
+
+skinparam {
+    BackgroundColor transparent
+    ArrowColor #2C3E50
+    BorderColor #2C3E50
+    FontColor #2C3E50
+    FontSize 14
+}
+
+rectangle "OAuth/OpenID Architecture" {
+    package "Client Applications" as CA #E3F2FD {
+        RECTANGLE "SPA" as SPA #90CAF9 {
+            + Login UI
+            + Token Management
+            + API Integration
+        }
+        
+        RECTANGLE "Mobile App" as MA #90CAF9 {
+            + Native Auth
+            + Secure Storage
+            + API Client
+        }
+    }
+    
+    package "Identity Provider" as IDP #FFF3E0 {
+        RECTANGLE "Authorization Server" as AS #FFB74D {
+            + OAuth Flow
+            + Token Generation
+            + Scope Management
+        }
+        
+        RECTANGLE "User Management" as UM #FFB74D {
+            + User Data
+            + Permissions
+            + MFA
+        }
+        
+        RECTANGLE "Token Service" as TS #FFB74D {
+            + JWT Signing
+            + Token Validation
+            + Key Management
+        }
+    }
+    
+    package "Resource Server" as RS #E8F5E9 {
+        RECTANGLE "API Gateway" as AG #81C784 {
+            + Token Validation
+            + Route Protection
+            + Scope Check
+        }
+        
+        RECTANGLE "Protected Resources" as PR #81C784 {
+            + Business APIs
+            + User Data
+            + Services
+        }
+    }
+}
+
+SPA -[#2196F3]-> AS : "Authorization Code Flow"
+MA -[#2196F3]-> AS : "PKCE Flow"
+AS -[#FF9800]-> UM : "Authenticates"
+AS -[#FF9800]-> TS : "Gets Tokens"
+SPA -[#4CAF50]-> AG : "Bearer Token"
+MA -[#4CAF50]-> AG : "Bearer Token"
+AG -[#4CAF50]-> TS : "Validates"
+AG -[#4CAF50]-> PR : "Accesses"
+
+@enduml 

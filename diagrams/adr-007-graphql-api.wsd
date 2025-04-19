@@ -1,0 +1,64 @@
+@startuml "Arquitetura GraphQL API"
+
+!define RECTANGLE class
+
+skinparam {
+    BackgroundColor transparent
+    ArrowColor #2C3E50
+    BorderColor #2C3E50
+    FontColor #2C3E50
+    FontSize 14
+}
+
+rectangle "GraphQL API Architecture" {
+    package "Client Layer" as CL #E3F2FD {
+        RECTANGLE "Client Apps" as CA #90CAF9 {
+            + Query Builder
+            + Cache Management
+            + State Sync
+        }
+        
+        RECTANGLE "GraphQL Client" as GC #90CAF9 {
+            + Apollo/Relay
+            + Type Generation
+            + Error Handling
+        }
+    }
+    
+    package "API Layer" as AL #FFF3E0 {
+        RECTANGLE "GraphQL Server" as GS #FFB74D {
+            + Schema Definition
+            + Resolvers
+            + Directives
+        }
+        
+        RECTANGLE "API Gateway" as AG #FFB74D {
+            + Authentication
+            + Rate Limiting
+            + Caching
+        }
+    }
+    
+    package "Data Layer" as DL #E8F5E9 {
+        RECTANGLE "Data Sources" as DS #81C784 {
+            + REST APIs
+            + Databases
+            + Services
+        }
+        
+        RECTANGLE "Data Loaders" as DLD #81C784 {
+            + Batching
+            + Caching
+            + Optimization
+        }
+    }
+}
+
+CA -[#2196F3]-> GC : "Uses"
+GC -[#2196F3]-> AG : "HTTP/WS"
+AG -[#FF9800]-> GS : "Routes"
+GS -[#FF9800]-> DLD : "Resolves"
+DLD -[#4CAF50]-> DS : "Fetches"
+DS -[#4CAF50]-> DLD : "Returns"
+
+@enduml 

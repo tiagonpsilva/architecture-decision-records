@@ -27,6 +27,10 @@ Justificativas:
 - Compatibilidade com JavaScript existente, permitindo migração gradual
 - Melhoria na manutenibilidade e legibilidade do código
 
+## 📊 Diagrama
+
+![Diagrama de Arquitetura TypeScript Frontend](diagrams/adr-001-typescript-frontend.png)
+
 ## 📊 Consequências
 
 ### Positivas

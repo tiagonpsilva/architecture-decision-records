@@ -56,6 +56,10 @@ Frameworks e Bibliotecas:
 - wire para DI
 - migrate para migrations
 
+## 📊 Diagrama
+
+![Diagrama de Arquitetura Go](diagrams/adr-017-golang-adoption.png)
+
 ## 📊 Consequências
 
 ### Positivas ✨
@@ -100,7 +104,7 @@ Frameworks e Bibliotecas:
 - Prós: Performance, segurança
 - Contras: Complexidade, curva de aprendizado
 
-## �� Referências
+## 📝 Referências
 
 - [Go Documentation](https://golang.org/doc/)
 - [Effective Go](https://golang.org/doc/effective_go)

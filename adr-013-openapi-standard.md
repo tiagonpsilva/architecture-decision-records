@@ -39,6 +39,10 @@ Padrões específicos:
 - Monitoramento de breaking changes
 - Versionamento via URL (/v1, /v2)
 
+## 📊 Diagrama
+
+![Diagrama de OpenAPI Standard](diagrams/adr-013-openapi-standard.png)
+
 ## 📊 Consequências
 
 ### Positivas

@@ -30,6 +30,10 @@ Justificativas:
 - Replicação e sharding nativos
 - Ecossistema maduro de ferramentas
 
+## 📊 Diagrama
+
+![Diagrama de Arquitetura MongoDB para Perfis](diagrams/adr-006-mongodb-profiles.png)
+
 ## 📊 Consequências
 
 ### Positivas

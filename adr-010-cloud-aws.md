@@ -33,6 +33,10 @@ Justificativas:
 - Preços competitivos com opções de otimização
 - Suporte enterprise confiável
 
+## 📊 Diagrama
+
+![Diagrama de Arquitetura AWS](diagrams/adr-010-cloud-aws.png)
+
 ## 📊 Consequências
 
 ### Positivas

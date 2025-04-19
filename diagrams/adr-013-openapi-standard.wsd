@@ -1,0 +1,64 @@
+@startuml "Arquitetura OpenAPI"
+
+!define RECTANGLE class
+
+skinparam {
+    BackgroundColor transparent
+    ArrowColor #2C3E50
+    BorderColor #2C3E50
+    FontColor #2C3E50
+    FontSize 14
+}
+
+rectangle "OpenAPI Architecture" {
+    package "API Design" as AD #E3F2FD {
+        RECTANGLE "OpenAPI Spec" as OAS #90CAF9 {
+            + Endpoints
+            + Models
+            + Security
+        }
+        
+        RECTANGLE "Documentation" as DOC #90CAF9 {
+            + Swagger UI
+            + API Reference
+            + Examples
+        }
+    }
+    
+    package "Development" as DEV #FFF3E0 {
+        RECTANGLE "Code Generation" as CG #FFB74D {
+            + Client SDKs
+            + Server Stubs
+            + Types
+        }
+        
+        RECTANGLE "Validation" as VAL #FFB74D {
+            + Request/Response
+            + Schema
+            + Security
+        }
+    }
+    
+    package "Testing" as TEST #E8F5E9 {
+        RECTANGLE "Contract Tests" as CT #81C784 {
+            + API Compliance
+            + Integration
+            + Mocking
+        }
+        
+        RECTANGLE "Documentation Tests" as DT #81C784 {
+            + Examples
+            + Schemas
+            + Security
+        }
+    }
+}
+
+OAS -[#2196F3]-> DOC : "Generates"
+OAS -[#2196F3]-> CG : "Generates"
+CG -[#FF9800]-> VAL : "Implements"
+VAL -[#FF9800]-> CT : "Validates"
+DOC -[#4CAF50]-> DT : "Verifies"
+CT -[#4CAF50]-> OAS : "Ensures Compliance"
+
+@enduml 

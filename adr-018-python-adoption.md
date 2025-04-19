@@ -58,6 +58,10 @@ Frameworks e Bibliotecas:
 - Pytest para testes
 - Black para formatação
 
+## 📊 Diagrama
+
+![Diagrama de Arquitetura Python](diagrams/adr-018-python-adoption.png)
+
 ## 📊 Consequências
 
 ### Positivas ✨

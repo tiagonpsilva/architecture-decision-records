@@ -1,0 +1,57 @@
+@startuml "TypeScript no Frontend"
+
+!define RECTANGLE class
+
+skinparam {
+    BackgroundColor transparent
+    ArrowColor #2C3E50
+    BorderColor #2C3E50
+    FontColor #2C3E50
+    FontSize 14
+}
+
+rectangle "Frontend Architecture" {
+    package "TypeScript Layer" as TSL #E3F2FD {
+        RECTANGLE "Type Definitions" as TD #90CAF9 {
+            + Interfaces
+            + Types
+            + Enums
+        }
+        
+        RECTANGLE "Components" as COMP #90CAF9 {
+            + Props
+            + State
+            + Lifecycle
+        }
+        
+        RECTANGLE "Services" as SERV #90CAF9 {
+            + API Clients
+            + Business Logic
+            + Utils
+        }
+    }
+    
+    package "Build Pipeline" as BP #FFF3E0 {
+        RECTANGLE "TypeScript Compiler" as TSC #FFB74D {
+            + Type Checking
+            + Transpilation
+            + Bundling
+        }
+    }
+    
+    package "Runtime" as RT #E8F5E9 {
+        RECTANGLE "JavaScript Bundle" as JSB #81C784 {
+            + Optimized Code
+            + Source Maps
+            + Assets
+        }
+    }
+}
+
+TD -[#2196F3]-> COMP : "Type Safety"
+COMP -[#2196F3]-> SERV : "Uses"
+SERV -[#2196F3]-> TD : "Implements"
+TSL -[#FF9800]-> TSC : "Compiles"
+TSC -[#4CAF50]-> JSB : "Generates"
+
+@enduml 

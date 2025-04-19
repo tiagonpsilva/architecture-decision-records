@@ -37,6 +37,10 @@ Justificativas:
 - Histórico organizado
 - Merge requests para code review
 
+## 📊 Diagrama
+
+![Diagrama de Git Flow](diagrams/adr-009-git-flow.png)
+
 ## 📊 Consequências
 
 ### Positivas

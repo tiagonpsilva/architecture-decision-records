@@ -63,6 +63,10 @@ Tipos de Mensagens:
   - Comandos
   - Status
 
+## 📊 Diagrama
+
+![Diagrama de Arquitetura WebSocket](diagrams/adr-020-websocket.png)
+
 ## 📊 Consequências
 
 ### Positivas

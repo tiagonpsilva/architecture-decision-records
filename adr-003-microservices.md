@@ -29,6 +29,56 @@ Justificativas:
 - Melhor organização do código por domínio
 - Melhor definição de fronteiras de contexto
 
+## 📊 Diagrama
+
+```plantuml
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Arquitetura de Microsserviços
+
+Person(client, "Cliente", "Usuário do sistema")
+
+System_Boundary(c1, "Sistema") {
+    Container(api_gateway, "API Gateway", "Kong", "Roteamento, autenticação, rate limiting")
+    
+    Container(auth_service, "Auth Service", "Python/FastAPI", "Autenticação e autorização")
+    ContainerDb(auth_db, "Auth DB", "PostgreSQL", "Dados de usuários e tokens")
+    
+    Container(user_service, "User Service", "Go", "Gestão de usuários e perfis")
+    ContainerDb(user_db, "User DB", "MongoDB", "Dados de usuários")
+    
+    Container(notification_service, "Notification Service", "Python/FastAPI", "Envio de notificações")
+    ContainerQueue(notification_queue, "Notification Queue", "RabbitMQ", "Fila de notificações")
+    
+    Container(product_service, "Product Service", "Go", "Catálogo de produtos")
+    ContainerDb(product_db, "Product DB", "PostgreSQL", "Dados de produtos")
+    
+    Container(order_service, "Order Service", "Python/FastAPI", "Processamento de pedidos")
+    ContainerDb(order_db, "Order DB", "MongoDB", "Dados de pedidos")
+}
+
+Rel(client, api_gateway, "Usa", "HTTPS")
+Rel(api_gateway, auth_service, "Roteia", "HTTPS")
+Rel(api_gateway, user_service, "Roteia", "HTTPS")
+Rel(api_gateway, product_service, "Roteia", "HTTPS")
+Rel(api_gateway, order_service, "Roteia", "HTTPS")
+
+Rel(auth_service, auth_db, "Usa", "SQL")
+Rel(user_service, user_db, "Usa", "MongoDB Protocol")
+Rel(product_service, product_db, "Usa", "SQL")
+Rel(order_service, order_db, "Usa", "MongoDB Protocol")
+
+Rel(order_service, notification_queue, "Publica", "AMQP")
+Rel(notification_service, notification_queue, "Consome", "AMQP")
+
+@enduml
+```
+
+![Diagrama de Arquitetura de Microsserviços](diagrams/adr-003-microservices.png)
+
 ## 📊 Consequências
 
 ### Positivas

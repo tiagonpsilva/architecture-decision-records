@@ -37,6 +37,10 @@ Padrões específicos:
 - Elasticsearch: busca e análise
 - Event Store: histórico de eventos
 
+## 📊 Diagrama
+
+![Diagrama de Modelagem de Dados](diagrams/adr-012-data-modeling.png)
+
 ## 📊 Consequências
 
 ### Positivas

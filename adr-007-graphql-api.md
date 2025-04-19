@@ -30,6 +30,10 @@ Justificativas:
 - Ferramentas de desenvolvimento robustas
 - Melhor experiência para consumidores da API
 
+## 📊 Diagrama
+
+![Diagrama de Arquitetura GraphQL API](diagrams/adr-007-graphql-api.png)
+
 ## 📊 Consequências
 
 ### Positivas

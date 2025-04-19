@@ -29,6 +29,10 @@ Justificativas:
 - Performance otimizada para cada tipo de operação
 - Melhor suporte a diferentes requisitos de persistência
 
+## 📊 Diagrama
+
+![Diagrama de Arquitetura CQRS](diagrams/adr-004-cqrs.png)
+
 ## 📊 Consequências
 
 ### Positivas
