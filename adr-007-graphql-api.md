@@ -2,11 +2,11 @@
 
 Data: 2024-03-21
 
-## Status 📊
+## ⚡ Status
 
 Aceito
 
-## Contexto 🔍
+## 🎯 Contexto
 
 Nossas APIs REST atuais apresentam limitações:
 - Over-fetching e under-fetching de dados
@@ -16,7 +16,7 @@ Nossas APIs REST atuais apresentam limitações:
 - Performance impactada em conexões lentas
 - Complexidade no versionamento
 
-## Decisão 🎯
+## 🔨 Decisão
 
 Adotar GraphQL como padrão para novas APIs públicas.
 
@@ -30,7 +30,7 @@ Justificativas:
 - Ferramentas de desenvolvimento robustas
 - Melhor experiência para consumidores da API
 
-## Consequências 📈
+## 📊 Consequências
 
 ### Positivas
 
@@ -50,7 +50,7 @@ Justificativas:
 - Possível impacto em cache HTTP
 - Custos de processamento no servidor
 
-### Riscos 🚨
+### 🚨 Riscos
 
 - Queries muito complexas afetando performance
   - Mitigação: Implementação de query complexity analysis
@@ -59,7 +59,7 @@ Justificativas:
 - Cache menos eficiente
   - Mitigação: Implementação de cache em camadas
 
-## Alternativas Consideradas 🔄
+## 🔄 Alternativas Consideradas
 
 ### REST com GraphQL Gateway
 - Prós: Menor impacto inicial
@@ -73,14 +73,14 @@ Justificativas:
 - Prós: Simples, suporte a batch
 - Contras: Menos recursos, menor ecossistema
 
-## Referências 📚
+## 📚 Referências
 
 - [GraphQL Specification](https://spec.graphql.org/)
 - [GraphQL Best Practices](https://graphql.org/learn/best-practices/)
 - [Apollo GraphQL Documentation](https://www.apollographql.com/docs/)
 - [GraphQL Security Checklist](https://graphql.org/learn/security/)
 
-## Notas 📋
+## 📝 Notas
 
 - Implementar gradualmente, começando por novos endpoints
 - Necessário definir padrões de nomenclatura

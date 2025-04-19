@@ -1,12 +1,12 @@
-# 004 - 📝 📖 Implementação de CQRS
+# 004 - 📝 🏛️ Implementação de CQRS
 
 Data: 2024-03-21
 
-## Status
+## ⚡ Status
 
 Aceito
 
-## Contexto
+## 🎯 Contexto
 
 Com a migração para microsserviços, enfrentamos desafios específicos relacionados ao gerenciamento de dados:
 - Complexidade em queries de leitura otimizadas
@@ -16,7 +16,7 @@ Com a migração para microsserviços, enfrentamos desafios específicos relacio
 - Necessidade de diferentes modelos de dados para diferentes visões
 - Consistência eventual em sistemas distribuídos
 
-## Decisão
+## 🔨 Decisão
 
 Adotar o padrão Command Query Responsibility Segregation (CQRS) para separar operações de leitura e escrita.
 
@@ -29,7 +29,7 @@ Justificativas:
 - Performance otimizada para cada tipo de operação
 - Melhor suporte a diferentes requisitos de persistência
 
-## Consequências
+## 📊 Consequências
 
 ### Positivas
 
@@ -57,7 +57,7 @@ Justificativas:
 - Overhead desnecessário em casos simples
   - Mitigação: Aplicar apenas onde necessário
 
-## Alternativas Consideradas
+## 🔄 Alternativas Consideradas
 
 ### CRUD Tradicional
 - Prós: Mais simples e direto
@@ -71,14 +71,14 @@ Justificativas:
 - Prós: Mais simples que CQRS completo
 - Contras: Limitado em flexibilidade
 
-## Referências
+## 📚 Referências
 
 - [CQRS Pattern](https://martinfowler.com/bliki/CQRS.html)
 - [CQRS Journey](https://docs.microsoft.com/en-us/previous-versions/msp-n-p/jj554200(v=pandp.10))
 - [Event Sourcing and CQRS](https://www.eventstore.com/blog/event-sourcing-and-cqrs)
 - [CQRS Design Pattern](https://medium.com/design-microservices-architecture-with-patterns/cqrs-design-pattern-in-microservices-architectures-5d41e359768c)
 
-## Notas
+## 📝 Notas
 
 - Implementação inicial em domínios com alta demanda de leitura
 - Necessário definir estratégia de sincronização entre modelos

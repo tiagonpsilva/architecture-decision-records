@@ -1,12 +1,12 @@
-# 005 - 🔑 🔒 Autenticação com OAuth e OpenID Connect
+# 005 - 📝 🔐 Autenticação com OAuth e OpenID Connect
 
 Data: 2024-03-21
 
-## Status
+## ⚡ Status
 
 Aceito
 
-## Contexto
+## 🎯 Contexto
 
 Nossa aplicação necessita de um sistema de autenticação e autorização robusto e seguro:
 - Múltiplos clientes e tipos de aplicação
@@ -16,7 +16,7 @@ Nossa aplicação necessita de um sistema de autenticação e autorização robu
 - Necessidade de delegação de acesso
 - Conformidade com padrões de segurança
 
-## Decisão
+## 🔨 Decisão
 
 Implementar OAuth 2.0 com OpenID Connect como solução de autenticação e autorização.
 
@@ -30,7 +30,7 @@ Justificativas:
 - Segurança robusta e testada
 - Ecossistema maduro de bibliotecas
 
-## Consequências
+## 📊 Consequências
 
 ### Positivas
 
@@ -59,7 +59,7 @@ Justificativas:
 - Complexidade nos fluxos de refresh
   - Mitigação: Implementação de refresh automático
 
-## Alternativas Consideradas
+## 🔄 Alternativas Consideradas
 
 ### JWT Simples
 - Prós: Mais simples de implementar
@@ -73,14 +73,14 @@ Justificativas:
 - Prós: Controle total sobre implementação
 - Contras: Risco de falhas de segurança, manutenção complexa
 
-## Referências
+## 📚 Referências
 
 - [OAuth 2.0 Specification](https://oauth.net/2/)
 - [OpenID Connect Core](https://openid.net/specs/openid-connect-core-1_0.html)
 - [OAuth 2.0 Security Best Practices](https://oauth.net/2/security-best-practices/)
 - [JWT Best Practices](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-jwt-bcp)
 
-## Notas
+## 📝 Notas
 
 - Necessário definir estratégia de refresh tokens
 - Importante implementar revogação de tokens

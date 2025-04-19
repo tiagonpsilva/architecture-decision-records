@@ -1,12 +1,12 @@
-# 003 - 🔌 🧩 Arquitetura de Microsserviços
+# 003 - 📝 🏛️ Arquitetura de Microsserviços
 
 Data: 2024-03-21
 
-## Status
+## ⚡ Status
 
 Aceito
 
-## Contexto
+## 🎯 Contexto
 
 Nossa aplicação monolítica atual apresenta desafios de escalabilidade, manutenção e velocidade de desenvolvimento:
 - Dificuldade em escalar componentes específicos
@@ -16,7 +16,7 @@ Nossa aplicação monolítica atual apresenta desafios de escalabilidade, manute
 - Times dependentes uns dos outros para entregas
 - Complexidade crescente no código base único
 
-## Decisão
+## 🔨 Decisão
 
 Migrar gradualmente nossa arquitetura monolítica para microsserviços, decompondo a aplicação em serviços independentes e especializados.
 
@@ -29,7 +29,7 @@ Justificativas:
 - Melhor organização do código por domínio
 - Melhor definição de fronteiras de contexto
 
-## Consequências
+## 📊 Consequências
 
 ### Positivas
 
@@ -58,7 +58,7 @@ Justificativas:
 - Aumento nos custos operacionais
   - Mitigação: Dimensionamento adequado e autoscaling
 
-## Alternativas Consideradas
+## 🔄 Alternativas Consideradas
 
 ### Modularização do Monolito
 - Prós: Menor complexidade operacional
@@ -72,14 +72,14 @@ Justificativas:
 - Prós: Mais simples que microsserviços
 - Contras: Menor isolamento, acoplamento via ESB
 
-## Referências
+## 📚 Referências
 
 - [Microservices Pattern](https://microservices.io/patterns/index.html)
 - [Domain-Driven Design](https://martinfowler.com/tags/domain%20driven%20design.html)
 - [The Twelve-Factor App](https://12factor.net/)
 - [Building Microservices](https://samnewman.io/books/building_microservices/)
 
-## Notas
+## 📝 Notas
 
 - Migração será feita por domínios, começando pelos menos acoplados
 - Necessário estabelecer práticas de DevOps e SRE
