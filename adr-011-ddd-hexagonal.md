@@ -79,12 +79,14 @@ Justificativas:
 
 ![DDD e Arquitetura Hexagonal](diagrams/adr-011-ddd-hexagonal.png)
 
-O diagrama acima ilustra a estrutura da arquitetura hexagonal com DDD, mostrando as camadas e suas responsabilidades:
+O diagrama acima ilustra a estrutura básica da arquitetura hexagonal com DDD, mostrando as principais camadas e suas dependências:
 
-- **Camada de Domínio**: Core da aplicação com entidades, agregados e objetos de valor
-- **Camada de Aplicação**: Casos de uso e serviços de aplicação
-- **Camada de Infraestrutura**: Implementações concretas e adaptadores
-- **Camada de Interfaces**: Portas e adaptadores para comunicação externa
+- **Camada de Interfaces**: Adaptadores primários (UI, API, etc.)
+- **Camada de Aplicação**: Coordena o fluxo entre interfaces e domínio
+- **Camada de Domínio**: Core da aplicação com regras de negócio
+- **Camada de Infraestrutura**: Adaptadores secundários (BD, mensageria, etc.)
+
+As setas indicam o fluxo de dependência entre as camadas, sempre apontando para o domínio.
 
 O código fonte do diagrama está disponível em: [adr-011-ddd-hexagonal.wsd](diagrams/adr-011-ddd-hexagonal.wsd)
 
