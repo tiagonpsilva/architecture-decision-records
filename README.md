@@ -62,6 +62,7 @@ Cada ADR deve conter:
 ### 🔒 Segurança e Autenticação
 - [`security/adr-005-oauth-openid.md`](security/adr-005-oauth-openid.md) - Implementação de OAuth 2.0 e OpenID Connect
 - [`security/adr-014-sso-implementation.md`](security/adr-014-sso-implementation.md) - Implementação de SSO com OAuth2/OpenID
+- [`security/adr-034-owasp.md`](security/adr-034-owasp.md) - Práticas de Segurança OWASP
 
 ### 🚀 DevOps e Infraestrutura
 - [`devops/adr-008-cd-canary.md`](devops/adr-008-cd-canary.md) - Implantação Contínua com Canary Releases
@@ -77,6 +78,10 @@ Cada ADR deve conter:
 
 ### ✅ Qualidade e Testes
 - [`quality/adr-015-test-patterns.md`](quality/adr-015-test-patterns.md) - Padrões de Testes
+- [`quality/adr-033-quality-gates-cicd.md`](quality/adr-033-quality-gates-cicd.md) - Quality Gates na Esteira de CI/CD
+
+### 🔍 Operações e Monitoramento
+- [`operations/adr-035-observability.md`](operations/adr-035-observability.md) - Observabilidade
 
 ### 🤖 Inteligência Artificial
 - [`ai/adr-029-mcp.md`](ai/adr-029-mcp.md) - Model Context Protocol (MCP)
@@ -165,7 +170,8 @@ architecture-decision-records/
 │       └── adr-003-microservices.puml
 ├── security/
 │   ├── adr-005-oauth-openid.md
-│   └── adr-014-sso-implementation.md
+│   ├── adr-014-sso-implementation.md
+│   └── adr-034-owasp.md
 ├── devops/
 │   ├── adr-008-cd-canary.md
 │   ├── adr-009-git-flow.md
@@ -177,11 +183,15 @@ architecture-decision-records/
 │   ├── adr-020-websocket.md
 │   └── adr-022-event-driven.md
 ├── quality/
-│   └── adr-015-test-patterns.md
+│   ├── adr-015-test-patterns.md
+│   └── adr-033-quality-gates-cicd.md
+├── operations/
+│   └── adr-035-observability.md
 └── ai/
     ├── adr-029-mcp.md
     ├── adr-030-rag.md
-    └── adr-031-quality-gates.md
+    ├── adr-031-quality-gates.md
+    └── adr-032-prompt-engineering.md
 ```
 
 Esta estrutura organiza os ADRs por categorias, facilitando a navegação e manutenção dos documentos. Cada categoria tem seu próprio diretório e pode conter subdiretórios específicos, como o diretório `diagrams` para armazenar diagramas relacionados aos ADRs.
