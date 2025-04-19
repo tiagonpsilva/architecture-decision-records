@@ -1,6 +1,6 @@
-# NNN - [Título da Decisão] 📝 [emoji tema]
+# NNN - 📝 [emoji tema] [Título da Decisão]
 
-[O título deve conter dois emojis:
+[O título deve conter dois emojis no início:
 1. 📝 - Emoji padrão para todas as ADRs
 2. [emoji tema] - Emoji específico relacionado ao tema da ADR, exemplos:
    - 🏛️ - Arquitetura
