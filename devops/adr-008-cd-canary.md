@@ -32,7 +32,7 @@ Justificativas:
 
 ## 📊 Diagrama
 
-![Diagrama de Arquitetura Canary Deployment](diagrams/adr-008-cd-canary.png)
+![Diagrama de Arquitetura Canary Deployment](../diagrams/adr-008-cd-canary.png)
 
 ## 📊 Consequências
 

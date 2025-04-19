@@ -58,7 +58,7 @@ Frameworks e Bibliotecas:
 
 ## 📊 Diagrama
 
-![Diagrama de Arquitetura Go](diagrams/adr-017-golang-adoption.png)
+![Diagrama de Arquitetura Go](../diagrams/adr-017-golang-adoption.png)
 
 ## 📊 Consequências
 

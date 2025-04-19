@@ -29,7 +29,7 @@ Justificativas:
 
 ## 📊 Diagrama
 
-![Diagrama de Arquitetura TypeScript Frontend](diagrams/adr-001-typescript-frontend.png)
+![Diagrama de Arquitetura TypeScript Frontend](../diagrams/adr-001-typescript-frontend.png)
 
 ## 📊 Consequências
 

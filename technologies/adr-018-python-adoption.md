@@ -60,7 +60,7 @@ Frameworks e Bibliotecas:
 
 ## 📊 Diagrama
 
-![Diagrama de Arquitetura Python](diagrams/adr-018-python-adoption.png)
+![Diagrama de Arquitetura Python](../diagrams/adr-018-python-adoption.png)
 
 ## 📊 Consequências
 

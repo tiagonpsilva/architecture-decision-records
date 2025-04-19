@@ -95,7 +95,7 @@ Adotar os princípios do 12-Factor App como base para desenvolvimento:
 
 ## 📊 Diagrama
 
-![Diagrama de 12-Factor App](diagrams/adr-019-twelve-factor.png)
+![Diagrama de 12-Factor App](../diagrams/adr-019-twelve-factor.png)
 
 ## 📊 Consequências
 

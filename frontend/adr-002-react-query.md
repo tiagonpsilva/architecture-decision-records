@@ -34,7 +34,7 @@ Justificativas:
 
 ## 📊 Diagrama
 
-![Diagrama de Arquitetura React Query](diagrams/adr-002-react-query.png)
+![Diagrama de Arquitetura React Query](../diagrams/adr-002-react-query.png)
 
 ## 📊 Consequências
 
