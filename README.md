@@ -68,6 +68,7 @@ Cada ADR deve conter:
 - [`devops/adr-009-git-flow.md`](devops/adr-009-git-flow.md) - Estratégia Git Flow e Branching
 - [`devops/adr-010-cloud-aws.md`](devops/adr-010-cloud-aws.md) - Adoção da AWS como Plataforma Cloud
 - [`devops/adr-025-infrastructure-as-code.md`](devops/adr-025-infrastructure-as-code.md) - Adoção de Infraestrutura como Código (IaC)
+- [`devops/adr-028-kubernetes.md`](devops/adr-028-kubernetes.md) - Orquestração com Kubernetes
 
 ### 🔄 Comunicação e Integração
 - [`communication/adr-016-messaging-patterns.md`](communication/adr-016-messaging-patterns.md) - Padrões de Mensageria com RabbitMQ
@@ -76,6 +77,12 @@ Cada ADR deve conter:
 
 ### ✅ Qualidade e Testes
 - [`quality/adr-015-test-patterns.md`](quality/adr-015-test-patterns.md) - Padrões de Testes
+
+### 🤖 Inteligência Artificial
+- [`ai/adr-029-mcp.md`](ai/adr-029-mcp.md) - Model Context Protocol (MCP)
+- [`ai/adr-030-rag.md`](ai/adr-030-rag.md) - Retrieval Augmented Generation (RAG)
+- [`ai/adr-031-quality-gates.md`](ai/adr-031-quality-gates.md) - Quality Gates para IA
+- [`ai/adr-032-prompt-engineering.md`](ai/adr-032-prompt-engineering.md) - Engenharia de Prompts para GenAI
 
 ## 📖 Como usar este diretório
 
@@ -163,13 +170,18 @@ architecture-decision-records/
 │   ├── adr-008-cd-canary.md
 │   ├── adr-009-git-flow.md
 │   ├── adr-010-cloud-aws.md
-│   └── adr-025-infrastructure-as-code.md
+│   ├── adr-025-infrastructure-as-code.md
+│   └── adr-028-kubernetes.md
 ├── communication/
 │   ├── adr-016-messaging-patterns.md
 │   ├── adr-020-websocket.md
 │   └── adr-022-event-driven.md
-└── quality/
-    └── adr-015-test-patterns.md
+├── quality/
+│   └── adr-015-test-patterns.md
+└── ai/
+    ├── adr-029-mcp.md
+    ├── adr-030-rag.md
+    └── adr-031-quality-gates.md
 ```
 
 Esta estrutura organiza os ADRs por categorias, facilitando a navegação e manutenção dos documentos. Cada categoria tem seu próprio diretório e pode conter subdiretórios específicos, como o diretório `diagrams` para armazenar diagramas relacionados aos ADRs.

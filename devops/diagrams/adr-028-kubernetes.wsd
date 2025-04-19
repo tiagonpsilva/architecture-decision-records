@@ -1,0 +1,33 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title Arquitetura Kubernetes
+
+Person(dev, "DevOps", "Time de DevOps")
+System_Boundary(k8s, "Cluster Kubernetes") {
+    Container(api, "API Server", "Control Plane", "Gerencia o estado do cluster")
+    Container(scheduler, "Scheduler", "Control Plane", "Agenda pods nos nodes")
+    Container(cm, "Controller Manager", "Control Plane", "Mantém o estado desejado")
+    Container(etcd, "etcd", "Control Plane", "Armazena o estado do cluster")
+    
+    Container(node1, "Worker Node 1", "Node", "Executa os workloads") {
+        Container(kubelet1, "Kubelet", "Agent", "Gerencia containers")
+        Container(proxy1, "Kube Proxy", "Network", "Roteamento de rede")
+    }
+    
+    Container(node2, "Worker Node 2", "Node", "Executa os workloads") {
+        Container(kubelet2, "Kubelet", "Agent", "Gerencia containers")
+        Container(proxy2, "Kube Proxy", "Network", "Roteamento de rede")
+    }
+}
+
+Rel(dev, api, "Gerencia", "kubectl")
+Rel(api, scheduler, "Coordena")
+Rel(api, cm, "Coordena")
+Rel(api, etcd, "Persiste estado")
+Rel(scheduler, node1, "Agenda pods")
+Rel(scheduler, node2, "Agenda pods")
+Rel(kubelet1, api, "Reporta estado")
+Rel(kubelet2, api, "Reporta estado")
+
+@enduml 

@@ -1,0 +1,29 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title Arquitetura de Engenharia de Prompts
+
+Person(user, "Desenvolvedor", "Usuário do sistema de prompts")
+
+System_Boundary(prompt_system, "Sistema de Engenharia de Prompts") {
+    Container(prompt_manager, "Gerenciador de Prompts", "Python", "Gerencia templates e validação de prompts")
+    Container(prompt_library, "Biblioteca de Prompts", "YAML/JSON", "Armazena templates reutilizáveis")
+    Container(prompt_validator, "Validador de Prompts", "Python", "Valida estrutura e segurança")
+    Container(prompt_optimizer, "Otimizador de Prompts", "Python", "Otimiza tokens e performance")
+    Container(prompt_metrics, "Monitor de Métricas", "Python", "Coleta métricas de qualidade e custo")
+    
+    ContainerDb(prompt_db, "Banco de Prompts", "PostgreSQL", "Armazena histórico e métricas")
+}
+
+System_Ext(llm_api, "API de LLM", "OpenAI/Claude/etc")
+
+Rel(user, prompt_manager, "Cria e gerencia prompts", "HTTP/REST")
+Rel(prompt_manager, prompt_library, "Usa templates", "YAML/JSON")
+Rel(prompt_manager, prompt_validator, "Valida prompts", "Python")
+Rel(prompt_validator, prompt_optimizer, "Otimiza prompts", "Python")
+Rel(prompt_optimizer, llm_api, "Envia prompts", "HTTP/REST")
+Rel(prompt_manager, prompt_metrics, "Monitora uso", "Python")
+Rel(prompt_metrics, prompt_db, "Armazena métricas", "SQL")
+Rel(prompt_library, prompt_db, "Persiste templates", "SQL")
+
+@enduml 
