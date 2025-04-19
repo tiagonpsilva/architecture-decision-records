@@ -1,0 +1,64 @@
+@startuml DDD e Arquitetura Hexagonal
+
+skinparam packageStyle rectangle
+skinparam backgroundColor white
+skinparam componentStyle uml2
+
+!define CORE_COLOR #FFEBCD
+!define INFRA_COLOR #E0FFFF
+!define APP_COLOR #98FB98
+!define INTERFACE_COLOR #DDA0DD
+
+package "Domain Layer" as domain #CORE_COLOR {
+    component "Aggregates" as agg
+    component "Entities" as ent
+    component "Value Objects" as vo
+    component "Domain Events" as events
+    component "Domain Services" as services
+    component "Repository Interfaces" as repos
+}
+
+package "Application Layer" as app #APP_COLOR {
+    component "Use Cases" as usecases
+    component "Application Services" as appservices
+    component "DTOs" as dtos
+}
+
+package "Infrastructure Layer" as infra #INFRA_COLOR {
+    component "Repository Implementations" as repoimpl
+    component "External Services" as extservices
+    component "Database Adapters" as dbadapters
+    component "Message Queue Adapters" as mqadapters
+}
+
+package "Interfaces Layer" as interfaces #INTERFACE_COLOR {
+    component "REST Controllers" as rest
+    component "GraphQL Resolvers" as graphql
+    component "gRPC Services" as grpc
+    component "Message Handlers" as msghandlers
+}
+
+' Relacionamentos
+interfaces --> app
+app --> domain
+infra --> domain
+
+rest --> usecases
+graphql --> usecases
+grpc --> usecases
+msghandlers --> usecases
+
+usecases --> appservices
+appservices --> services
+appservices --> repos
+
+repoimpl --> repos
+dbadapters --> repos
+mqadapters --> repos
+
+agg --> ent
+agg --> vo
+ent --> vo
+services --> events
+
+@enduml 

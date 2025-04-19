@@ -1,0 +1,71 @@
+@startuml Padrões de Mensageria com RabbitMQ
+
+skinparam packageStyle rectangle
+skinparam backgroundColor white
+skinparam componentStyle uml2
+
+!define EXCHANGE_COLOR #FFB6C1
+!define QUEUE_COLOR #98FB98
+!define SERVICE_COLOR #87CEEB
+!define DLX_COLOR #FFD700
+
+package "RabbitMQ Exchanges" {
+    component "Direct Exchange" as direct #EXCHANGE_COLOR
+    component "Topic Exchange" as topic #EXCHANGE_COLOR
+    component "Fanout Exchange" as fanout #EXCHANGE_COLOR
+    component "Dead Letter Exchange" as dlx #DLX_COLOR
+}
+
+package "Filas" {
+    queue "Fila de Pedidos" as orders #QUEUE_COLOR
+    queue "Fila de Notificações" as notifications #QUEUE_COLOR
+    queue "Fila de Logs" as logs #QUEUE_COLOR
+    queue "Dead Letter Queue" as dlq #DLX_COLOR
+}
+
+package "Serviços" {
+    component "Serviço de Pedidos" as orderService #SERVICE_COLOR
+    component "Serviço de Notificações" as notificationService #SERVICE_COLOR
+    component "Serviço de Logs" as logService #SERVICE_COLOR
+    component "Serviço de Retry" as retryService #SERVICE_COLOR
+}
+
+' Relacionamentos
+direct --> orders : routing_key=order.*
+topic --> notifications : routing_key=notification.#
+fanout --> logs
+orders --> dlx : mensagem expirada
+notifications --> dlx : erro no processamento
+dlx --> dlq
+
+orderService --> direct : publica
+notificationService --> topic : publica
+logService --> fanout : publica
+
+orders --> orderService : consome
+notifications --> notificationService : consome
+logs --> logService : consome
+dlq --> retryService : processa retry
+
+note right of direct
+  Roteamento direto baseado
+  em routing keys exatas
+end note
+
+note right of topic
+  Roteamento baseado em
+  padrões de routing keys
+end note
+
+note right of fanout
+  Broadcast para
+  todas as filas
+end note
+
+note right of dlx
+  Gerencia mensagens
+  que falharam ou
+  expiraram
+end note
+
+@enduml 
