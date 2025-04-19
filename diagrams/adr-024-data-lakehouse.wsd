@@ -1,0 +1,44 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Arquitetura Data Lakehouse
+
+System_Boundary(c1, "Data Lakehouse") {
+    Container(ingestion_layer, "Ingestion Layer", "Apache Kafka/NiFi", "Ingestão de dados")
+    
+    Container(storage_layer, "Storage Layer", "Delta Lake/S3", "Armazenamento unificado")
+    Container(metadata_layer, "Metadata Layer", "Delta Lake/Hive", "Gerenciamento de metadados")
+    
+    Container(processing_layer, "Processing Layer", "Apache Spark", "Processamento distribuído")
+    Container(serving_layer, "Serving Layer", "Presto/Trino", "Serving de dados")
+    
+    Container(governance_layer, "Governance Layer", "Apache Atlas/Ranger", "Governança e segurança")
+    Container(quality_layer, "Quality Layer", "Great Expectations", "Qualidade de dados")
+    
+    Container(optimization_layer, "Optimization Layer", "Delta Engine", "Otimização de queries")
+}
+
+System_Ext(source_systems, "Source Systems", "Sistemas fonte")
+System_Ext(bi_tools, "BI Tools", "Ferramentas de BI")
+System_Ext(ml_workloads, "ML Workloads", "Cargas de ML")
+System_Ext(streaming_apps, "Streaming Apps", "Aplicações streaming")
+
+Rel(source_systems, ingestion_layer, "Dados", "Various Protocols")
+Rel(ingestion_layer, storage_layer, "Armazena", "Delta Format")
+
+Rel(storage_layer, metadata_layer, "Registra", "Metadata API")
+Rel(metadata_layer, governance_layer, "Governa", "Atlas API")
+
+Rel(storage_layer, processing_layer, "Processa", "Spark SQL")
+Rel(processing_layer, serving_layer, "Disponibiliza", "SQL")
+
+Rel(quality_layer, storage_layer, "Valida", "Quality Checks")
+Rel(optimization_layer, storage_layer, "Otimiza", "Delta Engine")
+
+Rel(serving_layer, bi_tools, "Consulta", "SQL/JDBC")
+Rel(serving_layer, ml_workloads, "Features", "Spark/REST")
+Rel(serving_layer, streaming_apps, "Streams", "Structured Streaming")
+
+@enduml 
