@@ -18,57 +18,7 @@ Com o crescimento do sistema e a necessidade de garantir consistência, escalabi
 
 Decidimos adotar uma arquitetura Event-Driven utilizando Apache Kafka como principal plataforma de eventos, complementada por RabbitMQ para mensageria específica de serviços.
 
-```plantuml
-@startuml
-!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
-
-LAYOUT_WITH_LEGEND()
-
-title Arquitetura Event-Driven
-
-System_Boundary(c1, "Sistema") {
-    Container(api_gateway, "API Gateway", "Kong", "Gateway de APIs")
-    
-    Container(order_service, "Order Service", "Python/FastAPI", "Serviço de Pedidos")
-    Container(payment_service, "Payment Service", "Go", "Serviço de Pagamentos")
-    Container(inventory_service, "Inventory Service", "Python/FastAPI", "Serviço de Inventário")
-    Container(notification_service, "Notification Service", "Python/FastAPI", "Serviço de Notificações")
-    Container(analytics_service, "Analytics Service", "Python/FastAPI", "Serviço de Analytics")
-    
-    ContainerDb(order_db, "Order DB", "MongoDB", "Banco de dados de pedidos")
-    ContainerDb(payment_db, "Payment DB", "PostgreSQL", "Banco de dados de pagamentos")
-    ContainerDb(inventory_db, "Inventory DB", "PostgreSQL", "Banco de dados de inventário")
-    
-    Container(event_store, "Event Store", "Apache Kafka", "Armazenamento de eventos")
-    Container(event_streaming, "Event Streaming", "Kafka Streams", "Processamento de streams")
-    Container(service_queue, "Service Queue", "RabbitMQ", "Filas de serviço")
-}
-
-System_Ext(email_system, "Email System", "Sistema de Email")
-System_Ext(monitoring, "Monitoring", "Sistema de Monitoramento")
-
-Rel(order_service, event_store, "Publica eventos", "Kafka Protocol")
-Rel(payment_service, event_store, "Publica/Consome eventos", "Kafka Protocol")
-Rel(inventory_service, event_store, "Publica/Consome eventos", "Kafka Protocol")
-Rel(analytics_service, event_store, "Consome eventos", "Kafka Protocol")
-
-Rel(event_store, event_streaming, "Processa eventos", "Kafka Streams")
-Rel(event_streaming, analytics_service, "Envia dados processados", "Kafka Protocol")
-
-Rel(order_service, order_db, "Persiste dados", "MongoDB Protocol")
-Rel(payment_service, payment_db, "Persiste dados", "SQL")
-Rel(inventory_service, inventory_db, "Persiste dados", "SQL")
-
-Rel(notification_service, service_queue, "Consome mensagens", "AMQP")
-Rel(order_service, service_queue, "Publica mensagens", "AMQP")
-Rel(payment_service, service_queue, "Publica mensagens", "AMQP")
-
-Rel(notification_service, email_system, "Envia emails", "SMTP")
-Rel_U(monitoring, event_store, "Monitora", "JMX")
-Rel_U(monitoring, service_queue, "Monitora", "AMQP")
-
-@enduml
-```
+![Arquitetura Event-Driven](../diagrams/adr-022-event-driven.png)
 
 ### Principais Componentes
 

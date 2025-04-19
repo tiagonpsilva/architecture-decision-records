@@ -18,9 +18,7 @@ Com o crescimento da aplicação e a necessidade de escalar o desenvolvimento fr
 
 Decidimos adotar uma arquitetura de Micro-frontends utilizando Module Federation do Webpack 5 como principal tecnologia de implementação.
 
-![Arquitetura de Micro-frontends](../diagrams/adr-021-microfrontends.png)
-
-[Diagrama fonte](diagrams/adr-021-microfrontends.wsd)
+![Arquitetura de Microfrontends](../diagrams/adr-021-microfrontends.png)
 
 ### Principais Aspectos da Implementação
 

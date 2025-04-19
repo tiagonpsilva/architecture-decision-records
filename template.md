@@ -56,6 +56,5 @@ Data: [YYYY-MM-DD]
 
 ## 📊 Diagramas
 
-Os diagramas relacionados a esta decisão podem ser encontrados em:
-- [Diagrama 1](diagrams/adr-NNN-diagram1.wsd)
-- [Diagrama 2](diagrams/adr-NNN-diagram2.wsd) 
+- [Diagrama 1](diagrams/adr-NNN-diagram1.png)
+- [Diagrama 2](diagrams/adr-NNN-diagram2.png) 
