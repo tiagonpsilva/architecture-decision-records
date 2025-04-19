@@ -1,41 +1,48 @@
-@startuml DDD e Arquitetura Hexagonal
+@startuml "DDD e Arquitetura Hexagonal"
 
-skinparam packageStyle rectangle
+!theme plain
 skinparam backgroundColor white
-skinparam componentStyle uml2
 
+' Definição de cores
 !define CORE_COLOR #FFEBCD
-!define INFRA_COLOR #E0FFFF
 !define APP_COLOR #98FB98
+!define INFRA_COLOR #E0FFFF
 !define INTERFACE_COLOR #DDA0DD
 
-package "Domain Layer" as domain #CORE_COLOR {
-    component "Aggregates" as agg
-    component "Entities" as ent
-    component "Value Objects" as vo
-    component "Domain Events" as events
-    component "Domain Services" as services
-    component "Repository Interfaces" as repos
+' Configurações de estilo
+skinparam component {
+    BackgroundColor white
+    BorderColor black
+    ArrowColor black
 }
 
-package "Application Layer" as app #APP_COLOR {
-    component "Use Cases" as usecases
-    component "Application Services" as appservices
-    component "DTOs" as dtos
+package "Camada de Domínio" as domain #CORE_COLOR {
+    [Agregados] as agg
+    [Entidades] as ent
+    [Objetos de Valor] as vo
+    [Eventos de Domínio] as events
+    [Serviços de Domínio] as services
+    [Interfaces de Repositório] as repos
 }
 
-package "Infrastructure Layer" as infra #INFRA_COLOR {
-    component "Repository Implementations" as repoimpl
-    component "External Services" as extservices
-    component "Database Adapters" as dbadapters
-    component "Message Queue Adapters" as mqadapters
+package "Camada de Aplicação" as app #APP_COLOR {
+    [Casos de Uso] as usecases
+    [Serviços de Aplicação] as appservices
+    [DTOs] as dtos
 }
 
-package "Interfaces Layer" as interfaces #INTERFACE_COLOR {
-    component "REST Controllers" as rest
-    component "GraphQL Resolvers" as graphql
-    component "gRPC Services" as grpc
-    component "Message Handlers" as msghandlers
+package "Camada de Infraestrutura" as infra #INFRA_COLOR {
+    [Implementações de Repositório] as repoimpl
+    [Serviços Externos] as extservices
+    [Adaptadores de Banco] as dbadapters
+    [Adaptadores de Mensageria] as mqadapters
+}
+
+package "Camada de Interfaces" as interfaces #INTERFACE_COLOR {
+    [Controladores REST] as rest
+    [Resolvers GraphQL] as graphql
+    [Serviços gRPC] as grpc
+    [Handlers de Mensagens] as msghandlers
 }
 
 ' Relacionamentos
