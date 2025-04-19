@@ -1,4 +1,18 @@
-# NNN - 📝 [Título da Decisão]
+# NNN - [Título da Decisão] 📝 [emoji tema]
+
+[O título deve conter dois emojis:
+1. 📝 - Emoji padrão para todas as ADRs
+2. [emoji tema] - Emoji específico relacionado ao tema da ADR, exemplos:
+   - 🏛️ - Arquitetura
+   - 🔐 - Segurança
+   - 🔄 - Integração
+   - 🎲 - Banco de Dados
+   - 🌐 - API/Web
+   - 🔧 - Ferramentas
+   - 🚀 - Deploy/CI/CD
+   - 📊 - Dados/Analytics
+   - 🤖 - Automação/ML/AI
+]
 
 Data: [YYYY-MM-DD]
 

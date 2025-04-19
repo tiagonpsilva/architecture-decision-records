@@ -1,4 +1,4 @@
-# 011 - 📝 Adoção de DDD e Arquitetura Hexagonal
+# 011 - Adoção de DDD e Arquitetura Hexagonal 📝 🏛️
 
 Data: 2024-03-21
 
