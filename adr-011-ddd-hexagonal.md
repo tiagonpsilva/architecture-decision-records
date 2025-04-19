@@ -1,4 +1,4 @@
-# 011 - 🏗️ Adoção de DDD e Arquitetura Hexagonal
+# 011 - 📝 Adoção de DDD e Arquitetura Hexagonal
 
 Data: 2024-03-21
 
@@ -75,21 +75,6 @@ Justificativas:
 - Prós: Bom para sistemas distribuídos
 - Contras: Complexidade em consistência, debugging difícil
 
-## 📊 Diagramas
-
-![DDD e Arquitetura Hexagonal](diagrams/adr-011-ddd-hexagonal.png)
-
-O diagrama acima ilustra a estrutura básica da arquitetura hexagonal com DDD, mostrando as principais camadas e suas dependências:
-
-- **Camada de Interfaces**: Adaptadores primários (UI, API, etc.)
-- **Camada de Aplicação**: Coordena o fluxo entre interfaces e domínio
-- **Camada de Domínio**: Core da aplicação com regras de negócio
-- **Camada de Infraestrutura**: Adaptadores secundários (BD, mensageria, etc.)
-
-As setas indicam o fluxo de dependência entre as camadas, sempre apontando para o domínio.
-
-O código fonte do diagrama está disponível em: [adr-011-ddd-hexagonal.wsd](diagrams/adr-011-ddd-hexagonal.wsd)
-
 ## 📚 Referências
 
 - [Domain-Driven Design](https://domainlanguage.com/ddd/)
@@ -103,4 +88,19 @@ O código fonte do diagrama está disponível em: [adr-011-ddd-hexagonal.wsd](di
 - Estabelecer padrões de implementação
 - Definir processo de descoberta de domínio
 - Documentar bounded contexts
-- Manter catálogo de contextos 
+- Manter catálogo de contextos
+
+## 📊 Diagramas
+
+![DDD e Arquitetura Hexagonal](diagrams/adr-011-ddd-hexagonal.png)
+
+O diagrama acima ilustra a estrutura básica da arquitetura hexagonal com DDD, mostrando as principais camadas e suas dependências:
+
+- **Camada de Interfaces**: Adaptadores primários (UI, API, etc.)
+- **Camada de Aplicação**: Coordena o fluxo entre interfaces e domínio
+- **Camada de Domínio**: Core da aplicação com regras de negócio
+- **Camada de Infraestrutura**: Adaptadores secundários (BD, mensageria, etc.)
+
+As setas indicam o fluxo de dependência entre as camadas, sempre apontando para o domínio.
+
+O código fonte do diagrama está disponível em: [adr-011-ddd-hexagonal.wsd](diagrams/adr-011-ddd-hexagonal.wsd) 
