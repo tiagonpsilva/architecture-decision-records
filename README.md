@@ -2,6 +2,35 @@
 
 Este diretório contém os Architecture Decision Records (ADRs) do projeto, que documentam decisões arquiteturais importantes.
 
+## O que é uma ADR?
+
+Uma ADR (Architecture Decision Record) é um documento que captura uma decisão arquitetural importante tomada em relação ao projeto, junto com seu contexto e consequências. É uma prática que ajuda a:
+
+- **Documentar Decisões**: Registra não apenas o que foi decidido, mas também por que foi decidido, considerando o contexto temporal e técnico.
+- **Facilitar Comunicação**: Permite que toda a equipe e stakeholders entendam as escolhas arquiteturais e suas motivações.
+- **Manter Histórico**: Preserva o conhecimento mesmo quando membros da equipe mudam, evitando que decisões sejam questionadas ou revertidas sem compreensão adequada.
+- **Guiar Evolução**: Ajuda a entender o impacto de mudanças futuras e mantém a consistência arquitetural.
+
+### Quando Criar uma ADR?
+
+Uma ADR deve ser criada quando uma decisão:
+- Tem impacto significativo na arquitetura do sistema
+- Afeta múltiplos componentes ou equipes
+- Envolve trade-offs importantes
+- Representa um compromisso técnico significativo
+- Estabelece padrões ou convenções importantes
+
+### Componentes de uma ADR
+
+Cada ADR deve conter:
+1. **Título**: Identificador único e nome descritivo
+2. **Status**: Estado atual da decisão (proposto, aceito, depreciado, etc.)
+3. **Contexto**: Situação que levou à necessidade da decisão
+4. **Decisão**: A escolha feita e sua justificativa
+5. **Consequências**: Impactos positivos e negativos da decisão
+6. **Alternativas**: Outras opções consideradas e por que não foram escolhidas
+7. **Referências**: Links e recursos relacionados
+
 ## Estrutura do Diretório
 
 ### Template
@@ -38,6 +67,7 @@ Este diretório contém os Architecture Decision Records (ADRs) do projeto, que 
 - [`adr-008-cd-canary.md`](adr-008-cd-canary.md) - Implantação Contínua com Canary Releases
 - [`adr-009-git-flow.md`](adr-009-git-flow.md) - Estratégia Git Flow e Branching
 - [`adr-010-cloud-aws.md`](adr-010-cloud-aws.md) - Adoção da AWS como Plataforma Cloud
+- [`adr-025-infrastructure-as-code.md`](adr-025-infrastructure-as-code.md) - Adoção de Infraestrutura como Código (IaC)
 
 ### Comunicação e Integração
 - [`adr-016-messaging-patterns.md`](adr-016-messaging-patterns.md) - Padrões de Mensageria com RabbitMQ
@@ -46,53 +76,3 @@ Este diretório contém os Architecture Decision Records (ADRs) do projeto, que 
 
 ### Qualidade e Testes
 - [`adr-015-test-patterns.md`](adr-015-test-patterns.md) - Padrões de Testes
-
-## Como usar este diretório
-
-1. Para criar um novo ADR:
-   - Use o arquivo `template.md` como base
-   - Nomeie seguindo o padrão `adr-NNN-titulo-descritivo.md`
-   - Preencha todas as seções do template
-   - Adicione links para outros ADRs relacionados
-
-2. Ao submeter um ADR:
-   - Atualize este README.md adicionando o novo ADR na categoria apropriada
-   - Verifique se todos os links estão funcionando
-   - Submeta através de um pull request para revisão
-
-3. Ao atualizar um ADR existente:
-   - Mantenha o histórico de alterações no próprio documento
-   - Atualize o status conforme necessário
-   - Documente as razões das mudanças
-
-## Melhores Práticas
-
-### Conteúdo
-- Mantenha os ADRs concisos e diretos
-- Use linguagem clara e evite jargões desnecessários
-- Inclua exemplos de código quando relevante
-- Documente alternativas consideradas
-- Liste consequências positivas e negativas
-- Identifique riscos e suas mitigações
-
-### Processo
-- Discuta os ADRs em reuniões de arquitetura
-- Obtenha feedback da equipe técnica
-- Mantenha o status atualizado
-- Referencie outros ADRs quando relevante
-- Revise periodicamente ADRs antigos
-
-### Organização
-- Mantenha a categorização consistente
-- Use links para facilitar a navegação
-- Atualize índices e referências
-- Mantenha a formatação padronizada
-
-## Status dos ADRs
-
-Os ADRs podem ter os seguintes status:
-- **Proposto**: Inicial, em discussão
-- **Aceito**: Aprovado e válido
-- **Depreciado**: Não mais recomendado
-- **Substituído**: Substituído por outro ADR
-- **Supersedido**: Atualizado por versão mais recente 
