@@ -1,54 +1,45 @@
-@startuml "Git Flow Architecture"
+@startuml
+skinparam backgroundColor transparent
+skinparam handwritten false
 
-skinparam packageStyle rectangle
-skinparam linetype ortho
+title Git Flow - Fluxo de Trabalho
 
-package "Git Flow" {
-  package "Main Branches" {
-    [main] as main
-    [develop] as develop
-    note right of main : "Production-ready code"
-    note right of develop : "Integration branch"
-  }
+actor "Desenvolvedor" as Dev
+participant "Feature Branch" as Feature
+participant "Develop" as Develop
+participant "Release Branch" as Release
+participant "Main" as Main
+participant "Hotfix Branch" as Hotfix
 
-  package "Supporting Branches" {
-    [feature/*] as feature
-    [release/*] as release
-    [hotfix/*] as hotfix
-    [bugfix/*] as bugfix
-    
-    note right of feature : "New features"
-    note right of release : "Release preparation"
-    note right of hotfix : "Production fixes"
-    note right of bugfix : "Development fixes"
-  }
+== Nova Feature ==
+Dev -> Feature : git checkout -b feature/xyz
+activate Feature
+Dev -> Feature : git commit -m "feat: implementa xyz"
+Dev -> Feature : git push origin feature/xyz
+Dev -> Develop : Abre Pull Request
+Develop -> Feature : Code Review
+Feature -> Develop : git merge feature/xyz
+deactivate Feature
+note right: Delete feature branch
 
-  package "Workflow Rules" {
-    [Version Tags] as tags
-    [Merge Strategy] as merge
-    [Branch Naming] as naming
-    
-    note right of tags : "Semantic versioning"
-    note right of merge : "No fast-forward"
-    note right of naming : "Conventional names"
-  }
-}
+== Preparação Release ==
+Dev -> Release : git checkout -b release/1.0.0
+activate Release
+Dev -> Release : git commit -m "chore: bump version"
+Dev -> Release : git push origin release/1.0.0
+Release -> Main : git merge release/1.0.0
+Release -> Develop : git merge release/1.0.0
+deactivate Release
+note right: Delete release branch
 
-' Relationships
-main --> tags : "Tagged releases"
-develop --> main : "Merge when stable"
-feature --> develop : "Feature complete"
-release --> main : "Release ready"
-release --> develop : "Back-merge"
-hotfix --> main : "Emergency fix"
-hotfix --> develop : "Back-merge"
-bugfix --> develop : "Bug resolved"
-
-merge --> main : "Applies to"
-merge --> develop : "Applies to"
-naming --> feature : "Enforces"
-naming --> release : "Enforces"
-naming --> hotfix : "Enforces"
-naming --> bugfix : "Enforces"
+== Hotfix ==
+Dev -> Hotfix : git checkout -b hotfix/bug-123
+activate Hotfix
+Dev -> Hotfix : git commit -m "fix: corrige bug 123"
+Dev -> Hotfix : git push origin hotfix/bug-123
+Hotfix -> Main : git merge hotfix/bug-123
+Hotfix -> Develop : git merge hotfix/bug-123
+deactivate Hotfix
+note right: Delete hotfix branch
 
 @enduml 
