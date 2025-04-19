@@ -1,0 +1,50 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title Arquitetura de Quality Gates na Esteira de CI/CD
+
+Person(developer, "Desenvolvedor", "Membro da equipe de desenvolvimento")
+
+System_Boundary(cicd_system, "Sistema de CI/CD") {
+    Container(git_hooks, "Git Hooks", "Pre-commit", "Validações locais antes do commit")
+    
+    Container(pipeline_trigger, "Pipeline Trigger", "GitHub Actions/GitLab CI", "Inicia a esteira de CI/CD")
+    
+    Container(static_analysis, "Análise Estática", "SonarQube/ESLint/Pylint", "Análise de qualidade de código")
+    
+    Container(security_scan, "Scanner de Segurança", "SAST/DAST/Dependency Check", "Análise de vulnerabilidades")
+    
+    Container(test_runner, "Executor de Testes", "Jest/PyTest/Go Test", "Execução de testes automatizados")
+    
+    Container(metrics_collector, "Coletor de Métricas", "SonarQube/CodeClimate", "Coleta métricas de código")
+    
+    Container(doc_validator, "Validador de Docs", "markdownlint/OpenAPI", "Validação de documentação")
+    
+    Container(quality_gate, "Quality Gate", "Pipeline Rules", "Avalia todos os critérios")
+    
+    ContainerDb(metrics_db, "Banco de Métricas", "PostgreSQL", "Histórico de métricas e análises")
+}
+
+System_Ext(notification, "Sistema de Notificação", "Slack/Email")
+System_Ext(artifact_repo, "Repositório de Artefatos", "Docker Registry/Nexus")
+
+Rel(developer, git_hooks, "Commit código", "Git")
+Rel(git_hooks, pipeline_trigger, "Trigger pipeline", "Git push")
+
+Rel(pipeline_trigger, static_analysis, "Inicia análise", "HTTP")
+Rel(pipeline_trigger, security_scan, "Inicia scan", "HTTP")
+Rel(pipeline_trigger, test_runner, "Executa testes", "HTTP")
+Rel(pipeline_trigger, doc_validator, "Valida docs", "HTTP")
+
+Rel(static_analysis, metrics_collector, "Envia métricas", "HTTP")
+Rel(security_scan, metrics_collector, "Envia métricas", "HTTP")
+Rel(test_runner, metrics_collector, "Envia métricas", "HTTP")
+
+Rel(metrics_collector, metrics_db, "Persiste métricas", "SQL")
+Rel(metrics_collector, quality_gate, "Envia métricas", "HTTP")
+Rel(doc_validator, quality_gate, "Envia status", "HTTP")
+
+Rel(quality_gate, notification, "Notifica resultado", "HTTP")
+Rel(quality_gate, artifact_repo, "Libera artefato", "HTTP")
+
+@enduml 
