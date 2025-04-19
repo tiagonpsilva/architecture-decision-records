@@ -1,64 +1,43 @@
-@startuml "Arquitetura de Microsserviços"
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-!define RECTANGLE class
+LAYOUT_WITH_LEGEND()
 
-skinparam {
-    BackgroundColor transparent
-    ArrowColor #2C3E50
-    BorderColor #2C3E50
-    FontColor #2C3E50
-    FontSize 14
+title Arquitetura de Microsserviços
+
+Person(client, "Cliente", "Usuário do sistema")
+
+System_Boundary(c1, "Sistema") {
+    Container(api_gateway, "API Gateway", "Kong", "Roteamento, autenticação, rate limiting")
+    
+    Container(auth_service, "Auth Service", "Python/FastAPI", "Autenticação e autorização")
+    ContainerDb(auth_db, "Auth DB", "PostgreSQL", "Dados de usuários e tokens")
+    
+    Container(user_service, "User Service", "Go", "Gestão de usuários e perfis")
+    ContainerDb(user_db, "User DB", "MongoDB", "Dados de usuários")
+    
+    Container(notification_service, "Notification Service", "Python/FastAPI", "Envio de notificações")
+    ContainerQueue(notification_queue, "Notification Queue", "RabbitMQ", "Fila de notificações")
+    
+    Container(product_service, "Product Service", "Go", "Catálogo de produtos")
+    ContainerDb(product_db, "Product DB", "PostgreSQL", "Dados de produtos")
+    
+    Container(order_service, "Order Service", "Python/FastAPI", "Processamento de pedidos")
+    ContainerDb(order_db, "Order DB", "MongoDB", "Dados de pedidos")
 }
 
-rectangle "Arquitetura de Microsserviços" {
-    package "Frontend" as FE #E3F2FD {
-        RECTANGLE "SPA" as SPA #90CAF9 {
-            + React/Angular
-            + API Gateway Client
-            + State Management
-        }
-    }
-    
-    package "API Gateway" as AG #FFF3E0 {
-        RECTANGLE "Gateway" as GW #FFB74D {
-            + Routing
-            + Load Balancing
-            + Authentication
-        }
-        
-        RECTANGLE "Circuit Breaker" as CB #FFB74D {
-            + Fallback
-            + Timeout
-            + Retry Policy
-        }
-    }
-    
-    package "Serviços" as SV #E8F5E9 {
-        RECTANGLE "Auth Service" as AUTH #81C784 {
-            + Identity
-            + Access Control
-            + JWT
-        }
-        
-        RECTANGLE "Business Services" as BIZ #81C784 {
-            + Domain Logic
-            + Data Access
-            + Events
-        }
-        
-        RECTANGLE "Support Services" as SUP #81C784 {
-            + Logging
-            + Monitoring
-            + Configuration
-        }
-    }
-}
+Rel(client, api_gateway, "Usa", "HTTPS")
+Rel(api_gateway, auth_service, "Roteia", "HTTPS")
+Rel(api_gateway, user_service, "Roteia", "HTTPS")
+Rel(api_gateway, product_service, "Roteia", "HTTPS")
+Rel(api_gateway, order_service, "Roteia", "HTTPS")
 
-SPA -[#2196F3]-> GW : "HTTP/WS"
-GW -[#2196F3]-> CB : "Protects"
-CB -[#FF9800]-> AUTH : "Validates"
-CB -[#FF9800]-> BIZ : "Routes"
-BIZ -[#4CAF50]-> SUP : "Uses"
-AUTH -[#4CAF50]-> SUP : "Uses"
+Rel(auth_service, auth_db, "Usa", "SQL")
+Rel(user_service, user_db, "Usa", "MongoDB Protocol")
+Rel(product_service, product_db, "Usa", "SQL")
+Rel(order_service, order_db, "Usa", "MongoDB Protocol")
+
+Rel(order_service, notification_queue, "Publica", "AMQP")
+Rel(notification_service, notification_queue, "Consome", "AMQP")
 
 @enduml 

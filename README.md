@@ -20,12 +20,15 @@ Este diretório contém os Architecture Decision Records (ADRs) do projeto, que 
 
 ### Frontend e UI
 - [`adr-002-react-query.md`](adr-002-react-query.md) - Uso do React Query para Gerenciamento de Estado
+- [`adr-021-microfrontends.md`](adr-021-microfrontends.md) - Adoção de Microfrontends
 
 ### Backend e Dados
 - [`adr-003-microservices.md`](adr-003-microservices.md) - Migração para Arquitetura de Microsserviços
 - [`adr-004-cqrs.md`](adr-004-cqrs.md) - Adoção do Padrão CQRS
 - [`adr-006-mongodb-profiles.md`](adr-006-mongodb-profiles.md) - Adoção de MongoDB para Dados de Perfil
 - [`adr-007-graphql-api.md`](adr-007-graphql-api.md) - Adoção de GraphQL para APIs Públicas
+- [`adr-023-medallion-architecture.md`](adr-023-medallion-architecture.md) - Arquitetura Medallion para Data Lake
+- [`adr-024-data-lakehouse.md`](adr-024-data-lakehouse.md) - Implementação de Data Lakehouse
 
 ### Segurança e Autenticação
 - [`adr-005-oauth-openid.md`](adr-005-oauth-openid.md) - Implementação de OAuth 2.0 e OpenID Connect
@@ -39,6 +42,7 @@ Este diretório contém os Architecture Decision Records (ADRs) do projeto, que 
 ### Comunicação e Integração
 - [`adr-016-messaging-patterns.md`](adr-016-messaging-patterns.md) - Padrões de Mensageria com RabbitMQ
 - [`adr-020-websocket.md`](adr-020-websocket.md) - WebSocket para Comunicação Real-time
+- [`adr-022-event-driven.md`](adr-022-event-driven.md) - Arquitetura Orientada a Eventos
 
 ### Qualidade e Testes
 - [`adr-015-test-patterns.md`](adr-015-test-patterns.md) - Padrões de Testes
