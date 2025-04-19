@@ -1,12 +1,12 @@
-# 010 - ☁️ 🌐 Infraestrutura AWS
+# 010 - 📝 ☁️ AWS Cloud
 
 Data: 2024-03-21
 
-## Status
+## ⚡ Status
 
 Aceito
 
-## Contexto
+## 🎯 Contexto
 
 Nossa infraestrutura precisa suportar:
 - Arquitetura de microsserviços
@@ -18,7 +18,7 @@ Nossa infraestrutura precisa suportar:
 - Compliance e regulamentações
 - Inovação tecnológica constante
 
-## Decisão
+## 🔨 Decisão
 
 Adotar AWS (Amazon Web Services) como nossa plataforma principal de cloud.
 
@@ -33,7 +33,7 @@ Justificativas:
 - Preços competitivos com opções de otimização
 - Suporte enterprise confiável
 
-## Consequências
+## 📊 Consequências
 
 ### Positivas
 
@@ -63,7 +63,7 @@ Justificativas:
 - Complexidade operacional
   - Mitigação: Investir em treinamento e documentação
 
-## Alternativas Consideradas
+## 🔄 Alternativas Consideradas
 
 ### Google Cloud Platform
 - Prós: Forte em Kubernetes e ML
@@ -77,14 +77,14 @@ Justificativas:
 - Prós: Evita vendor lock-in
 - Contras: Complexidade extrema, custos maiores
 
-## Referências
+## 📚 Referências
 
 - [AWS Architecture Center](https://aws.amazon.com/architecture/)
 - [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/)
 - [Cloud Adoption Framework](https://aws.amazon.com/cloud-adoption-framework/)
 - [AWS vs Other Clouds](https://aws.amazon.com/compare/)
 
-## Notas
+## 📝 Notas
 
 - Estabelecer centro de excelência cloud
 - Implementar governança forte

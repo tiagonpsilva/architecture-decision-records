@@ -1,12 +1,12 @@
-# 016 - 📨 🔄 Padrões de Mensageria com RabbitMQ
+# 016 - 📝 📨 Padrões de Mensageria
 
 Data: 2024-03-21
 
-## Status
+## ⚡ Status
 
 Aceito
 
-## Contexto
+## 🎯 Contexto
 
 Com a arquitetura distribuída, precisamos:
 - Comunicação assíncrona entre serviços
@@ -17,7 +17,7 @@ Com a arquitetura distribuída, precisamos:
 - Rastreabilidade de eventos
 - Suporte a diferentes padrões de integração
 
-## Decisão
+## 🔨 Decisão
 
 Adotar RabbitMQ como plataforma principal de mensageria com suporte a múltiplos padrões de comunicação:
 
@@ -51,7 +51,7 @@ Padrões de Mensagem:
 - Queries (direct + reply-to)
 - Notifications (fanout exchange)
 
-## Consequências
+## 📊 Consequências
 
 ### Positivas
 
@@ -81,7 +81,7 @@ Padrões de Mensagem:
 - Filas muito grandes
   - Mitigação: TTL, message expiration
 
-## Alternativas Consideradas
+## 🔄 Alternativas Consideradas
 
 ### Apache Kafka
 - Prós: Alta escala, replay de eventos
@@ -95,14 +95,14 @@ Padrões de Mensagem:
 - Prós: Performance, contratos fortes
 - Contras: Síncrono, complexidade
 
-## Referências
+## 📚 Referências
 
 - [RabbitMQ](https://www.rabbitmq.com/)
 - [RabbitMQ Patterns](https://www.rabbitmq.com/getstarted.html)
 - [Enterprise Integration Patterns](https://www.enterpriseintegrationpatterns.com/)
 - [Message Queue Design Patterns](https://docs.microsoft.com/en-us/azure/architecture/patterns/publisher-subscriber)
 
-## Notas
+## 📝 Notas
 
 - Criar guias de implementação
 - Estabelecer padrões de exchanges/queues

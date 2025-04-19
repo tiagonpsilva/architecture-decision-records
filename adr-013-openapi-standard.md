@@ -1,12 +1,12 @@
-# 013 - 📚 🔗 Padronização de APIs com OpenAPI
+# 013 - 📝 📋 OpenAPI Standard
 
 Data: 2024-03-21
 
-## Status
+## ⚡ Status
 
 Aceito
 
-## Contexto
+## 🎯 Contexto
 
 Com múltiplos times desenvolvendo microsserviços, precisamos:
 - Padronizar o design e documentação de APIs
@@ -17,7 +17,7 @@ Com múltiplos times desenvolvendo microsserviços, precisamos:
 - Gerar documentação atualizada
 - Permitir geração de código cliente
 
-## Decisão
+## 🔨 Decisão
 
 Adotar OpenAPI 3.1 como padrão para design e documentação de APIs REST:
 
@@ -39,7 +39,7 @@ Padrões específicos:
 - Monitoramento de breaking changes
 - Versionamento via URL (/v1, /v2)
 
-## Consequências
+## 📊 Consequências
 
 ### Positivas
 
@@ -69,7 +69,7 @@ Padrões específicos:
 - Complexidade excessiva
   - Mitigação: Templates e guias
 
-## Alternativas Consideradas
+## 🔄 Alternativas Consideradas
 
 ### API Blueprint
 - Prós: Sintaxe mais simples
@@ -83,14 +83,14 @@ Padrões específicos:
 - Prós: Flexibilidade, menos versioning
 - Contras: Complexidade, curva de aprendizado
 
-## Referências
+## 📚 Referências
 
 - [OpenAPI Specification](https://spec.openapis.org/oas/v3.1.0)
 - [API-First Development](https://www.openapis.org/blog/2021/02/16/api-first-development)
 - [REST API Guidelines](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md)
 - [OpenAPI Tools](https://openapi.tools/)
 
-## Notas
+## 📝 Notas
 
 - Criar templates OpenAPI
 - Estabelecer guias de design

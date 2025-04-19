@@ -1,12 +1,12 @@
-# 009 - 🌳 🔀 Fluxo de Trabalho Git
+# 009 - 📝 🔀 Git Flow
 
 Data: 2024-03-21
 
-## Status
+## ⚡ Status
 
 Aceito
 
-## Contexto
+## 🎯 Contexto
 
 Com a adoção de microsserviços e CD/Canary, precisamos de uma estratégia de branching que suporte:
 - Múltiplos times trabalhando em paralelo
@@ -17,7 +17,7 @@ Com a adoção de microsserviços e CD/Canary, precisamos de uma estratégia de 
 - Rastreabilidade de mudanças
 - Code review eficiente
 
-## Decisão
+## 🔨 Decisão
 
 Adotar uma versão adaptada do Git Flow com ênfase em trunk-based development:
 
@@ -37,7 +37,7 @@ Justificativas:
 - Histórico organizado
 - Merge requests para code review
 
-## Consequências
+## 📊 Consequências
 
 ### Positivas
 
@@ -66,7 +66,7 @@ Justificativas:
 - Confusão no fluxo de trabalho
   - Mitigação: Treinamento e guias detalhados
 
-## Alternativas Consideradas
+## 🔄 Alternativas Consideradas
 
 ### GitHub Flow
 - Prós: Mais simples, foco em CD
@@ -80,14 +80,14 @@ Justificativas:
 - Prós: Bom para releases por ambiente
 - Contras: Mais complexo que necessário
 
-## Referências
+## 📚 Referências
 
 - [Git Flow Original](https://nvie.com/posts/a-successful-git-branching-model/)
 - [Trunk Based Development](https://trunkbaseddevelopment.com/)
 - [GitHub Flow](https://guides.github.com/introduction/flow/)
 - [GitLab Flow](https://docs.gitlab.com/ee/topics/gitlab_flow.html)
 
-## Notas
+## 📝 Notas
 
 - Criar guias detalhados do processo
 - Configurar proteções de branch

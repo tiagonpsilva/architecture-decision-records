@@ -1,12 +1,12 @@
-# 018 - Adoção de Python para Serviços de Dados e ML 🐍
+# 018 - 📝 🐍 Adoção de Python
 
 Data: 2024-03-21
 
-## Status 📊
+## ⚡ Status
 
 Aceito
 
-## Contexto 🔍
+## 🎯 Contexto
 
 Precisamos de uma linguagem que ofereça:
 - Excelente suporte para ML/AI
@@ -18,7 +18,7 @@ Precisamos de uma linguagem que ofereça:
 - Comunidade ativa
 - Bom suporte a async
 
-## Decisão ✅
+## 🔨 Decisão
 
 Adotar Python como linguagem principal para serviços de dados e ML:
 
@@ -58,7 +58,7 @@ Frameworks e Bibliotecas:
 - Pytest para testes
 - Black para formatação
 
-## Consequências 📈
+## 📊 Consequências
 
 ### Positivas ✨
 
@@ -88,7 +88,7 @@ Frameworks e Bibliotecas:
 - Código não tipado
   - Mitigação: Mypy, type hints
 
-## Alternativas Consideradas 🔄
+## 🔄 Alternativas Consideradas
 
 ### R
 - Prós: Foco em estatística
@@ -102,14 +102,14 @@ Frameworks e Bibliotecas:
 - Prós: JVM, tipagem forte
 - Contras: Complexidade, curva de aprendizado
 
-## Referências 📚
+## 📚 Referências
 
 - [Python Documentation](https://docs.python.org/)
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [Pandas Documentation](https://pandas.pydata.org/docs/)
 - [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
 
-## Notas 📝
+## 📝 Notas
 
 - Criar guias de estilo Python
 - Estabelecer padrões ML/dados

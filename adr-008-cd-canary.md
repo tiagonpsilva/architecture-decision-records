@@ -1,12 +1,12 @@
-# 008 - 🚀 🐤 Implantação Canary
+# 008 - 📝 🚀 Implantação Canary
 
 Data: 2024-03-21
 
-## Status
+## ⚡ Status
 
 Aceito
 
-## Contexto
+## 🎯 Contexto
 
 Nossa estratégia atual de deploy apresenta riscos e limitações:
 - Dificuldade em detectar problemas precocemente
@@ -16,7 +16,7 @@ Nossa estratégia atual de deploy apresenta riscos e limitações:
 - Dificuldade em testar features específicas
 - Métricas limitadas sobre impacto de mudanças
 
-## Decisão
+## 🔨 Decisão
 
 Implementar Continuous Deployment com estratégia de Canary Releases.
 
@@ -30,7 +30,7 @@ Justificativas:
 - Capacidade de teste A/B
 - Deploy contínuo mais seguro
 
-## Consequências
+## 📊 Consequências
 
 ### Positivas
 
@@ -59,7 +59,7 @@ Justificativas:
 - Falhas na detecção de problemas
   - Mitigação: Monitoramento abrangente
 
-## Alternativas Consideradas
+## 🔄 Alternativas Consideradas
 
 ### Blue-Green Deployment
 - Prós: Mais simples de implementar
@@ -73,14 +73,14 @@ Justificativas:
 - Prós: Processo conhecido
 - Contras: Maior risco, menor controle
 
-## Referências
+## 📚 Referências
 
 - [Canary Deployments](https://martinfowler.com/bliki/CanaryRelease.html)
 - [Progressive Delivery](https://www.split.io/blog/progressive-delivery-overview/)
 - [Feature Flags Best Practices](https://launchdarkly.com/blog/best-practices-feature-flags/)
 - [Kubernetes Canary Deployments](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/#canary-deployments)
 
-## Notas
+## 📝 Notas
 
 - Necessário implementar monitoramento robusto
 - Definir métricas claras para análise

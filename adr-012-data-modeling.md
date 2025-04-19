@@ -1,12 +1,12 @@
-# 012 - 📊 💾 Estratégia de Modelagem de Dados
+# 012 - 📝 💾 Modelagem de Dados
 
 Data: 2024-03-21
 
-## Status
+## ⚡ Status
 
 Aceito
 
-## Contexto
+## 🎯 Contexto
 
 Com a adoção de microsserviços e diferentes bancos de dados, precisamos de uma estratégia clara para:
 - Modelagem consistente entre serviços
@@ -17,7 +17,7 @@ Com a adoção de microsserviços e diferentes bancos de dados, precisamos de um
 - Governança de dados
 - Compliance com LGPD/GDPR
 
-## Decisão
+## 🔨 Decisão
 
 Adotar uma estratégia de modelagem de dados polígota e orientada ao domínio:
 
@@ -37,7 +37,7 @@ Padrões específicos:
 - Elasticsearch: busca e análise
 - Event Store: histórico de eventos
 
-## Consequências
+## 📊 Consequências
 
 ### Positivas
 
@@ -66,7 +66,7 @@ Padrões específicos:
 - Complexidade em relatórios
   - Mitigação: Data warehouse dedicado
 
-## Alternativas Consideradas
+## 🔄 Alternativas Consideradas
 
 ### Banco de Dados Único
 - Prós: Simplicidade, consistência forte
@@ -80,14 +80,14 @@ Padrões específicos:
 - Prós: Consistência, familiar
 - Contras: Menos flexível, escalabilidade vertical
 
-## Referências
+## 📚 Referências
 
 - [Database Per Service Pattern](https://microservices.io/patterns/data/database-per-service.html)
 - [Polyglot Persistence](https://martinfowler.com/bliki/PolyglotPersistence.html)
 - [Data Mesh Principles](https://martinfowler.com/articles/data-mesh-principles.html)
 - [Event Sourcing Pattern](https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing)
 
-## Notas
+## 📝 Notas
 
 - Criar guias de modelagem por tipo de banco
 - Estabelecer padrões de nomenclatura

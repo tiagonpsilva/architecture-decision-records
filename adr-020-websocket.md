@@ -1,12 +1,12 @@
-# 020 - 🔌 ⚡ Comunicação em Tempo Real com WebSocket
+# 020 - 📝 🔌 WebSocket
 
 Data: 2024-03-21
 
-## Status
+## ⚡ Status
 
 Aceito
 
-## Contexto
+## 🎯 Contexto
 
 Precisamos de comunicação em tempo real para:
 - Atualizações instantâneas de UI
@@ -18,7 +18,7 @@ Precisamos de comunicação em tempo real para:
 - Colaboração em tempo real
 - IoT e telemetria
 
-## Decisão
+## 🔨 Decisão
 
 Adotar WebSocket como protocolo principal para comunicação em tempo real:
 
@@ -63,7 +63,7 @@ Tipos de Mensagens:
   - Comandos
   - Status
 
-## Consequências
+## 📊 Consequências
 
 ### Positivas
 
@@ -93,7 +93,7 @@ Tipos de Mensagens:
 - Problemas de segurança
   - Mitigação: Auth, rate limiting, validação
 
-## Alternativas Consideradas
+## 🔄 Alternativas Consideradas
 
 ### Server-Sent Events (SSE)
 - Prós: Mais simples, unidirecional
@@ -107,65 +107,14 @@ Tipos de Mensagens:
 - Prós: Performance, contratos
 - Contras: Suporte limitado em browsers
 
-## Implementação
-
-### Frontend
-```typescript
-// Socket.IO client
-const socket = io('wss://api.exemplo.com', {
-  auth: { token: jwt },
-  reconnection: true,
-  reconnectionDelay: 1000,
-});
-
-socket.on('connect', () => {
-  console.log('Connected');
-});
-
-socket.on('data_update', (data) => {
-  updateUI(data);
-});
-```
-
-### Backend (Go)
-```go
-// Gorilla WebSocket handler
-func handleWebSocket(w http.ResponseWriter, r *http.Request) {
-    conn, err := upgrader.Upgrade(w, r, nil)
-    if err != nil {
-        log.Error("upgrade failed", err)
-        return
-    }
-    defer conn.Close()
-
-    // Auth
-    token := r.URL.Query().Get("token")
-    if !validateToken(token) {
-        conn.WriteMessage(websocket.CloseMessage, 
-            websocket.FormatCloseMessage(websocket.CloseUnauthorized, ""))
-        return
-    }
-
-    // Handle connection
-    for {
-        messageType, p, err := conn.ReadMessage()
-        if err != nil {
-            return
-        }
-        // Process message
-        conn.WriteMessage(messageType, p)
-    }
-}
-```
-
-## Referências
+## 📚 Referências
 
 - [WebSocket Protocol](https://tools.ietf.org/html/rfc6455)
 - [Socket.IO Documentation](https://socket.io/docs/v4)
 - [Gorilla WebSocket](https://github.com/gorilla/websocket)
 - [FastAPI WebSocket](https://fastapi.tiangolo.com/advanced/websockets/)
 
-## Notas
+## 📝 Notas
 
 - Criar guias de implementação
 - Estabelecer padrões de mensagens

@@ -1,12 +1,12 @@
-# 014 - 🔐 🎫 Implementação de SSO
+# 014 - 📝 🔐 Single Sign-On
 
 Data: 2024-03-21
 
-## Status
+## ⚡ Status
 
 Aceito
 
-## Contexto
+## 🎯 Contexto
 
 Com múltiplas aplicações e serviços, precisamos:
 - Unificar a experiência de autenticação
@@ -17,7 +17,7 @@ Com múltiplas aplicações e serviços, precisamos:
 - Implementar MFA
 - Atender requisitos de compliance
 
-## Decisão
+## 🔨 Decisão
 
 Implementar SSO usando OAuth 2.0 e OpenID Connect com Keycloak como provedor de identidade:
 
@@ -39,7 +39,7 @@ Padrões específicos:
 - MFA obrigatório para acessos críticos
 - Refresh tokens com rotação
 
-## Consequências
+## 📊 Consequências
 
 ### Positivas
 
@@ -69,7 +69,7 @@ Padrões específicos:
 - Complexidade de migração
   - Mitigação: Migração gradual e suporte legado
 
-## Alternativas Consideradas
+## 🔄 Alternativas Consideradas
 
 ### Auth0
 - Prós: Managed service, fácil setup
@@ -83,14 +83,14 @@ Padrões específicos:
 - Prós: Controle total, customização
 - Contras: Custo de desenvolvimento, manutenção
 
-## Referências
+## 📚 Referências
 
 - [OAuth 2.0](https://oauth.net/2/)
 - [OpenID Connect](https://openid.net/connect/)
 - [Keycloak Documentation](https://www.keycloak.org/documentation)
 - [Zero Trust Architecture](https://www.nist.gov/publications/zero-trust-architecture)
 
-## Notas
+## 📝 Notas
 
 - Criar guia de implementação
 - Estabelecer padrões de segurança

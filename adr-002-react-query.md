@@ -1,12 +1,12 @@
-# 002 - ⚛️ 🔄 Adoção do React Query
+# 002 - 📝 🔄 React Query
 
 Data: 2024-03-21
 
-## Status
+## ⚡ Status
 
 Aceito
 
-## Contexto
+## 🎯 Contexto
 
 Nossa aplicação React tem crescido em complexidade, especialmente no que diz respeito ao gerenciamento de estado e dados do servidor. Enfrentamos diversos desafios:
 
@@ -17,7 +17,7 @@ Nossa aplicação React tem crescido em complexidade, especialmente no que diz r
 - Performance comprometida devido a requisições desnecessárias
 - Complexidade crescente no gerenciamento de estado global
 
-## Decisão
+## 🔨 Decisão
 
 Decidimos adotar o React Query (TanStack Query) como nossa solução principal para gerenciamento de estado relacionado a dados do servidor.
 
@@ -32,7 +32,7 @@ Justificativas:
 - Gerenciamento automático de dados obsoletos
 - Suporte a infinite scroll e pagination
 
-## Consequências
+## 📊 Consequências
 
 ### Positivas
 
@@ -60,7 +60,7 @@ Justificativas:
 - Overhead de performance em aplicações pequenas
   - Mitigação: Configuração adequada de staleTime e cacheTime
 
-## Alternativas Consideradas
+## 🔄 Alternativas Consideradas
 
 ### Redux + RTK Query
 - Prós: Familiar para o time, parte do ecossistema Redux
@@ -78,14 +78,14 @@ Justificativas:
 - Prós: Solução mais simples, sem dependências
 - Contras: Sem gerenciamento de cache, mais código manual
 
-## Referências
+## 📚 Referências
 
 - [React Query Documentation](https://tanstack.com/query/latest)
 - [React Query vs SWR](https://tanstack.com/query/latest/docs/react/comparison)
 - [Practical React Query](https://tkdodo.eu/blog/practical-react-query)
 - [React Query Patterns](https://tkdodo.eu/blog/react-query-patterns)
 
-## Notas
+## 📝 Notas
 
 - Implementação será gradual, começando por novas features
 - Será criado um conjunto de hooks padronizados para operações comuns

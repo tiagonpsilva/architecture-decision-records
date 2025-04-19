@@ -1,12 +1,12 @@
-# 015 - 🧪 ✅ Padrões de Testes
+# 015 - 📝 🧪 Padrões de Teste
 
 Data: 2024-03-21
 
-## Status
+## ⚡ Status
 
 Aceito
 
-## Contexto
+## 🎯 Contexto
 
 Com a arquitetura de microsserviços e DDD, precisamos:
 - Garantir qualidade do código
@@ -17,7 +17,7 @@ Com a arquitetura de microsserviços e DDD, precisamos:
 - Manter velocidade de desenvolvimento
 - Garantir cobertura adequada
 
-## Decisão
+## 🔨 Decisão
 
 Adotar uma estratégia abrangente de testes em múltiplas camadas:
 
@@ -54,7 +54,7 @@ Padrões específicos:
   - Testes críticos de negócio
   - Smoke tests em produção
 
-## Consequências
+## 📊 Consequências
 
 ### Positivas
 
@@ -83,7 +83,7 @@ Padrões específicos:
 - Falsos positivos
   - Mitigação: Testes determinísticos
 
-## Alternativas Consideradas
+## 🔄 Alternativas Consideradas
 
 ### Apenas Testes Manuais
 - Prós: Menor overhead inicial
@@ -97,14 +97,14 @@ Padrões específicos:
 - Prós: Rápidos, fáceis de manter
 - Contras: Não garantem integração
 
-## Referências
+## 📚 Referências
 
 - [Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html)
 - [TDD By Example](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530)
 - [Contract Testing](https://pact.io/)
 - [TestContainers](https://www.testcontainers.org/)
 
-## Notas
+## 📝 Notas
 
 - Criar templates de testes
 - Estabelecer guias por tipo de teste

@@ -1,12 +1,12 @@
-# 006 - 🍃 📊 Perfis de Acesso MongoDB
+# 006 - 📝 💾 MongoDB para Perfis
 
 Data: 2024-03-21
 
-## Status
+## ⚡ Status
 
 Aceito
 
-## Contexto
+## 🎯 Contexto
 
 O gerenciamento de perfis de usuário apresenta desafios específicos:
 - Esquema de dados flexível e em evolução
@@ -16,7 +16,7 @@ O gerenciamento de perfis de usuário apresenta desafios específicos:
 - Requisitos de escalabilidade horizontal
 - Performance em operações de busca e filtro
 
-## Decisão
+## 🔨 Decisão
 
 Adotar MongoDB como banco de dados principal para o serviço de perfis.
 
@@ -30,7 +30,7 @@ Justificativas:
 - Replicação e sharding nativos
 - Ecossistema maduro de ferramentas
 
-## Consequências
+## 📊 Consequências
 
 ### Positivas
 
@@ -59,7 +59,7 @@ Justificativas:
 - Performance em queries complexas
   - Mitigação: Design cuidadoso de índices
 
-## Alternativas Consideradas
+## 🔄 Alternativas Consideradas
 
 ### PostgreSQL JSON
 - Prós: ACID, familiar para equipe
@@ -73,14 +73,14 @@ Justificativas:
 - Prós: Alta escalabilidade, multi-master
 - Contras: Queries limitadas, complexidade operacional
 
-## Referências
+## 📚 Referências
 
 - [MongoDB Architecture Guide](https://www.mongodb.com/mongodb-architecture)
 - [Schema Design Patterns](https://www.mongodb.com/blog/post/building-with-patterns-a-summary)
 - [MongoDB Performance Best Practices](https://docs.mongodb.com/manual/core/performance-best-practices/)
 - [MongoDB vs PostgreSQL](https://www.mongodb.com/compare/mongodb-postgresql)
 
-## Notas
+## 📝 Notas
 
 - Necessário definir estratégia de backup e restore
 - Importante monitorar crescimento de dados e índices
