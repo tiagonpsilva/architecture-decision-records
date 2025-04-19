@@ -77,7 +77,7 @@ Rel(notification_service, notification_queue, "Consome", "AMQP")
 @enduml
 ```
 
-![Diagrama de Arquitetura de Microsserviços](diagrams/adr-003-microservices.png)
+![Diagrama de Arquitetura de Microsserviços](../diagrams/adr-003-microservices.png)
 
 ## 📊 Consequências
 

@@ -188,4 +188,8 @@ customer_service = PromptTemplate(
    - Taxa de detecção de injeção
    - Cobertura de sanitização
    - Incidentes de segurança
-   - Violações de política 
+   - Violações de política
+
+## 📊 Diagrama
+
+![Diagrama de Engenharia de Prompts](../diagrams/adr-032-prompt-engineering.png) 

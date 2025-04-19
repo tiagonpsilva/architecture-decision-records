@@ -90,7 +90,7 @@ end note
 @enduml
 ```
 
-![Diagrama de Arquitetura SSO](diagrams/adr-014-sso-implementation.png)
+![Diagrama de Arquitetura SSO](../diagrams/adr-014-sso-implementation.png)
 
 ## 📊 Consequências
 

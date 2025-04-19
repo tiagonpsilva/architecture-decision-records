@@ -209,3 +209,7 @@ quality_gates:
    - Tempo de remediação
    - Cobertura de análise
    - Incidentes prevenidos 
+
+## 📊 Diagrama
+
+![Diagrama de Quality Gates na Esteira de CI/CD](../diagrams/adr-033-quality-gates-cicd.png) 

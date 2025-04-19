@@ -53,7 +53,7 @@ Padrões de Mensagem:
 
 ## 📊 Diagrama
 
-![Diagrama de Padrões de Mensageria com RabbitMQ](diagrams/adr-016-rabbitmq.png)
+![Diagrama de Padrões de Mensageria com RabbitMQ](../diagrams/adr-016-rabbitmq.png)
 
 ## 📊 Consequências
 

@@ -32,7 +32,7 @@ Justificativas:
 
 ## 📊 Diagrama
 
-![Diagrama de Arquitetura OAuth e OpenID Connect](diagrams/adr-005-oauth-openid.png)
+![Diagrama de Arquitetura OAuth e OpenID Connect](../diagrams/adr-005-oauth-openid.png)
 
 ## 📊 Consequências
 

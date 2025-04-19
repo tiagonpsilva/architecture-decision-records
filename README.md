@@ -46,6 +46,7 @@ Cada ADR deve conter:
 - [`technologies/adr-001-typescript-frontend.md`](technologies/adr-001-typescript-frontend.md) - Adoção de TypeScript para Frontend
 - [`technologies/adr-017-golang-adoption.md`](technologies/adr-017-golang-adoption.md) - Adoção de Go para Microsserviços
 - [`technologies/adr-018-python-adoption.md`](technologies/adr-018-python-adoption.md) - Adoção de Python para Serviços de Dados e ML
+- [`technologies/adr-036-typescript-adoption.md`](technologies/adr-036-typescript-adoption.md) - Adoção Geral do TypeScript
 
 ### 🎨 Frontend e UI
 - [`frontend/adr-002-react-query.md`](frontend/adr-002-react-query.md) - Uso do React Query para Gerenciamento de Estado
@@ -145,6 +146,15 @@ Os ADRs podem ter os seguintes status:
 architecture-decision-records/
 ├── README.md
 ├── template.md
+├── generate-plantuml-png.sh
+├── diagrams/                          # Diretório central de diagramas
+│   ├── adr-001-typescript-frontend.png
+│   ├── adr-001-typescript-frontend.wsd
+│   ├── adr-002-react-query.png
+│   ├── adr-002-react-query.wsd
+│   ├── adr-003-microservices.png
+│   ├── adr-003-microservices.wsd
+│   └── ... (outros diagramas)
 ├── patterns/
 │   ├── adr-011-ddd-hexagonal.md
 │   ├── adr-012-data-modeling.md
@@ -153,7 +163,8 @@ architecture-decision-records/
 ├── technologies/
 │   ├── adr-001-typescript-frontend.md
 │   ├── adr-017-golang-adoption.md
-│   └── adr-018-python-adoption.md
+│   ├── adr-018-python-adoption.md
+│   └── adr-036-typescript-adoption.md
 ├── frontend/
 │   ├── adr-002-react-query.md
 │   └── adr-021-microfrontends.md
@@ -164,10 +175,6 @@ architecture-decision-records/
 │   ├── adr-007-graphql-api.md
 │   ├── adr-023-medallion-architecture.md
 │   └── adr-024-data-lakehouse.md
-│   └── diagrams/
-│       ├── adr-003-microservices.png
-│       ├── adr-003-microservices.wsd
-│       └── adr-003-microservices.puml
 ├── security/
 │   ├── adr-005-oauth-openid.md
 │   ├── adr-014-sso-implementation.md

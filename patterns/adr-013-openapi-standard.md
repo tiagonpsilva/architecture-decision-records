@@ -41,7 +41,7 @@ Padrões específicos:
 
 ## 📊 Diagrama
 
-![Diagrama de OpenAPI Standard](diagrams/adr-013-openapi-standard.png)
+![Diagrama de OpenAPI Standard](../diagrams/adr-013-openapi-standard.png)
 
 ## 📊 Consequências
 

@@ -65,7 +65,7 @@ Tipos de Mensagens:
 
 ## 📊 Diagrama
 
-![Diagrama de Arquitetura WebSocket](diagrams/adr-020-websocket.png)
+![Diagrama de Arquitetura WebSocket](../diagrams/adr-020-websocket.png)
 
 ## 📊 Consequências
 
