@@ -75,6 +75,19 @@ Justificativas:
 - Prós: Bom para sistemas distribuídos
 - Contras: Complexidade em consistência, debugging difícil
 
+## 📊 Diagramas
+
+![DDD e Arquitetura Hexagonal](diagrams/adr-011-ddd-hexagonal.png)
+
+O diagrama acima ilustra a estrutura da arquitetura hexagonal com DDD, mostrando as camadas e suas responsabilidades:
+
+- **Camada de Domínio**: Core da aplicação com entidades, agregados e objetos de valor
+- **Camada de Aplicação**: Casos de uso e serviços de aplicação
+- **Camada de Infraestrutura**: Implementações concretas e adaptadores
+- **Camada de Interfaces**: Portas e adaptadores para comunicação externa
+
+O código fonte do diagrama está disponível em: [adr-011-ddd-hexagonal.wsd](diagrams/adr-011-ddd-hexagonal.wsd)
+
 ## 📚 Referências
 
 - [Domain-Driven Design](https://domainlanguage.com/ddd/)
