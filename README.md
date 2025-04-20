@@ -188,7 +188,10 @@ architecture-decision-records/
 │   ├── adr-009-git-flow.md
 │   ├── adr-010-cloud-aws.md
 │   ├── adr-025-infrastructure-as-code.md
-│   └── adr-028-kubernetes.md
+│   ├── adr-028-kubernetes.md
+│   ├── adr-056-application-lifecycle.md
+│   └── diagrams/
+│       └── adr-056-application-lifecycle.png
 ├── communication/
 │   ├── adr-016-messaging-patterns.md
 │   ├── adr-020-websocket.md
@@ -198,6 +201,10 @@ architecture-decision-records/
 │   └── adr-033-quality-gates-cicd.md
 ├── operations/
 │   └── adr-035-observability.md
+├── performance/
+│   ├── adr-055-cache-strategy.md
+│   └── diagrams/
+│       └── adr-055-cache-strategy.png
 └── ai/
     ├── adr-029-mcp.md
     ├── adr-030-rag.md
