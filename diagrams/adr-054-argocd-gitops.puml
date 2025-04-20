@@ -1,31 +1,54 @@
 @startuml
-!pragma layout smetana
-' version 1.2023.7
-!include C4_Container.puml
-
-!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
 LAYOUT_WITH_LEGEND()
 
 title Arquitetura GitOps com ArgoCD
 
-Container_Boundary(argocd, "ArgoCD") {
-    Component(controller, "Controller", "Core", "Controle de estado")
-    Component(repo_server, "Repo Server", "Git", "Gestão de repositórios")
-    Component(api_server, "API Server", "gRPC/REST", "Interface de API")
-    Component(app_controller, "App Controller", "Sync", "Sincronização de apps")
+Person(devops, "DevOps Engineer", "Responsável pela gestão e automação de deploys")
+
+Enterprise_Boundary(gitops, "Ambiente GitOps") {
+    System_Boundary(argocd, "ArgoCD Platform") {
+        Container(api_server, "API Server", "Go/gRPC", "API principal que gerencia todas as operações")
+        Container(controller, "Application Controller", "Go", "Gerencia o estado desejado das aplicações")
+        Container(repo_server, "Repo Server", "Go/Git", "Gerencia e sincroniza repositórios Git")
+        Container(redis, "Redis Cache", "Redis", "Cache de estados e configurações")
+        Container(dex, "Dex Server", "OIDC", "Autenticação e SSO")
+    }
+
+    System_Boundary(interfaces, "Interfaces") {
+        Container(ui, "Web UI", "React", "Interface web para gestão e visualização")
+        Container(cli, "ArgoCD CLI", "Go", "Interface de linha de comando")
+        Container(notifications, "Notifications", "Go", "Sistema de notificações")
+    }
 }
 
-Container(git, "Git Repository", "Source", "Repositório de código")
-Container(k8s, "Kubernetes", "Platform", "Cluster Kubernetes")
-Container(ui, "Web UI", "Interface", "Interface de usuário")
-Container(cli, "CLI", "Tools", "Linha de comando")
+System_Boundary(infrastructure, "Infraestrutura") {
+    Container(git, "Git Repositories", "Git", "Repositórios com manifestos Kubernetes")
+    Container(k8s, "Kubernetes Clusters", "K8s", "Clusters gerenciados pelo ArgoCD")
+    Container(helm, "Helm Charts", "Helm", "Templates de recursos Kubernetes")
+}
 
-Rel(controller, k8s, "Aplica")
-Rel(repo_server, git, "Monitora")
-Rel(app_controller, repo_server, "Consulta")
-Rel(api_server, controller, "Controla")
-Rel(ui, api_server, "Acessa")
-Rel(cli, api_server, "Interage")
+System_Ext(ci, "CI Pipeline", "Sistema de integração contínua")
+
+Rel(devops, ui, "Gerencia aplicações", "HTTPS")
+Rel(devops, cli, "Executa comandos", "SSH/HTTPS")
+
+Rel(ci, git, "Atualiza manifestos", "Git Push")
+
+Rel(api_server, dex, "Autentica usuários", "OIDC")
+Rel(api_server, redis, "Armazena estado", "Redis Protocol")
+Rel(api_server, controller, "Coordena sync", "gRPC")
+
+Rel(controller, repo_server, "Obtém manifestos", "gRPC")
+Rel(controller, k8s, "Aplica recursos", "K8s API")
+Rel(repo_server, git, "Clona/Atualiza", "Git/SSH")
+Rel(repo_server, helm, "Processa charts", "Helm SDK")
+
+Rel(ui, api_server, "Interage via API", "gRPC-Web")
+Rel(cli, api_server, "Executa operações", "gRPC")
+
+Rel(controller, notifications, "Envia eventos", "Internal")
+Rel(notifications, devops, "Notifica mudanças", "Email/Slack")
 
 @enduml 

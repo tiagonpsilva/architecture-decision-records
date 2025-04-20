@@ -1,14 +1,24 @@
 @startuml
-!pragma layout smetana
-' version 1.2023.7
-!include C4_Component.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
 
-Container_Boundary(api, "API") {
-    Component(auth, "Auth", "Autenticação")
-    Component(users, "Users", "Gestão de usuários")
-    Component(orders, "Orders", "Pedidos")
+LAYOUT_WITH_LEGEND()
+
+title Diagrama de Componentes da API
+
+Container_Boundary(api, "API Backend") {
+    Component(auth, "Autenticação", "Express Middleware", "Gerencia autenticação e autorização de usuários")
+    Component(orders, "Pedidos", "Express Router", "Gerencia o ciclo de vida dos pedidos")
+    Component(users, "Usuários", "Express Router", "Gerencia dados e operações de usuários")
+    Component(payment, "Pagamentos", "Express Router", "Integração com gateway de pagamento")
+    Component(validation, "Validação", "Express Middleware", "Valida dados de entrada")
+    Component(logging, "Logging", "Winston", "Gerencia logs do sistema")
 }
 
-Rel(auth, users, "Valida")
-Rel(users, orders, "Gerencia")
+Rel(auth, users, "Valida credenciais", "Função")
+Rel(orders, users, "Consulta dados", "Repository")
+Rel(orders, payment, "Processa pagamento", "Service")
+Rel(validation, orders, "Valida requisições", "Middleware")
+Rel(logging, auth, "Registra eventos", "Event")
+Rel(logging, orders, "Registra eventos", "Event")
+
 @enduml 

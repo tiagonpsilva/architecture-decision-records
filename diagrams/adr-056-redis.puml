@@ -1,9 +1,9 @@
 @startuml
-!pragma layout smetana
-' version 1.2023.7
-!include C4_Container.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-title "Arquitetura Redis"
+LAYOUT_WITH_LEGEND()
+
+title Arquitetura Redis
 
 Person(user, "Usuário", "Usuário do sistema")
 Container(app, "Aplicação", "Backend", "Aplicação principal")

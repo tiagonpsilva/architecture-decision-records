@@ -1,0 +1,20 @@
+@startuml
+!include https://cdn.jsdelivr.net/gh/plantuml-stdlib/C4-PlantUML@master/C4_Container.puml
+
+title Arquitetura de Database Tuning
+
+LAYOUT_WITH_LEGEND()
+
+Enterprise_Boundary(db, "Database") {
+    Container(indexes, "Indexes", "B-Tree/Hash", "Otimização de consultas através de índices")
+    Container(stats, "Statistics", "Analyzer", "Coleta e análise de estatísticas de uso")
+    Container(cache, "Cache", "Buffer Pool", "Gerenciamento de memória e cache")
+}
+
+Container(monitoring, "Monitoring", "Prometheus/Grafana", "Monitoramento de performance")
+Container(profiler, "Query Profiler", "Tools", "Análise e otimização de queries")
+
+Rel_R(monitoring, stats, "Coleta métricas")
+Rel_L(monitoring, profiler, "Alimenta")
+
+@enduml 

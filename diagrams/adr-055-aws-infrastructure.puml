@@ -1,0 +1,107 @@
+@startuml "Infraestrutura AWS"
+
+!define RECTANGLE class
+
+skinparam {
+    BackgroundColor transparent
+    ArrowColor #2C3E50
+    BorderColor #2C3E50
+    FontColor #2C3E50
+    FontSize 14
+}
+
+rectangle "AWS Infrastructure" {
+    package "Network & Security" as NS #E8EAF6 {
+        RECTANGLE "VPC" as VPC #9FA8DA {
+            + Multiple AZs
+            + Subnets
+            + Route Tables
+        }
+        
+        RECTANGLE "Security Groups" as SG #9FA8DA {
+            + Firewall Rules
+            + Access Control
+            + Port Management
+        }
+        
+        RECTANGLE "WAF & Shield" as WAF #9FA8DA {
+            + DDoS Protection
+            + Web Filtering
+            + Security Rules
+        }
+    }
+    
+    package "Compute & Containers" as CC #FFF3E0 {
+        RECTANGLE "EKS" as EKS #FFB74D {
+            + Kubernetes
+            + Node Groups
+            + Control Plane
+        }
+        
+        RECTANGLE "EC2" as EC2 #FFB74D {
+            + Auto Scaling
+            + Load Balancing
+            + Instance Types
+        }
+        
+        RECTANGLE "ECR" as ECR #FFB74D {
+            + Container Registry
+            + Image Scanning
+            + Versioning
+        }
+    }
+    
+    package "Storage & Database" as SD #E8F5E9 {
+        RECTANGLE "EBS" as EBS #81C784 {
+            + Block Storage
+            + Snapshots
+            + IOPS Management
+        }
+        
+        RECTANGLE "Aurora" as AUR #81C784 {
+            + Serverless
+            + Multi-AZ
+            + Auto Scaling
+        }
+        
+        RECTANGLE "Backup" as BAK #81C784 {
+            + Automated Backups
+            + Retention Policy
+            + Cross-Region
+        }
+    }
+    
+    package "Monitoring & Logging" as ML #FFEBEE {
+        RECTANGLE "CloudWatch" as CW #EF9A9A {
+            + Metrics
+            + Alarms
+            + Dashboards
+        }
+        
+        RECTANGLE "X-Ray" as XR #EF9A9A {
+            + Tracing
+            + Service Maps
+            + Analytics
+        }
+        
+        RECTANGLE "CloudTrail" as CT #EF9A9A {
+            + Audit Logs
+            + API Activity
+            + Compliance
+        }
+    }
+}
+
+WAF -[#3F51B5]-> VPC : "Protects"
+VPC -[#3F51B5]-> SG : "Enforces"
+SG -[#FF9800]-> EKS : "Secures"
+SG -[#FF9800]-> EC2 : "Controls"
+EKS -[#FF9800]-> ECR : "Pulls Images"
+EKS -[#4CAF50]-> EBS : "Uses"
+EC2 -[#4CAF50]-> AUR : "Connects"
+AUR -[#4CAF50]-> BAK : "Backs Up"
+CW -[#F44336]-> EKS : "Monitors"
+XR -[#F44336]-> EKS : "Traces"
+CT -[#F44336]-> VPC : "Audits"
+
+@enduml 

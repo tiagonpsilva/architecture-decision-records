@@ -1,28 +1,31 @@
-@startuml Database Tunning
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+title Arquitetura de Database Tuning
 
 LAYOUT_WITH_LEGEND()
 
-title Arquitetura de Database Tunning
-
-Container_Boundary(db, "Database") {
-    Component(indexes, "Indexes", "B-Tree/Hash", "Otimização de consultas")
-    Component(stats, "Statistics", "Analyzer", "Análise de performance")
-    Component(cache, "Cache", "Buffer Pool", "Gerenciamento de memória")
-    Component(query, "Query Plan", "Optimizer", "Plano de execução")
-    Component(partitioning, "Partitioning", "Sharding", "Distribuição de dados")
+Boundary(db, "Database") {
+    Component(indexes, "Indexes", "B-Tree/Hash", "Otimização de consultas através de índices")
+    Component(stats, "Statistics", "Analyzer", "Coleta e análise de estatísticas de uso")
+    Component(cache, "Cache", "Buffer Pool", "Gerenciamento de memória e cache")
+    Component(query, "Query Plan", "Optimizer", "Otimização e planejamento de queries")
+    Component(partitioning, "Partitioning", "Sharding", "Estratégias de particionamento")
 }
 
-Container(monitoring, "Monitoring", "Prometheus/Grafana", "Métricas e alertas")
-Container(profiler, "Query Profiler", "Tools", "Análise de queries")
-Container(config, "Configuration", "Settings", "Parâmetros do banco")
+Container(monitoring, "Monitoring", "Prometheus/Grafana", "Monitoramento de performance")
+Container(profiler, "Query Profiler", "Tools", "Análise e otimização de queries")
+Container(config, "Configuration", "Settings", "Configurações do banco de dados")
 
-Rel(profiler, query, "Analisa")
+Rel(profiler, query, "Analisa e otimiza")
 Rel(monitoring, stats, "Coleta métricas")
-Rel(config, cache, "Configura")
-Rel(indexes, query, "Otimiza")
-Rel(partitioning, stats, "Impacta")
-Rel(stats, config, "Ajusta")
+Rel(config, cache, "Configura parâmetros")
+Rel(indexes, query, "Otimiza execução")
+Rel(partitioning, stats, "Influencia")
+Rel(stats, config, "Guia ajustes")
+
+Rel(monitoring, profiler, "Alimenta")
+Rel(query, cache, "Utiliza")
+Rel(partitioning, indexes, "Define estratégia")
 
 @enduml 

@@ -1,14 +1,23 @@
 @startuml
-!pragma layout smetana
-' version 1.2023.7
-!include C4_Container.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-Person(customer, "Cliente", "Usuário do sistema")
-Container(web_app, "Web App", "React", "Interface do usuário")
-Container(api, "API", "Node.js", "Backend API")
-ContainerDb(db, "Database", "PostgreSQL", "Dados do sistema")
+LAYOUT_WITH_LEGEND()
 
-Rel(customer, web_app, "Usa")
-Rel(web_app, api, "Chama")
-Rel(api, db, "Usa")
+title Diagrama de Containers do Sistema
+
+Person(customer, "Cliente", "Usuário do sistema que interage com as funcionalidades")
+
+System_Boundary(system, "Sistema Core") {
+    Container(web, "Aplicação Web", "React, TypeScript", "Interface do usuário que permite aos clientes interagirem com o sistema")
+    Container(api, "API Backend", "Node.js, Express", "API REST que processa requisições e implementa a lógica de negócio")
+    ContainerDb(db, "Banco de Dados", "PostgreSQL 14", "Armazena dados do usuário, transações e configurações do sistema")
+}
+
+System_Ext(payment, "Gateway de Pagamento", "Sistema externo que processa transações financeiras")
+
+Rel(customer, web, "Acessa", "HTTPS")
+Rel(web, api, "Faz chamadas API", "REST/JSON, HTTPS")
+Rel(api, db, "Lê e escreve dados", "SQL/TCP")
+Rel(api, payment, "Processa pagamentos", "REST/HTTPS")
+
 @enduml 

@@ -1,32 +1,62 @@
 @startuml
-!pragma layout smetana
-' version 1.2023.7
-!include C4_Container.puml
-
-!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
 LAYOUT_WITH_LEGEND()
 
 title Arquitetura de Monitoramento com Datadog
 
-Container_Boundary(datadog, "Datadog Platform") {
-    Component(agent, "DD Agent", "Collector", "Coleta de dados")
-    Component(apm, "APM", "Tracing", "Rastreamento de aplicações")
-    Component(logs, "Log Management", "Logs", "Gestão de logs")
-    Component(metrics, "Metrics", "Time Series", "Métricas e KPIs")
+Person(sre, "SRE/DevOps", "Engenheiro responsável pelo monitoramento e observabilidade")
+
+Enterprise_Boundary(monitoring, "Plataforma de Monitoramento") {
+    System_Boundary(datadog, "Datadog Platform") {
+        Container(agent, "Datadog Agent", "Go/Python", "Coleta e envia dados de telemetria")
+        Container(apm, "APM Service", "Distributed Tracing", "Rastreamento distribuído de aplicações")
+        Container(logs, "Log Pipeline", "Log Management", "Coleta, processamento e indexação de logs")
+        Container(metrics, "Metric Store", "Time Series DB", "Armazenamento e processamento de métricas")
+        Container(synthetics, "Synthetic Tests", "Browser/API Tests", "Monitoramento proativo de endpoints")
+    }
+
+    System_Boundary(visualization, "Visualização") {
+        Container(dashboards, "Dashboards", "Custom Widgets", "Painéis personalizados de métricas e logs")
+        Container(notebooks, "Notebooks", "Collaborative Analysis", "Análise colaborativa de incidentes")
+        Container(slos, "SLO Tracking", "SLI/SLO/SLA", "Monitoramento de objetivos de nível de serviço")
+    }
+
+    System_Boundary(alerting, "Alertas e Notificações") {
+        Container(monitors, "Monitors", "Alert Rules", "Regras e condições de alerta")
+        Container(incidents, "Incidents", "Incident Management", "Gestão de incidentes")
+        Container(notifications, "Notifications", "Multi-channel", "Sistema de notificações")
+    }
 }
 
-Container(integrations, "Integrations", "Plugins", "Integrações com serviços")
-Container(alerts, "Monitors", "Alerting", "Monitoramento e alertas")
-Container(dashboard, "Dashboards", "Visualization", "Visualização de dados")
-Container(apps, "Applications", "Services", "Serviços monitorados")
+System_Boundary(infrastructure, "Infraestrutura") {
+    Container(apps, "Aplicações", "Kubernetes/VMs", "Aplicações e serviços monitorados")
+    Container(cloud, "Cloud Services", "AWS/GCP/Azure", "Serviços de nuvem integrados")
+    Container(network, "Network", "DNS/HTTP/TCP", "Monitoramento de rede")
+}
 
-Rel(agent, apps, "Monitora")
-Rel(agent, apm, "Envia traces")
-Rel(agent, logs, "Envia logs")
-Rel(agent, metrics, "Envia métricas")
-Rel(integrations, datadog, "Estende")
-Rel(alerts, metrics, "Monitora")
-Rel(dashboard, datadog, "Visualiza")
+Rel(sre, dashboards, "Visualiza e analisa", "HTTPS")
+Rel(sre, monitors, "Configura e gerencia", "HTTPS")
+Rel(sre, incidents, "Gerencia incidentes", "HTTPS")
+
+Rel(agent, apps, "Coleta métricas e traces", "TCP/UDP")
+Rel(agent, cloud, "Integra com serviços", "API")
+Rel(agent, network, "Monitora conectividade", "SNMP/ICMP")
+
+Rel(agent, apm, "Envia traces", "HTTP/gRPC")
+Rel(agent, logs, "Envia logs", "TCP/TLS")
+Rel(agent, metrics, "Envia métricas", "HTTP/Protobuf")
+Rel(synthetics, apps, "Testa endpoints", "HTTP/Browser")
+
+Rel(monitors, metrics, "Avalia condições", "Internal")
+Rel(monitors, logs, "Analisa padrões", "Internal")
+Rel(monitors, notifications, "Dispara alertas", "Internal")
+
+Rel(dashboards, metrics, "Visualiza dados", "GraphQL")
+Rel(dashboards, logs, "Exibe logs", "ElasticSearch")
+Rel(notebooks, incidents, "Documenta análise", "Internal")
+Rel(slos, metrics, "Calcula indicadores", "Internal")
+
+Rel(incidents, notifications, "Notifica equipes", "Email/Slack/PagerDuty")
 
 @enduml 

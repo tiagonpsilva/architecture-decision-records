@@ -1,32 +1,52 @@
 @startuml
-!pragma layout smetana
-' version 1.2023.7
-!include C4_Container.puml
 
-!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
 LAYOUT_WITH_LEGEND()
 
 title Arquitetura de Monitoramento com Prometheus
 
-Container_Boundary(prometheus, "Prometheus Stack") {
-    Component(scraper, "Scraper", "Collector", "Coleta de métricas")
-    Component(tsdb, "TSDB", "Storage", "Armazenamento de séries temporais")
-    Component(rules, "Rules", "Alerting", "Regras de alerta")
-    Component(query, "PromQL", "Query Engine", "Consulta de métricas")
+Person(sre, "SRE", "Site Reliability Engineer que monitora a infraestrutura")
+
+Enterprise_Boundary(monitoring, "Stack de Monitoramento") {
+    System_Boundary(prometheus, "Prometheus") {
+        Container(scraper, "Prometheus Scraper", "Go", "Coleta e armazena métricas de diferentes targets")
+        ContainerDb(tsdb, "Time Series DB", "TSDB", "Banco de dados otimizado para séries temporais")
+        Container(rules, "Alert Rules", "YAML", "Define regras para geração de alertas")
+        Container(query, "Query Engine", "PromQL", "Motor de consultas para análise de métricas")
+    }
+
+    System_Boundary(visualization, "Visualização") {
+        Container(grafana, "Grafana", "Go/Angular", "Plataforma de visualização e análise de métricas")
+        Container(dashboards, "Dashboards", "JSON", "Painéis customizados para diferentes métricas")
+    }
+
+    System_Boundary(alerting, "Alertas") {
+        Container(alertmanager, "Alert Manager", "Go", "Gerenciamento e roteamento de alertas")
+        Container(receivers, "Alert Receivers", "YAML", "Configuração de destinos de alertas (Email, Slack, etc)")
+    }
 }
 
-Container(exporters, "Exporters", "Metrics", "Exposição de métricas")
-Container(alertmanager, "Alert Manager", "Notifications", "Gestão de alertas")
-Container(grafana, "Grafana", "Visualization", "Dashboards")
-Container(targets, "Targets", "Applications", "Aplicações monitoradas")
+System_Boundary(apps, "Aplicações") {
+    Container(exporters, "Exporters", "Various", "Expõe métricas no formato Prometheus")
+    Container(apps_prod, "Produção", "Kubernetes", "Aplicações em ambiente produtivo")
+    Container(infra, "Infraestrutura", "AWS/GCP", "Recursos de infraestrutura monitorados")
+}
 
-Rel(scraper, exporters, "Coleta de")
-Rel(exporters, targets, "Monitora")
-Rel(scraper, tsdb, "Armazena em")
-Rel(rules, tsdb, "Consulta")
-Rel(rules, alertmanager, "Dispara")
-Rel(query, tsdb, "Consulta")
-Rel(grafana, query, "Utiliza")
+Rel(sre, grafana, "Visualiza métricas e alertas", "HTTPS")
+Rel(sre, alertmanager, "Gerencia configurações", "HTTPS")
+
+Rel(scraper, exporters, "Coleta métricas", "HTTP/9100")
+Rel(exporters, apps_prod, "Monitora", "HTTP")
+Rel(exporters, infra, "Monitora", "HTTP")
+
+Rel(scraper, tsdb, "Armazena métricas", "Internal")
+Rel(rules, tsdb, "Consulta métricas", "PromQL")
+Rel(rules, alertmanager, "Envia alertas", "HTTP")
+Rel(query, tsdb, "Consulta dados", "PromQL")
+
+Rel(grafana, query, "Consulta métricas", "HTTP")
+Rel(grafana, dashboards, "Carrega", "Internal")
+Rel(alertmanager, receivers, "Envia notificações", "SMTP/HTTP")
 
 @enduml 

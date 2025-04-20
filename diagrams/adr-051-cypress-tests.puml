@@ -1,34 +1,53 @@
 @startuml
-!pragma layout smetana
-' version 1.2023.7
-!include C4_Container.puml
-
-!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
 LAYOUT_WITH_LEGEND()
 
 title Arquitetura de Testes com Cypress
 
-Container_Boundary(cypress, "Cypress Framework") {
-    Component(runner, "Test Runner", "Electron", "Execução de testes")
-    Component(commands, "Commands", "API", "Comandos customizados")
-    Component(intercept, "Network Intercept", "Proxy", "Interceptação de requisições")
-    Component(fixtures, "Fixtures", "Data", "Dados de teste")
-    Component(plugins, "Plugins", "Extensions", "Extensões e integrações")
+Person(dev, "Desenvolvedor", "Engenheiro que desenvolve e mantém os testes automatizados")
+
+Enterprise_Boundary(testing, "Ambiente de Testes") {
+    System_Boundary(cypress, "Cypress Framework") {
+        Container(runner, "Test Runner", "Electron/Node.js", "Executa testes E2E e gerencia o ciclo de vida dos testes")
+        Container(commands, "Custom Commands", "JavaScript/TypeScript", "Comandos personalizados para ações comuns")
+        Container(intercept, "Network Interceptor", "Proxy/Stub", "Intercepta e simula chamadas de rede")
+        ContainerDb(fixtures, "Test Data", "JSON/Fixtures", "Dados estáticos e dinâmicos para testes")
+        Container(plugins, "Plugins", "Node.js Modules", "Extensões para funcionalidades adicionais")
+        Container(reporter, "Test Reporter", "Mocha/Chai", "Geração de relatórios de execução")
+    }
+
+    System_Boundary(execution, "Ambiente de Execução") {
+        Container(browser, "Browser Engine", "Chromium", "Navegador headless para execução dos testes")
+        Container(screenshots, "Screenshots", "PNG/MP4", "Capturas de tela e vídeos dos testes")
+        Container(logs, "Test Logs", "JSON/Console", "Logs detalhados da execução")
+    }
 }
 
-Container(browser, "Browser", "Chromium", "Navegador embutido")
-Container(app, "Application", "Web App", "Aplicação testada")
-Container(ci, "CI Pipeline", "GitHub Actions", "Integração contínua")
-Container(dashboard, "Dashboard", "Cypress Cloud", "Relatórios e análises")
+System_Boundary(integration, "Integração") {
+    Container(ci, "CI/CD Pipeline", "GitHub Actions", "Pipeline de integração contínua")
+    Container(dashboard, "Cypress Cloud", "SaaS", "Dashboard de análise e histórico de testes")
+    Container(slack, "Notificações", "Slack/Email", "Alertas e notificações de resultados")
+}
 
-Rel(runner, browser, "Controla")
-Rel(browser, app, "Testa")
-Rel(commands, runner, "Estende")
-Rel(intercept, app, "Monitora")
-Rel(fixtures, commands, "Alimenta")
-Rel(plugins, runner, "Aumenta")
-Rel(ci, runner, "Executa")
-Rel(runner, dashboard, "Reporta")
+System_Ext(app, "Aplicação Web", "Sistema sendo testado")
+
+Rel(dev, runner, "Desenvolve e executa testes", "npm/yarn")
+Rel(dev, dashboard, "Analisa resultados", "HTTPS")
+
+Rel(runner, browser, "Controla e automatiza", "WebSocket")
+Rel(browser, app, "Executa testes E2E", "HTTPS")
+Rel(commands, runner, "Estende funcionalidades", "JavaScript API")
+Rel(intercept, app, "Intercepta requisições", "HTTP/HTTPS")
+Rel(fixtures, commands, "Fornece dados", "JSON/JavaScript")
+Rel(plugins, runner, "Adiciona recursos", "Node.js API")
+
+Rel(runner, reporter, "Gera relatórios", "Internal")
+Rel(reporter, screenshots, "Captura evidências", "File System")
+Rel(reporter, logs, "Registra execução", "stdout/stderr")
+
+Rel(ci, runner, "Executa testes", "npm test")
+Rel(runner, dashboard, "Envia resultados", "HTTPS")
+Rel(dashboard, slack, "Notifica equipe", "Webhook")
 
 @enduml 

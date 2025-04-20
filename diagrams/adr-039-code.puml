@@ -1,20 +1,44 @@
 @startuml
-!pragma layout smetana
-' version 1.2023.7
-!include C4_Code.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Dynamic.puml
 
-Class(Order) {
-    +id: string
-    +status: string
-    +create()
-    +update()
-}
+LAYOUT_WITH_LEGEND()
 
-Class(User) {
+title Diagrama de Classes do Sistema
+
+class User {
     +id: string
     +name: string
     +email: string
+    +password: string
+    +validate(): boolean
+    +authenticate(): boolean
 }
 
-Order --> User
+class Order {
+    +id: string
+    +userId: string
+    +items: Item[]
+    +total: number
+    +status: OrderStatus
+    +createPayment(): Payment
+    +process(): void
+}
+
+interface PaymentGateway {
+    +processPayment(payment: Payment): boolean
+    +refund(payment: Payment): boolean
+}
+
+class Payment {
+    +id: string
+    +orderId: string
+    +amount: number
+    +status: PaymentStatus
+    +gateway: PaymentGateway
+}
+
+Order --> User: pertence a
+Order --> Payment: gera
+Payment --> PaymentGateway: usa
+
 @enduml 

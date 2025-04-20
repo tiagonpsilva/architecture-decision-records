@@ -1,12 +1,15 @@
 @startuml
-!pragma layout smetana
-' version 1.2023.7
-!include C4_Context.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
 
-Person(customer, "Cliente", "Usuário do sistema")
-System(system, "Sistema", "Core business system")
-System_Ext(payment, "Gateway Pagamento", "Processador de pagamentos")
+LAYOUT_WITH_LEGEND()
 
-Rel(customer, system, "Usa")
-Rel(system, payment, "Processa pagamentos")
+title Diagrama de Contexto do Sistema
+
+Person(customer, "Cliente", "Usuário do sistema que interage com as funcionalidades")
+System(system, "Sistema Core", "Sistema principal que gerencia todas as operações de negócio")
+System_Ext(payment, "Gateway de Pagamento", "Sistema externo que processa transações financeiras")
+
+Rel(customer, system, "Utiliza", "HTTPS")
+Rel(system, payment, "Processa pagamentos", "REST/HTTPS")
+
 @enduml 
