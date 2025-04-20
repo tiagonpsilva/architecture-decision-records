@@ -1,0 +1,43 @@
+@startuml Application Lifecycle
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Arquitetura de Gerenciamento de Ciclo de Vida
+
+Container_Boundary(version_control, "Version Control") {
+    Component(dependabot, "Dependabot", "Automation", "Atualização automática")
+    Component(semantic_version, "Semantic Version", "Policy", "Controle de versão")
+    Component(changelog, "Changelog", "Documentation", "Registro de mudanças")
+}
+
+Container_Boundary(security, "Security") {
+    Component(vulnerability_scanner, "Scanner", "Snyk", "Análise de vulnerabilidades")
+    Component(audit, "Audit", "npm/yarn", "Auditoria de dependências")
+    Component(security_fixes, "Security Fixes", "Patches", "Correções de segurança")
+}
+
+Container_Boundary(testing, "Testing & Quality") {
+    Component(regression, "Regression Tests", "Automated", "Testes de regressão")
+    Component(compatibility, "Compatibility", "Matrix", "Testes de compatibilidade")
+    Component(integration, "Integration", "CI/CD", "Testes de integração")
+}
+
+Container(monitoring, "Monitoring", "Grafana", "Monitoramento de versões")
+Container(documentation, "Documentation", "Wiki", "Documentação técnica")
+Container(deployment, "Deployment", "Pipeline", "Pipeline de implantação")
+
+Rel(dependabot, semantic_version, "Segue")
+Rel(semantic_version, changelog, "Atualiza")
+Rel(vulnerability_scanner, security_fixes, "Gera")
+Rel(audit, security_fixes, "Recomenda")
+Rel(security_fixes, deployment, "Trigger")
+Rel(regression, compatibility, "Valida")
+Rel(compatibility, integration, "Executa")
+Rel(integration, deployment, "Aprova")
+Rel(deployment, monitoring, "Monitora")
+Rel(changelog, documentation, "Atualiza")
+Rel(security_fixes, documentation, "Documenta")
+
+@enduml 

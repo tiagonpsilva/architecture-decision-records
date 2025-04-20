@@ -1,0 +1,43 @@
+@startuml Cache Strategy
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Arquitetura de Cache Multi-Camada
+
+Container_Boundary(browser, "Browser Cache") {
+    Component(service_worker, "Service Worker", "Cache API", "Gerenciamento de cache no cliente")
+    Component(local_storage, "Local Storage", "Web Storage", "Cache de dados locais")
+    Component(memory_cache, "Memory Cache", "In-Memory", "Cache de recursos")
+}
+
+Container_Boundary(application, "Application Cache") {
+    Component(app_cache, "App Cache", "In-Memory", "Cache da aplicação")
+    Component(cache_manager, "Cache Manager", "Controller", "Gerenciamento de cache")
+    Component(invalidator, "Cache Invalidator", "Service", "Invalidação de cache")
+}
+
+Container_Boundary(distributed, "Distributed Cache") {
+    Component(redis, "Redis", "Cache Server", "Cache distribuído")
+    Component(pub_sub, "Pub/Sub", "Events", "Notificações de cache")
+    Component(persistence, "Persistence", "Storage", "Persistência de dados")
+}
+
+Container(metrics, "Metrics", "Prometheus", "Monitoramento de cache")
+Container(api, "API Server", "Backend", "Servidor de aplicação")
+Container(database, "Database", "Storage", "Banco de dados")
+
+Rel(service_worker, local_storage, "Gerencia")
+Rel(service_worker, memory_cache, "Utiliza")
+Rel(api, app_cache, "Consulta")
+Rel(app_cache, cache_manager, "Gerenciado por")
+Rel(cache_manager, invalidator, "Invalida via")
+Rel(invalidator, redis, "Notifica")
+Rel(redis, pub_sub, "Publica eventos")
+Rel(redis, persistence, "Persiste")
+Rel(cache_manager, metrics, "Monitora")
+Rel(api, database, "Consulta se cache miss")
+Rel(browser, api, "Requisita")
+
+@enduml 
