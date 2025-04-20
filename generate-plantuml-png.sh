@@ -5,7 +5,7 @@
 
 if [ $# -eq 0 ]; then
   echo "Usage: $0 <input-file>" >&2
-  echo "Example: $0 /Users/tiagonpsilva/code/diagramas-conceituais/005-genai-mcp.wsd" >&2
+  echo "Example: $0 /Users/tiagonpsilva/code/diagramas-conceituais/005-genai-mcp.puml" >&2
   exit 1
 fi
 
