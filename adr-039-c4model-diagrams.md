@@ -5,7 +5,7 @@
 
 ```plantuml
 @startuml
-!include C4_Context.wsd
+!include C4_Context.puml
 
 Person(customer, "Cliente", "Usuário do sistema")
 System(system, "Sistema", "Core business system")
@@ -21,7 +21,7 @@ Rel(system, payment, "Processa pagamentos")
 
 ```plantuml
 @startuml
-!include C4_Container.wsd
+!include C4_Container.puml
 
 Container(web, "Web App", "React", "Interface do usuário")
 Container(api, "API", "Node.js", "Backend API")
@@ -37,7 +37,7 @@ Rel(api, db, "Reads/Writes", "SQL")
 
 ```plantuml
 @startuml
-!include C4_Component.wsd
+!include C4_Component.puml
 
 Component(auth, "Auth", "Autenticação")
 Component(orders, "Orders", "Gestão de pedidos")
@@ -53,7 +53,7 @@ Rel(orders, users, "Consulta")
 
 ```plantuml
 @startuml
-!include C4_Code.wsd
+!include C4_Code.puml
 
 Class(Order)
 Class(User)
