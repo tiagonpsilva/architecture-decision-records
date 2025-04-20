@@ -1,1 +1,0 @@
-![Arquitetura Hexagonal](../diagrams/adr-011-ddd-hexagonal.png) 

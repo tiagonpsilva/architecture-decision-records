@@ -70,13 +70,18 @@ Cada ADR deve conter:
 - [`devops/adr-009-git-flow.md`](devops/adr-009-git-flow.md) - Estratégia Git Flow e Branching
 - [`devops/adr-010-cloud-aws.md`](devops/adr-010-cloud-aws.md) - Adoção da AWS como Plataforma Cloud
 - [`devops/adr-025-infrastructure-as-code.md`](devops/adr-025-infrastructure-as-code.md) - Adoção de Infraestrutura como Código (IaC)
+- [`devops/adr-026-devex.md`](devops/adr-026-devex.md) - Developer Experience (DevEx)
+- [`devops/adr-027-docker.md`](devops/adr-027-docker.md) - Containerização com Docker
 - [`devops/adr-028-kubernetes.md`](devops/adr-028-kubernetes.md) - Orquestração com Kubernetes
-- [`devops/adr-056-application-lifecycle.md`](devops/adr-056-application-lifecycle.md) - Gerenciamento do Ciclo de Vida de Aplicações
+- [`devops/adr-034-dev-environment-ai.md`](devops/adr-034-dev-environment-ai.md) - Ambiente de Desenvolvimento com IA
+- [`devops/adr-054-argocd-gitops.md`](devops/adr-054-argocd-gitops.md) - GitOps com ArgoCD
 
 ### 🔄 Comunicação e Integração
 - [`communication/adr-016-messaging-patterns.md`](communication/adr-016-messaging-patterns.md) - Padrões de Mensageria com RabbitMQ
 - [`communication/adr-020-websocket.md`](communication/adr-020-websocket.md) - WebSocket para Comunicação Real-time
-- [`communication/adr-022-event-driven.md`](communication/adr-022-event-driven.md) - Arquitetura Orientada a Eventos
+- [`communication/adr-022-event-driven.md`](communication/adr-022-event-driven.md) - Arquitetura Event-Driven
+- [`communication/adr-044-kafka-events.md`](communication/adr-044-kafka-events.md) - Apache Kafka para Comunicação Baseada em Eventos
+- [`communication/adr-045-grpc-services.md`](communication/adr-045-grpc-services.md) - gRPC para Comunicação entre Serviços
 
 ### ✅ Qualidade e Testes
 - [`quality/adr-015-test-patterns.md`](quality/adr-015-test-patterns.md) - Padrões de Testes
@@ -93,6 +98,25 @@ Cada ADR deve conter:
 - [`ai/adr-030-rag.md`](ai/adr-030-rag.md) - Retrieval Augmented Generation (RAG)
 - [`ai/adr-031-quality-gates.md`](ai/adr-031-quality-gates.md) - Quality Gates para IA
 - [`ai/adr-032-prompt-engineering.md`](ai/adr-032-prompt-engineering.md) - Engenharia de Prompts para GenAI
+- [`ai/adr-040-mcp-api-agents.md`](ai/adr-040-mcp-api-agents.md) - MCPs para APIs como Agentes
+- [`ai/adr-041-ml-projects.md`](ai/adr-041-ml-projects.md) - Estrutura de Projetos de Machine Learning
+- [`ai/adr-046-ocr-system.md`](ai/adr-046-ocr-system.md) - Sistema de OCR para Processamento de Documentos
+- [`ai/adr-047-web-scraping.md`](ai/adr-047-web-scraping.md) - Sistema de Web Scraping
+- [`ai/adr-048-team-agents.md`](ai/adr-048-team-agents.md) - Agentes Especializados para Time de Desenvolvimento
+
+### 🧪 Testes
+- [`testing/adr-050-selenium-tests.md`](testing/adr-050-selenium-tests.md) - Testes de Interface com Selenium
+- [`testing/adr-051-cypress-tests.md`](testing/adr-051-cypress-tests.md) - Testes E2E com Cypress
+
+### 📊 Monitoramento
+- [`monitoring/adr-052-prometheus-monitoring.md`](monitoring/adr-052-prometheus-monitoring.md) - Monitoramento com Prometheus
+- [`monitoring/adr-053-datadog-monitoring.md`](monitoring/adr-053-datadog-monitoring.md) - Monitoramento com Datadog
+
+### 🔍 Busca
+- [`search/adr-055-elasticsearch.md`](search/adr-055-elasticsearch.md) - Adoção do ElasticSearch
+
+### 💾 Cache
+- [`cache/adr-056-redis.md`](cache/adr-056-redis.md) - Estratégia de Cache com Redis
 
 ## 📖 Como usar este diretório
 
@@ -188,8 +212,11 @@ architecture-decision-records/
 │   ├── adr-009-git-flow.md
 │   ├── adr-010-cloud-aws.md
 │   ├── adr-025-infrastructure-as-code.md
+│   ├── adr-026-devex.md
+│   ├── adr-027-docker.md
 │   ├── adr-028-kubernetes.md
-│   ├── adr-056-application-lifecycle.md
+│   ├── adr-034-dev-environment-ai.md
+│   ├── adr-054-argocd-gitops.md
 │   └── diagrams/
 │       ├── adr-056-application-lifecycle.wsd
 │       └── adr-056-application-lifecycle.png
