@@ -1,0 +1,20 @@
+@startuml
+!include C4_Container.puml
+
+title "Arquitetura ElasticSearch"
+
+Person(user, "Usuário", "Usuário do sistema")
+Container(app, "Aplicação", "Backend", "Aplicação principal")
+Container(kibana, "Kibana", "Frontend", "Interface de visualização")
+ContainerDb(elastic, "ElasticSearch", "Search Engine", "Motor de busca e análise")
+Container(logstash, "Logstash", "Pipeline", "Processamento de dados")
+Container(beats, "Beats", "Coletores", "Coletores de dados")
+
+Rel(user, app, "Usa", "HTTP")
+Rel(user, kibana, "Visualiza", "HTTP")
+Rel(app, elastic, "Consulta/Indexa", "REST API")
+Rel(kibana, elastic, "Visualiza/Gerencia", "REST API")
+Rel(logstash, elastic, "Indexa dados", "REST API")
+Rel(beats, logstash, "Envia dados", "TCP")
+
+@enduml 
