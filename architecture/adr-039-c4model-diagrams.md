@@ -22,9 +22,9 @@ Adotar o C4Model como padrão de documentação arquitetural com as seguintes ca
 ### Níveis do C4Model
 
 1. Nível 1 - Contexto do Sistema
-   ```plantuml
+   ```wsd
    @startuml
-   !include C4_Context.puml
+   !include C4_Context.wsd
    
    Person(customer, "Cliente", "Usuário do sistema")
    System(system, "Sistema", "Core business system")
@@ -36,9 +36,9 @@ Adotar o C4Model como padrão de documentação arquitetural com as seguintes ca
    ```
 
 2. Nível 2 - Containers
-   ```plantuml
+   ```wsd
    @startuml
-   !include C4_Container.puml
+   !include C4_Container.wsd
    
    Container(web, "Web App", "React", "Interface do usuário")
    Container(api, "API", "Node.js", "Backend API")
@@ -50,9 +50,9 @@ Adotar o C4Model como padrão de documentação arquitetural com as seguintes ca
    ```
 
 3. Nível 3 - Componentes
-   ```plantuml
+   ```wsd
    @startuml
-   !include C4_Component.puml
+   !include C4_Component.wsd
    
    Component(auth, "Auth", "Autenticação")
    Component(orders, "Orders", "Gestão de pedidos")
@@ -64,9 +64,9 @@ Adotar o C4Model como padrão de documentação arquitetural com as seguintes ca
    ```
 
 4. Nível 4 - Código
-   ```plantuml
+   ```wsd
    @startuml
-   !include C4_Code.puml
+   !include C4_Code.wsd
    
    Class(Order)
    Class(User)
@@ -79,7 +79,7 @@ Adotar o C4Model como padrão de documentação arquitetural com as seguintes ca
 
 ### Diagramas de Sequência
 
-```plantuml
+```wsd
 @startuml
 actor User
 participant "Web App" as Web
