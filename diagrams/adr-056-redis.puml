@@ -1,0 +1,20 @@
+@startuml
+!include C4_Container.puml
+
+title "Arquitetura Redis"
+
+Person(user, "Usuário", "Usuário do sistema")
+Container(app, "Aplicação", "Backend", "Aplicação principal")
+ContainerDb(redis_cache, "Redis Cache", "Cache Layer", "Cache em memória")
+ContainerDb(redis_queue, "Redis Queue", "Message Broker", "Filas e pub/sub")
+ContainerDb(redis_session, "Redis Session", "Session Store", "Gerenciamento de sessões")
+ContainerDb(database, "Database", "PostgreSQL", "Banco de dados principal")
+
+Rel(user, app, "Usa", "HTTP")
+Rel(app, redis_cache, "Cache de dados", "Redis Protocol")
+Rel(app, redis_queue, "Mensageria", "Redis Protocol")
+Rel(app, redis_session, "Sessões", "Redis Protocol")
+Rel(app, database, "Persiste", "SQL")
+Rel(redis_cache, database, "Cache-aside", "SQL")
+
+@enduml 
