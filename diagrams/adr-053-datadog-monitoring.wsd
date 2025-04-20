@@ -1,0 +1,29 @@
+@startuml Datadog Monitoring
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Arquitetura de Monitoramento com Datadog
+
+Container_Boundary(datadog, "Datadog Platform") {
+    Component(agent, "DD Agent", "Collector", "Coleta de dados")
+    Component(apm, "APM", "Tracing", "Rastreamento de aplicações")
+    Component(logs, "Log Management", "Logs", "Gestão de logs")
+    Component(metrics, "Metrics", "Time Series", "Métricas e KPIs")
+}
+
+Container(integrations, "Integrations", "Plugins", "Integrações com serviços")
+Container(alerts, "Monitors", "Alerting", "Monitoramento e alertas")
+Container(dashboard, "Dashboards", "Visualization", "Visualização de dados")
+Container(apps, "Applications", "Services", "Serviços monitorados")
+
+Rel(agent, apps, "Monitora")
+Rel(agent, apm, "Envia traces")
+Rel(agent, logs, "Envia logs")
+Rel(agent, metrics, "Envia métricas")
+Rel(integrations, datadog, "Estende")
+Rel(alerts, metrics, "Monitora")
+Rel(dashboard, datadog, "Visualiza")
+
+@enduml 

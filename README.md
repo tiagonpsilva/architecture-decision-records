@@ -191,6 +191,7 @@ architecture-decision-records/
 │   ├── adr-028-kubernetes.md
 │   ├── adr-056-application-lifecycle.md
 │   └── diagrams/
+│       ├── adr-056-application-lifecycle.wsd
 │       └── adr-056-application-lifecycle.png
 ├── communication/
 │   ├── adr-016-messaging-patterns.md
@@ -204,12 +205,26 @@ architecture-decision-records/
 ├── performance/
 │   ├── adr-055-cache-strategy.md
 │   └── diagrams/
+│       ├── adr-055-cache-strategy.wsd
 │       └── adr-055-cache-strategy.png
-└── ai/
-    ├── adr-029-mcp.md
-    ├── adr-030-rag.md
-    ├── adr-031-quality-gates.md
-    └── adr-032-prompt-engineering.md
+├── ai/
+│   ├── adr-029-mcp.md
+│   ├── adr-030-rag.md
+│   ├── adr-031-quality-gates.md
+│   └── adr-032-prompt-engineering.md
+├── monitoring/
+│   ├── adr-052-prometheus-monitoring.md
+│   └── diagrams/
+│       ├── adr-052-prometheus-monitoring.wsd
+│       └── adr-052-prometheus-monitoring.png
+└── testing/
+    ├── adr-050-selenium-tests.md
+    ├── adr-051-cypress-tests.md
+    └── diagrams/
+        ├── adr-050-selenium-tests.wsd
+        ├── adr-050-selenium-tests.png
+        ├── adr-051-cypress-tests.wsd
+        └── adr-051-cypress-tests.png
 ```
 
 Esta estrutura organiza os ADRs por categorias, facilitando a navegação e manutenção dos documentos. Cada categoria tem seu próprio diretório e pode conter subdiretórios específicos, como o diretório `diagrams` para armazenar diagramas relacionados aos ADRs.

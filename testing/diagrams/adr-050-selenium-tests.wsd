@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor transparent
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+skinparam roundCorner 10
+skinparam componentStyle uml2
+
+title Arquitetura de Testes com Selenium WebDriver
+
+package "Camada de Testes" {
+    [Test Classes] as TC
+    [Page Objects] as PO
+    [Test Utils] as TU
+    [Test Data] as TD
+}
+
+package "Selenium WebDriver" {
+    [WebDriver] as WD
+    [WebElement] as WE
+    [Wait] as W
+    [Actions] as A
+}
+
+package "Browsers" {
+    [Chrome] as CH
+    [Firefox] as FF
+    [Edge] as ED
+    [Safari] as SF
+}
+
+package "CI/CD Pipeline" {
+    [GitHub Actions] as GA
+    [Jenkins] as JK
+    [Test Reports] as TR
+}
+
+cloud "Aplicação Web" as WA
+
+TC --> PO : usa
+PO --> WD : interage
+TC --> TU : utiliza
+TC --> TD : consome
+WD --> WE : localiza
+WD --> W : gerencia esperas
+WD --> A : executa ações
+WD --> CH : controla
+WD --> FF : controla
+WD --> ED : controla
+WD --> SF : controla
+WD --> WA : testa
+GA --> TC : executa
+JK --> TC : executa
+TC --> TR : gera
+
+@enduml 

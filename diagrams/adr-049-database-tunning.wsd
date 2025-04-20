@@ -1,0 +1,28 @@
+@startuml Database Tunning
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Arquitetura de Database Tunning
+
+Container_Boundary(db, "Database") {
+    Component(indexes, "Indexes", "B-Tree/Hash", "Otimização de consultas")
+    Component(stats, "Statistics", "Analyzer", "Análise de performance")
+    Component(cache, "Cache", "Buffer Pool", "Gerenciamento de memória")
+    Component(query, "Query Plan", "Optimizer", "Plano de execução")
+    Component(partitioning, "Partitioning", "Sharding", "Distribuição de dados")
+}
+
+Container(monitoring, "Monitoring", "Prometheus/Grafana", "Métricas e alertas")
+Container(profiler, "Query Profiler", "Tools", "Análise de queries")
+Container(config, "Configuration", "Settings", "Parâmetros do banco")
+
+Rel(profiler, query, "Analisa")
+Rel(monitoring, stats, "Coleta métricas")
+Rel(config, cache, "Configura")
+Rel(indexes, query, "Otimiza")
+Rel(partitioning, stats, "Impacta")
+Rel(stats, config, "Ajusta")
+
+@enduml 

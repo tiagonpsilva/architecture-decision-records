@@ -1,0 +1,28 @@
+@startuml ArgoCD GitOps
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Arquitetura GitOps com ArgoCD
+
+Container_Boundary(argocd, "ArgoCD") {
+    Component(controller, "Controller", "Core", "Controle de estado")
+    Component(repo_server, "Repo Server", "Git", "Gestão de repositórios")
+    Component(api_server, "API Server", "gRPC/REST", "Interface de API")
+    Component(app_controller, "App Controller", "Sync", "Sincronização de apps")
+}
+
+Container(git, "Git Repository", "Source", "Repositório de código")
+Container(k8s, "Kubernetes", "Platform", "Cluster Kubernetes")
+Container(ui, "Web UI", "Interface", "Interface de usuário")
+Container(cli, "CLI", "Tools", "Linha de comando")
+
+Rel(controller, k8s, "Aplica")
+Rel(repo_server, git, "Monitora")
+Rel(app_controller, repo_server, "Consulta")
+Rel(api_server, controller, "Controla")
+Rel(ui, api_server, "Acessa")
+Rel(cli, api_server, "Interage")
+
+@enduml 

@@ -1,0 +1,30 @@
+@startuml Selenium Tests
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Arquitetura de Testes com Selenium
+
+Container_Boundary(selenium, "Selenium Framework") {
+    Component(webdriver, "WebDriver", "Browser Control", "Controle do navegador")
+    Component(locators, "Element Locators", "Selectors", "Identificação de elementos")
+    Component(actions, "Actions", "Interactions", "Interações com elementos")
+    Component(waits, "Waits", "Synchronization", "Sincronização de elementos")
+    Component(assertions, "Assertions", "Validation", "Validação de resultados")
+}
+
+Container(browser, "Browser", "Chrome/Firefox", "Navegador web")
+Container(testrunner, "Test Runner", "JUnit/TestNG", "Execução de testes")
+Container(ci, "CI Pipeline", "Jenkins/GitHub Actions", "Integração contínua")
+Container(report, "Reports", "Allure/ExtentReports", "Relatórios de testes")
+
+Rel(testrunner, webdriver, "Executa")
+Rel(webdriver, browser, "Controla")
+Rel(locators, actions, "Identifica para")
+Rel(actions, waits, "Aguarda por")
+Rel(waits, assertions, "Permite")
+Rel(testrunner, report, "Gera")
+Rel(ci, testrunner, "Dispara")
+
+@enduml 

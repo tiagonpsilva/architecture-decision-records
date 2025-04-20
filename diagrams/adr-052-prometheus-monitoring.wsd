@@ -1,0 +1,29 @@
+@startuml Prometheus Monitoring
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Arquitetura de Monitoramento com Prometheus
+
+Container_Boundary(prometheus, "Prometheus Stack") {
+    Component(scraper, "Scraper", "Collector", "Coleta de métricas")
+    Component(tsdb, "TSDB", "Storage", "Armazenamento de séries temporais")
+    Component(rules, "Rules", "Alerting", "Regras de alerta")
+    Component(query, "PromQL", "Query Engine", "Consulta de métricas")
+}
+
+Container(exporters, "Exporters", "Metrics", "Exposição de métricas")
+Container(alertmanager, "Alert Manager", "Notifications", "Gestão de alertas")
+Container(grafana, "Grafana", "Visualization", "Dashboards")
+Container(targets, "Targets", "Applications", "Aplicações monitoradas")
+
+Rel(scraper, exporters, "Coleta de")
+Rel(exporters, targets, "Monitora")
+Rel(scraper, tsdb, "Armazena em")
+Rel(rules, tsdb, "Consulta")
+Rel(rules, alertmanager, "Dispara")
+Rel(query, tsdb, "Consulta")
+Rel(grafana, query, "Utiliza")
+
+@enduml 

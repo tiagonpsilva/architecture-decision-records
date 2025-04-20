@@ -1,0 +1,31 @@
+@startuml Cypress Tests
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Arquitetura de Testes com Cypress
+
+Container_Boundary(cypress, "Cypress Framework") {
+    Component(runner, "Test Runner", "Electron", "Execução de testes")
+    Component(commands, "Commands", "API", "Comandos customizados")
+    Component(intercept, "Network Intercept", "Proxy", "Interceptação de requisições")
+    Component(fixtures, "Fixtures", "Data", "Dados de teste")
+    Component(plugins, "Plugins", "Extensions", "Extensões e integrações")
+}
+
+Container(browser, "Browser", "Chromium", "Navegador embutido")
+Container(app, "Application", "Web App", "Aplicação testada")
+Container(ci, "CI Pipeline", "GitHub Actions", "Integração contínua")
+Container(dashboard, "Dashboard", "Cypress Cloud", "Relatórios e análises")
+
+Rel(runner, browser, "Controla")
+Rel(browser, app, "Testa")
+Rel(commands, runner, "Estende")
+Rel(intercept, app, "Monitora")
+Rel(fixtures, commands, "Alimenta")
+Rel(plugins, runner, "Aumenta")
+Rel(ci, runner, "Executa")
+Rel(runner, dashboard, "Reporta")
+
+@enduml 
