@@ -1,0 +1,10 @@
+@startuml
+!include C4_Context.puml
+
+Person(customer, "Cliente", "Usuário do sistema")
+System(system, "Sistema", "Core business system")
+System_Ext(payment, "Gateway Pagamento", "Processador de pagamentos")
+
+Rel(customer, system, "Usa")
+Rel(system, payment, "Processa pagamentos")
+@enduml 

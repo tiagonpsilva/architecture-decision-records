@@ -1,0 +1,10 @@
+@startuml
+!include C4_Code.puml
+
+Class(Order)
+Class(User)
+Interface(PaymentGateway)
+
+Order --> User
+Order --> PaymentGateway
+@enduml 
