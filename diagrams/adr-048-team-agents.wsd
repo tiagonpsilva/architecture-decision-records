@@ -1,0 +1,34 @@
+@startuml Team Agents
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Agentes Especializados do Time
+
+Container_Boundary(team, "Time de Desenvolvimento") {
+    Component(architect, "Arquiteto", "LLM Agent", "Define arquitetura e padrões")
+    Component(frontend, "Frontend Dev", "LLM Agent", "Implementa interfaces")
+    Component(backend, "Backend Dev", "LLM Agent", "Desenvolve APIs e serviços")
+    Component(qa, "QA", "LLM Agent", "Garante qualidade")
+    Component(coach, "Agile Coach", "LLM Agent", "Facilita e remove impedimentos")
+}
+
+Container(context, "Contexto", "Input", "Requisitos e restrições")
+Container(codebase, "Codebase", "Output", "Código e documentação")
+Container(metrics, "Métricas", "Analytics", "KPIs e insights")
+
+Rel(context, architect, "Fornece requisitos")
+Rel(architect, frontend, "Define padrões frontend")
+Rel(architect, backend, "Define padrões backend")
+Rel(frontend, codebase, "Implementa UI")
+Rel(backend, codebase, "Implementa APIs")
+Rel(qa, codebase, "Valida qualidade")
+Rel(coach, metrics, "Analisa métricas")
+
+Rel(frontend, qa, "Solicita validação")
+Rel(backend, qa, "Solicita validação")
+Rel(qa, coach, "Reporta métricas")
+Rel(coach, team, "Facilita melhorias")
+
+@enduml 

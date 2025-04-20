@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor transparent
+skinparam handwritten false
+
+title Arquitetura de Agentes MCP para APIs
+
+package "API Agent" {
+  [Interface Layer] as IL
+  [Function Mapper] as FM
+  [Memory Context] as MC
+  [Security Layer] as SL
+  [LLM Integration] as LLM
+  [API Wrapper] as AW
+}
+
+cloud "Language Models" {
+  [GPT-4] as GPT
+  [Claude] as CL
+}
+
+database "Agent Memory" {
+  [Context Store] as CS
+  [Function Cache] as FC
+}
+
+node "Target APIs" {
+  [API 1] as API1
+  [API 2] as API2
+  [API 3] as API3
+}
+
+actor "Client" as Client
+
+Client --> IL : commands
+IL --> FM : parse
+FM --> LLM : understand
+LLM --> GPT : process
+LLM --> CL : process
+FM <-- MC : context
+MC <--> CS : store/recall
+AW --> API1 : execute
+AW --> API2 : execute
+AW --> API3 : execute
+SL --> AW : validate
+IL --> SL : check
+FM --> FC : cache
+
+@enduml 

@@ -1,0 +1,38 @@
+@startuml Web Scraping System
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Sistema de Web Scraping
+
+Container_Boundary(scraping, "Sistema de Web Scraping") {
+    Component(pipeline, "Pipeline de Scraping", "TypeScript", "Orquestra o processo de scraping")
+    
+    Component(preparation, "Preparação", "TypeScript", "Valida robots.txt e prepara requisições")
+    Component(proxy, "Rotação de Proxies", "TypeScript", "Gerencia pool de proxies")
+    Component(scraper, "Scraper", "Python", "Executa requisições e parse HTML")
+    Component(parser, "Parser HTML", "TypeScript", "Extrai dados usando seletores")
+    Component(transformer, "Transformador", "TypeScript", "Limpa e formata dados")
+    Component(storage, "Armazenamento", "MongoDB", "Persiste dados coletados")
+    Component(monitor, "Monitoramento", "Prometheus", "Métricas e logs")
+}
+
+Container(websites, "Websites", "Externo", "Sites alvo do scraping")
+Container(metrics, "Métricas", "Prometheus/Grafana", "Dashboard de monitoramento")
+Container(database, "Banco de Dados", "MongoDB", "Armazenamento persistente")
+
+Rel(pipeline, preparation, "Inicia")
+Rel(preparation, proxy, "Solicita proxy")
+Rel(preparation, websites, "Verifica robots.txt")
+Rel(proxy, scraper, "Fornece proxy")
+Rel(scraper, websites, "Coleta dados")
+Rel(scraper, parser, "Envia HTML")
+Rel(parser, transformer, "Envia dados brutos")
+Rel(transformer, storage, "Envia dados formatados")
+Rel(storage, database, "Persiste")
+
+Rel(pipeline, monitor, "Envia métricas")
+Rel(monitor, metrics, "Exporta métricas")
+
+@enduml 
