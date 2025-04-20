@@ -1,10 +1,14 @@
 @startuml
-!include C4_Container.wsd
+!pragma layout smetana
+' version 1.2023.7
+!include C4_Container.puml
 
-Container(web, "Web App", "React", "Interface do usuário")
+Person(customer, "Cliente", "Usuário do sistema")
+Container(web_app, "Web App", "React", "Interface do usuário")
 Container(api, "API", "Node.js", "Backend API")
 ContainerDb(db, "Database", "PostgreSQL", "Dados do sistema")
 
-Rel(web, api, "API calls", "REST/JSON")
-Rel(api, db, "Reads/Writes", "SQL")
+Rel(customer, web_app, "Usa")
+Rel(web_app, api, "Chama")
+Rel(api, db, "Usa")
 @enduml 

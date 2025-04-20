@@ -1,13 +1,18 @@
 @startuml
+!pragma layout smetana
+' version 1.2023.7
+!include C4_Sequence.puml
+
 actor User
 participant "Web App" as Web
 participant "API" as API
 database "Database" as DB
 
-User -> Web: Inicia ação
-Web -> API: POST /resource
-API -> DB: Insert
-DB --> API: Success
-API --> Web: 201 Created
-Web --> User: Feedback
+User -> Web: Acessa
+Web -> API: Request
+API -> DB: Query
+DB --> API: Response
+API --> Web: Data
+Web --> User: Display
+
 @enduml 

@@ -1,10 +1,20 @@
 @startuml
-!include C4_Code.wsd
+!pragma layout smetana
+' version 1.2023.7
+!include C4_Code.puml
 
-Class(Order)
-Class(User)
-Interface(PaymentGateway)
+Class(Order) {
+    +id: string
+    +status: string
+    +create()
+    +update()
+}
+
+Class(User) {
+    +id: string
+    +name: string
+    +email: string
+}
 
 Order --> User
-Order --> PaymentGateway
 @enduml 

@@ -1,10 +1,14 @@
 @startuml
-!include C4_Component.wsd
+!pragma layout smetana
+' version 1.2023.7
+!include C4_Component.puml
 
-Component(auth, "Auth", "Autenticação")
-Component(orders, "Orders", "Gestão de pedidos")
-Component(users, "Users", "Gestão de usuários")
+Container_Boundary(api, "API") {
+    Component(auth, "Auth", "Autenticação")
+    Component(users, "Users", "Gestão de usuários")
+    Component(orders, "Orders", "Pedidos")
+}
 
 Rel(auth, users, "Valida")
-Rel(orders, users, "Consulta")
+Rel(users, orders, "Gerencia")
 @enduml 

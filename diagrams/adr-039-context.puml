@@ -1,5 +1,7 @@
 @startuml
-!include C4_Context.wsd
+!pragma layout smetana
+' version 1.2023.7
+!include C4_Context.puml
 
 Person(customer, "Cliente", "Usuário do sistema")
 System(system, "Sistema", "Core business system")
