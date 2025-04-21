@@ -48,15 +48,17 @@ Cada ADR deve conter:
 - [`adr-002-react-query`](./frontend/adr-002-react-query.md) - Gerenciamento de estado com React Query
 - [`adr-021-microfrontends`](./frontend/adr-021-microfrontends.md) - Arquitetura de microfrontends
 
-### 🔧 Backend e Dados
+### 🔧 Backend
 - [`adr-003-microservices`](./software-architecture/adr-003-microservices.md) - Arquitetura de microsserviços
 - [`adr-004-cqrs`](./software-architecture/adr-004-cqrs.md) - CQRS para separação de leitura/escrita
-- [`adr-006-mongodb-profiles`](./data/adr-006-mongodb-profiles.md) - MongoDB para dados de perfil
 - [`adr-007-graphql-api`](./software-architecture/adr-007-graphql-api.md) - GraphQL para APIs
+- [`adr-013-openapi-standard`](./patterns/adr-013-openapi-standard.md) - OpenAPI para documentação
+
+### 📊 Dados
+- [`adr-006-mongodb-profiles`](./data/adr-006-mongodb-profiles.md) - MongoDB para dados de perfil
+- [`adr-012-data-modeling`](./data/adr-012-data-modeling.md) - Estratégias de modelagem de dados
 - [`adr-023-medallion-architecture`](./data/adr-023-medallion-architecture.md) - Arquitetura Medallion para datalake
 - [`adr-024-data-lakehouse`](./data/adr-024-data-lakehouse.md) - Implementação de data lakehouse
-- [`adr-012-data-modeling`](./data/adr-012-data-modeling.md) - Estratégias de modelagem de dados
-- [`adr-013-openapi-standard`](./patterns/adr-013-openapi-standard.md) - OpenAPI para documentação
 
 ### 🔒 Segurança
 - [`adr-005-oauth-openid`](./security/adr-005-oauth-openid.md) - Autenticação com OAuth 2.0/OpenID
