@@ -72,13 +72,14 @@ A seguir, apresentamos exemplos de decisões arquiteturais que podem ser documen
 - [`adr-014-sso-implementation`](./security/adr-014-sso-implementation.md) - Single Sign-On (SSO)
 - [`adr-034-owasp`](./security/adr-034-owasp.md) - Práticas OWASP
 
-### 🚀 DevOps e Infraestrutura
+### 🚀 Infraestrutura, Cloud e DevOps
 - [`adr-008-cd-canary`](./devops-and-infrastructure/adr-008-cd-canary.md) - Canary releases
 - [`adr-009-git-flow`](./devops-and-infrastructure/adr-009-git-flow.md) - Estratégia de branches
 - [`adr-010-cloud-aws`](./devops-and-infrastructure/adr-010-cloud-aws.md) - AWS como cloud provider
 - [`adr-025-infrastructure-as-code`](./devops-and-infrastructure/adr-025-infrastructure-as-code.md) - IaC
 - [`adr-028-kubernetes`](./devops-and-infrastructure/adr-028-kubernetes.md) - Orquestração Kubernetes
 - [`adr-056-application-lifecycle`](./devops-and-infrastructure/adr-056-application-lifecycle.md) - Gestão de ciclo de vida
+
 
 ### 📊 Qualidade e Observabilidade
 - [`adr-033-quality-gates-cicd`](./quality-and-observability/adr-033-quality-gates-cicd.md) - Quality gates
