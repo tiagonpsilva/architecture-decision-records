@@ -141,25 +141,6 @@ Os ADRs podem ter os seguintes status:
 - **Substituído**: Substituído por outro ADR
 - **Supersedido**: Atualizado por versão mais recente
 
-## 📜 Histórico do Projeto
-
-O conceito de Architecture Decision Records (ADRs) foi introduzido por Michael Nygard em seu artigo "Documenting Architecture Decisions" em 2011. Nossa implementação começou em 2023 com os seguintes marcos:
-
-### Evolução do Projeto
-- **Março 2023**: Início do projeto com documentação de decisões arquiteturais básicas
-- **Abril 2023**: Adoção de C4Model para diagramação (ADR-039)
-- **Junho 2023**: Expansão para decisões de IA/ML (ADR-029 a ADR-032)
-- **Setembro 2023**: Inclusão de métricas DevOps (ADR-042, ADR-043)
-- **Janeiro 2024**: Padronização de observabilidade e monitoramento (ADR-052)
-- **Março 2024**: Atualização para estrutura temática e organização por domínios
-
-### Contribuidores Principais
-- Time de Arquitetura: Definição inicial da estrutura e templates
-- Time DevOps: Contribuições em CI/CD e infraestrutura
-- Time de Desenvolvimento: Expansão para padrões específicos de tecnologia
-- Time de Dados: Documentação de arquiteturas de dados e ML
-- Time de Segurança: ADRs relacionadas a autenticação e proteção
-
 ## 📚 Referências
 
 ### Documentação Oficial e Artigos
