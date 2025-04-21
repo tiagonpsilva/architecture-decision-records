@@ -22,16 +22,130 @@ Nossa infraestrutura precisa suportar:
 
 Adotar AWS (Amazon Web Services) como nossa plataforma principal de cloud.
 
-Justificativas:
-- Líder de mercado com maior maturidade
-- Serviços completos para microsserviços
-- Presença global com múltiplas regiões
-- Forte suporte a Kubernetes (EKS)
-- Serviços gerenciados maduros
-- Ferramentas robustas de segurança
-- Ecossistema rico de integrações
-- Preços competitivos com opções de otimização
-- Suporte enterprise confiável
+### Componentes Principais
+
+1. **Computação e Containers**
+   ```yaml
+   compute:
+     eks:
+       version: "1.28"
+       nodeGroups:
+         - name: general
+           instanceType: t3.large
+           minSize: 2
+           maxSize: 10
+         - name: memory
+           instanceType: r6g.xlarge
+           minSize: 1
+           maxSize: 5
+       addons:
+         - aws-load-balancer-controller
+         - cluster-autoscaler
+         - metrics-server
+   ```
+
+2. **Rede e Segurança**
+   ```hcl
+   # VPC Configuration
+   vpc_cidr = "10.0.0.0/16"
+   
+   private_subnets = [
+     "10.0.1.0/24",
+     "10.0.2.0/24",
+     "10.0.3.0/24"
+   ]
+   
+   public_subnets = [
+     "10.0.101.0/24",
+     "10.0.102.0/24",
+     "10.0.103.0/24"
+   ]
+   
+   # Security Groups
+   ingress_rules = [
+     {
+       from_port   = 443
+       to_port     = 443
+       protocol    = "tcp"
+       cidr_blocks = ["0.0.0.0/0"]
+     }
+   ]
+   ```
+
+3. **Banco de Dados**
+   ```yaml
+   databases:
+     aurora:
+       engine: postgresql
+       version: "15.5"
+       instances:
+         writer: db.r6g.xlarge
+         reader: db.r6g.large
+       backup:
+         retention: 7
+         window: "03:00-04:00"
+     
+     elasticache:
+       engine: redis
+       version: "7.0"
+       nodeType: cache.r6g.large
+       numShards: 2
+       replicasPerShard: 1
+   ```
+
+4. **Observabilidade**
+   ```yaml
+   monitoring:
+     cloudwatch:
+       logRetention: 30
+       metrics:
+         - namespace: "Custom"
+           dimensions: ["Service", "Environment"]
+     
+     xray:
+       samplingRule:
+         httpMethod: "*"
+         urlPath: "*"
+         reservoirSize: 1
+         fixedRate: 0.05
+   ```
+
+### Práticas de Segurança
+
+1. **IAM e Permissões**
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Action": [
+           "s3:GetObject",
+           "s3:PutObject"
+         ],
+         "Resource": "arn:aws:s3:::my-bucket/*",
+         "Condition": {
+           "StringEquals": {
+             "aws:PrincipalTag/Environment": "production"
+           }
+         }
+       }
+     ]
+   }
+   ```
+
+2. **Criptografia e Proteção de Dados**
+   ```yaml
+   encryption:
+     kms:
+       enabled: true
+       keyRotation: true
+     s3:
+       serverSide: AES256
+     rds:
+       atRest: true
+       inTransit: true
+   ```
 
 ## 📊 Diagrama
 
@@ -58,14 +172,54 @@ Justificativas:
 - Potencial vendor lock-in
 - Curva de aprendizado significativa
 
-### Riscos
+### Riscos e Mitigações
 
-- Custos inesperados
-  - Mitigação: Budgets, alertas e otimização contínua
-- Dependência excessiva de serviços proprietários
-  - Mitigação: Usar abstrações e padrões abertos
-- Complexidade operacional
-  - Mitigação: Investir em treinamento e documentação
+1. **Custos Inesperados**
+   ```yaml
+   cost_control:
+     budgets:
+       monthly_limit: 50000
+       alerts:
+         - threshold: 80
+           notification: ["email", "slack"]
+         - threshold: 100
+           notification: ["email", "slack", "sms"]
+     
+     savings_plans:
+       term: 3_years
+       payment_option: all_upfront
+       coverage: 70
+   ```
+
+2. **Dependência de Serviços Proprietários**
+   ```yaml
+   abstraction_layers:
+     database:
+       interface: "database/sql"
+       implementations:
+         - "postgres"
+         - "mysql"
+     
+     messaging:
+       interface: "messaging/queue"
+       implementations:
+         - "sqs"
+         - "rabbitmq"
+   ```
+
+3. **Complexidade Operacional**
+   ```yaml
+   operational_excellence:
+     documentation:
+       - runbooks
+       - architecture_diagrams
+       - incident_response
+     
+     automation:
+       - infrastructure_as_code
+       - ci_cd_pipelines
+       - monitoring_alerts
+   ```
 
 ## 🔄 Alternativas Consideradas
 
@@ -87,11 +241,71 @@ Justificativas:
 - [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/)
 - [Cloud Adoption Framework](https://aws.amazon.com/cloud-adoption-framework/)
 - [AWS vs Other Clouds](https://aws.amazon.com/compare/)
+- [AWS Security Best Practices](https://aws.amazon.com/architecture/security-identity-compliance/)
+- [AWS Cost Optimization](https://aws.amazon.com/architecture/cost-optimization/)
 
-## 📝 Notas
+## 📝 Notas de Implementação
 
-- Estabelecer centro de excelência cloud
-- Implementar governança forte
-- Definir padrões de IaC
-- Criar estratégia de custos
-- Planejar disaster recovery 
+1. **Centro de Excelência Cloud**
+   ```yaml
+   cloud_excellence:
+     teams:
+       - cloud_architecture
+       - security
+       - devops
+       - finops
+     
+     responsibilities:
+       - standards_governance
+       - best_practices
+       - training_enablement
+       - cost_optimization
+   ```
+
+2. **Governança**
+   ```yaml
+   governance:
+     policies:
+       - resource_tagging
+       - security_standards
+       - cost_allocation
+       - compliance_requirements
+     
+     reviews:
+       - quarterly_architecture
+       - monthly_cost
+       - weekly_security
+   ```
+
+3. **IaC Standards**
+   ```yaml
+   infrastructure_as_code:
+     tools:
+       - terraform
+       - cloudformation
+     
+     practices:
+       - modular_design
+       - version_control
+       - peer_review
+       - automated_testing
+   ```
+
+4. **Disaster Recovery**
+   ```yaml
+   disaster_recovery:
+     rpo: "4h"
+     rto: "2h"
+     
+     strategies:
+       - pilot_light
+       - multi_region
+       - backup_restore
+     
+     testing:
+       frequency: "quarterly"
+       scenarios:
+         - region_failure
+         - service_outage
+         - data_corruption
+   ``` 
