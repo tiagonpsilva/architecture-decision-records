@@ -35,6 +35,8 @@ Cada ADR deve conter:
 
 ## 📂 ADRs por Tema
 
+A seguir, apresentamos exemplos de decisões arquiteturais que podem ser documentadas usando o padrão ADR. Esta organização temática ajuda a visualizar os diferentes aspectos da arquitetura que podem se beneficiar deste tipo de documentação, desde escolhas fundamentais de arquitetura até decisões específicas de tecnologia e infraestrutura.
+
 ### 🏛️ Arquitetura Base
 - [`adr-039-c4model-diagrams`](./adr-039-c4model-diagrams.md) - Padronização de diagramas usando C4Model
 - [`adr-011-ddd-hexagonal`](./software-architecture/adr-011-ddd-hexagonal.md) - Arquitetura hexagonal e DDD para design de domínio
