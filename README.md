@@ -31,68 +31,62 @@ Cada ADR deve conter:
 6. **Alternativas**: Outras opções consideradas e por que não foram escolhidas
 7. **Referências**: Links e recursos relacionados
 
-## 📂 Estrutura do Diretório
+## 📂 ADRs por Tema
 
-### 📋 Template
-- [`template.md`](template.md) - Template base para novos ADRs
+### 🏛️ Arquitetura Base
+- [`adr-039-c4model-diagrams`](adr-039-c4model-diagrams.md) - Padronização de diagramas usando C4Model
+- [`adr-011-ddd-hexagonal`](patterns/adr-011-ddd-hexagonal.md) - Arquitetura hexagonal e DDD para design de domínio
+- [`adr-019-twelve-factor`](patterns/adr-019-twelve-factor.md) - Princípios 12-factor para aplicações cloud-native
 
-### 🏛️ Padrões Arquiteturais e Design
-- [`patterns/adr-011-ddd-hexagonal.md`](patterns/adr-011-ddd-hexagonal.md) - DDD e Arquitetura Hexagonal
-- [`patterns/adr-012-data-modeling.md`](patterns/adr-012-data-modeling.md) - Estratégia de Modelagem de Dados
-- [`patterns/adr-013-openapi-standard.md`](patterns/adr-013-openapi-standard.md) - Padronização de APIs com OpenAPI
-- [`patterns/adr-019-twelve-factor.md`](patterns/adr-019-twelve-factor.md) - Adoção do Padrão 12-Factor App
+### 💻 Tecnologias e Frameworks
+- [`adr-001-typescript-frontend`](technologies/adr-001-typescript-frontend.md) - TypeScript para desenvolvimento frontend
+- [`adr-036-typescript-adoption`](technologies/adr-036-typescript-adoption.md) - Adoção geral de TypeScript
+- [`adr-017-golang-adoption`](technologies/adr-017-golang-adoption.md) - Go para microsserviços
+- [`adr-018-python-adoption`](technologies/adr-018-python-adoption.md) - Python para dados e ML
 
-### 💻 Tecnologias e Linguagens
-- [`technologies/adr-001-typescript-frontend.md`](technologies/adr-001-typescript-frontend.md) - Adoção de TypeScript para Frontend
-- [`technologies/adr-017-golang-adoption.md`](technologies/adr-017-golang-adoption.md) - Adoção de Go para Microsserviços
-- [`technologies/adr-018-python-adoption.md`](technologies/adr-018-python-adoption.md) - Adoção de Python para Serviços de Dados e ML
-- [`technologies/adr-036-typescript-adoption.md`](technologies/adr-036-typescript-adoption.md) - Adoção Geral do TypeScript
-
-### 🎨 Frontend e UI
-- [`frontend/adr-002-react-query.md`](frontend/adr-002-react-query.md) - Uso do React Query para Gerenciamento de Estado
-- [`frontend/adr-021-microfrontends.md`](frontend/adr-021-microfrontends.md) - Adoção de Microfrontends
+### 🎨 Frontend
+- [`adr-002-react-query`](frontend/adr-002-react-query.md) - Gerenciamento de estado com React Query
+- [`adr-021-microfrontends`](frontend/adr-021-microfrontends.md) - Arquitetura de microfrontends
 
 ### 🔧 Backend e Dados
-- [`backend/adr-003-microservices.md`](backend/adr-003-microservices.md) - Migração para Arquitetura de Microsserviços
-- [`backend/adr-004-cqrs.md`](backend/adr-004-cqrs.md) - Adoção do Padrão CQRS
-- [`backend/adr-006-mongodb-profiles.md`](backend/adr-006-mongodb-profiles.md) - Adoção de MongoDB para Dados de Perfil
-- [`backend/adr-007-graphql-api.md`](backend/adr-007-graphql-api.md) - Adoção de GraphQL para APIs Públicas
-- [`backend/adr-023-medallion-architecture.md`](backend/adr-023-medallion-architecture.md) - Arquitetura Medallion para Data Lake
-- [`backend/adr-024-data-lakehouse.md`](backend/adr-024-data-lakehouse.md) - Implementação de Data Lakehouse
+- [`adr-003-microservices`](backend/adr-003-microservices.md) - Arquitetura de microsserviços
+- [`adr-004-cqrs`](backend/adr-004-cqrs.md) - CQRS para separação de leitura/escrita
+- [`adr-006-mongodb-profiles`](backend/adr-006-mongodb-profiles.md) - MongoDB para dados de perfil
+- [`adr-007-graphql-api`](backend/adr-007-graphql-api.md) - GraphQL para APIs
+- [`adr-023-medallion-architecture`](backend/adr-023-medallion-architecture.md) - Arquitetura Medallion para datalake
+- [`adr-024-data-lakehouse`](backend/adr-024-data-lakehouse.md) - Implementação de data lakehouse
+- [`adr-012-data-modeling`](patterns/adr-012-data-modeling.md) - Estratégias de modelagem de dados
+- [`adr-013-openapi-standard`](patterns/adr-013-openapi-standard.md) - OpenAPI para documentação
 
-### 🔒 Segurança e Autenticação
-- [`security/adr-005-oauth-openid.md`](security/adr-005-oauth-openid.md) - Implementação de OAuth 2.0 e OpenID Connect
-- [`security/adr-014-sso-implementation.md`](security/adr-014-sso-implementation.md) - Implementação de SSO com OAuth2/OpenID
-- [`security/adr-034-owasp.md`](security/adr-034-owasp.md) - Práticas de Segurança OWASP
+### 🔒 Segurança
+- [`adr-005-oauth-openid`](security/adr-005-oauth-openid.md) - Autenticação com OAuth 2.0/OpenID
+- [`adr-014-sso-implementation`](security/adr-014-sso-implementation.md) - Single Sign-On (SSO)
+- [`adr-034-owasp`](security/adr-034-owasp.md) - Práticas OWASP
 
-### 🚀 DevOps e Infraestrutura
-- [`devops/adr-008-cd-canary.md`](devops/adr-008-cd-canary.md) - Implantação Contínua com Canary Releases
-- [`devops/adr-009-git-flow.md`](devops/adr-009-git-flow.md) - Estratégia Git Flow e Branching
-- [`devops/adr-010-cloud-aws.md`](devops/adr-010-cloud-aws.md) - Adoção da AWS como Plataforma Cloud
-- [`devops/adr-025-infrastructure-as-code.md`](devops/adr-025-infrastructure-as-code.md) - Adoção de Infraestrutura como Código (IaC)
-- [`devops/adr-028-kubernetes.md`](devops/adr-028-kubernetes.md) - Orquestração com Kubernetes
-- [`devops/adr-056-application-lifecycle.md`](devops/adr-056-application-lifecycle.md) - Gerenciamento do Ciclo de Vida de Aplicações
+### 🚀 DevOps
+- [`adr-008-cd-canary`](devops/adr-008-cd-canary.md) - Canary releases
+- [`adr-009-git-flow`](devops/adr-009-git-flow.md) - Estratégia de branches
+- [`adr-010-cloud-aws`](devops/adr-010-cloud-aws.md) - AWS como cloud provider
+- [`adr-025-infrastructure-as-code`](devops/adr-025-infrastructure-as-code.md) - IaC
+- [`adr-028-kubernetes`](devops/adr-028-kubernetes.md) - Orquestração Kubernetes
+- [`adr-056-application-lifecycle`](devops/adr-056-application-lifecycle.md) - Gestão de ciclo de vida
 
-### 🔄 Comunicação e Integração
-- [`communication/adr-016-messaging-patterns.md`](communication/adr-016-messaging-patterns.md) - Padrões de Mensageria com RabbitMQ
-- [`communication/adr-020-websocket.md`](communication/adr-020-websocket.md) - WebSocket para Comunicação Real-time
-- [`communication/adr-022-event-driven.md`](communication/adr-022-event-driven.md) - Arquitetura Orientada a Eventos
+### 🔄 Comunicação e Eventos
+- [`adr-016-messaging-patterns`](communication/adr-016-messaging-patterns.md) - Padrões com RabbitMQ
+- [`adr-020-websocket`](communication/adr-020-websocket.md) - WebSocket para real-time
+- [`adr-022-event-driven`](communication/adr-022-event-driven.md) - Arquitetura event-driven
 
-### ✅ Qualidade e Testes
-- [`quality/adr-015-test-patterns.md`](quality/adr-015-test-patterns.md) - Padrões de Testes
-- [`quality/adr-033-quality-gates-cicd.md`](quality/adr-033-quality-gates-cicd.md) - Quality Gates na Esteira de CI/CD
+### 📊 Qualidade e Observabilidade
+- [`adr-015-test-patterns`](quality/adr-015-test-patterns.md) - Padrões de teste
+- [`adr-033-quality-gates-cicd`](quality/adr-033-quality-gates-cicd.md) - Quality gates
+- [`adr-035-observability`](operations/adr-035-observability.md) - Estratégia de observabilidade
+- [`adr-055-cache-strategy`](performance/adr-055-cache-strategy.md) - Cache multi-camada
 
-### 🔍 Operações e Monitoramento
-- [`operations/adr-035-observability.md`](operations/adr-035-observability.md) - Observabilidade
-
-### 🚀 Performance
-- [`performance/adr-055-cache-strategy.md`](performance/adr-055-cache-strategy.md) - Estratégia de Cache Multi-Camada
-
-### 🤖 Inteligência Artificial
-- [`ai/adr-029-mcp.md`](ai/adr-029-mcp.md) - Model Context Protocol (MCP)
-- [`ai/adr-030-rag.md`](ai/adr-030-rag.md) - Retrieval Augmented Generation (RAG)
-- [`ai/adr-031-quality-gates.md`](ai/adr-031-quality-gates.md) - Quality Gates para IA
-- [`ai/adr-032-prompt-engineering.md`](ai/adr-032-prompt-engineering.md) - Engenharia de Prompts para GenAI
+### 🤖 IA e ML
+- [`adr-029-mcp`](ai/adr-029-mcp.md) - Model Context Protocol
+- [`adr-030-rag`](ai/adr-030-rag.md) - Retrieval Augmented Generation
+- [`adr-031-quality-gates`](ai/adr-031-quality-gates.md) - Quality gates para IA
+- [`adr-032-prompt-engineering`](ai/adr-032-prompt-engineering.md) - Engenharia de prompts
 
 ## 📖 Como usar este diretório
 
