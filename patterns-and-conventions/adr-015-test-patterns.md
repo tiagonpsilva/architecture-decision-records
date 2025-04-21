@@ -56,7 +56,7 @@ Padrões específicos:
 
 ## 📊 Diagrama
 
-![Diagrama de Padrões de Teste](../diagrams/adr-015-test-patterns.png)
+![Diagrama de Padrões de Teste](../_assets/adr-015-test-patterns.png)
 
 ## 📊 Consequências
 

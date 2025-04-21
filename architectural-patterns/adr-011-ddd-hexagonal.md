@@ -92,7 +92,7 @@ Justificativas:
 
 ## 📊 Diagramas
 
-![Arquitetura Hexagonal](../diagrams/adr-011-ddd-hexagonal.png)
+![Arquitetura Hexagonal](../_assets/adr-011-ddd-hexagonal.png)
 
 O diagrama acima ilustra a estrutura básica da arquitetura hexagonal com DDD, mostrando as principais camadas e suas dependências:
 

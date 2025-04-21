@@ -8,7 +8,7 @@ Proposto
 
 ## 🎯 Contexto
 
-![Diagrama de Agentes Especializados](../diagrams/adr-048-team-agents.png)
+![Diagrama de Agentes Especializados](../_assets/adr-048-team-agents.png)
 
 Para otimizar o processo de desenvolvimento e garantir alta qualidade em todas as etapas, precisamos definir agentes especializados que atuem como:
 - Arquiteto de Software

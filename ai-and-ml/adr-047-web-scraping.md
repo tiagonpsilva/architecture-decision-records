@@ -8,7 +8,7 @@ Proposto
 
 ## 🎯 Contexto
 
-![Diagrama de Web Scraping](../diagrams/adr-047-web-scraping.png)
+![Diagrama de Web Scraping](../_assets/adr-047-web-scraping.png)
 
 Para atender à necessidade de coletar dados estruturados de diversas fontes web, precisamos implementar um sistema de web scraping que considere:
 - Respeito aos robots.txt

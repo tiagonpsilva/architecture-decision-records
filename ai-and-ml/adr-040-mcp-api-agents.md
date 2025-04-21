@@ -8,7 +8,7 @@ Proposto
 
 ## 🎯 Contexto
 
-![Diagrama de API de Agentes](../diagrams/adr-040-mcp-api-agents.png)
+![Diagrama de API de Agentes](../_assets/adr-040-mcp-api-agents.png)
 
 Para melhorar a interoperabilidade e automação das APIs existentes, precisamos transformá-las em agentes inteligentes usando o protocolo MCP (Multi-Context Protocol), considerando:
 - Integração com LLMs

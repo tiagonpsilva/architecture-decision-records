@@ -33,7 +33,7 @@ Justificativas:
 ## 📊 Diagramas
 
 ### Contexto
-![Diagrama de Contexto](diagrams/adr-039-context.png)
+![Diagrama de Contexto](../_assets/adr-039-context.png)
 
 ```plantuml
 @startuml
@@ -49,7 +49,7 @@ Rel(system, payment, "Processa pagamentos")
 ```
 
 ### Containers
-![Diagrama de Containers](diagrams/adr-039-containers.png)
+![Diagrama de Containers](../_assets/adr-039-containers.png)
 
 ```plantuml
 @startuml
@@ -65,7 +65,7 @@ Rel(api, db, "Reads/Writes", "SQL")
 ```
 
 ### Componentes
-![Diagrama de Componentes](diagrams/adr-039-components.png)
+![Diagrama de Componentes](../_assets/adr-039-components.png)
 
 ```plantuml
 @startuml
@@ -81,7 +81,7 @@ Rel(orders, users, "Consulta")
 ```
 
 ### Código
-![Diagrama de Código](diagrams/adr-039-code.png)
+![Diagrama de Código](../_assets/adr-039-code.png)
 
 ```plantuml
 @startuml
@@ -97,7 +97,7 @@ Order --> PaymentGateway
 ```
 
 ### Sequência
-![Diagrama de Sequência](diagrams/adr-039-sequence.png)
+![Diagrama de Sequência](../_assets/adr-039-sequence.png)
 
 ```plantuml
 @startuml

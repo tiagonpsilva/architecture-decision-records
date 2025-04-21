@@ -18,7 +18,7 @@ Com a necessidade de combinar as melhores características de Data Lakes e Data 
 
 Decidimos adotar uma arquitetura Data Lakehouse utilizando Delta Lake como formato de armazenamento principal, com Apache Spark para processamento e integração com ferramentas modernas de analytics e ML.
 
-![Arquitetura Data Lakehouse](../diagrams/adr-024-data-lakehouse.png)
+![Arquitetura Data Lakehouse](../_assets/adr-024-data-lakehouse.png)
 
 ### Componentes Principais
 

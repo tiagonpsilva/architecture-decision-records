@@ -18,7 +18,7 @@ Com o crescimento do sistema e a necessidade de garantir consistência, escalabi
 
 Decidimos adotar uma arquitetura Event-Driven utilizando Apache Kafka como principal plataforma de eventos, complementada por RabbitMQ para mensageria específica de serviços.
 
-![Arquitetura Event-Driven](../diagrams/adr-022-event-driven.png)
+![Arquitetura Event-Driven](../_assets/adr-022-event-driven.png)
 
 ### Principais Componentes
 

@@ -192,4 +192,4 @@ customer_service = PromptTemplate(
 
 ## 📊 Diagrama
 
-![Diagrama de Engenharia de Prompts](../diagrams/adr-032-prompt-engineering.png) 
+![Diagrama de Engenharia de Prompts](../_assets/adr-032-prompt-engineering.png) 

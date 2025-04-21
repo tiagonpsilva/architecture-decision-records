@@ -31,7 +31,7 @@ Justificativas:
 
 ## 📊 Diagrama
 
-![Diagrama de Arquitetura CQRS](../diagrams/adr-004-cqrs.png)
+![Diagrama de Arquitetura CQRS](../_assets/adr-004-cqrs.png)
 
 ## 📊 Consequências
 

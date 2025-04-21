@@ -35,7 +35,7 @@ Justificativas:
 
 ## 📊 Diagrama
 
-![Diagrama de Arquitetura AWS](../diagrams/adr-010-cloud-aws.png)
+![Diagrama de Arquitetura AWS](../_assets/adr-010-cloud-aws.png)
 
 ## 📊 Consequências
 

@@ -39,7 +39,7 @@ Justificativas:
 
 ## 📊 Diagrama
 
-![Diagrama de Git Flow](../diagrams/adr-009-git-flow.png)
+![Diagrama de Git Flow](../_assets/adr-009-git-flow.png)
 
 ## 📊 Consequências
 

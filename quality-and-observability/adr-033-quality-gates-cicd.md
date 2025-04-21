@@ -212,4 +212,4 @@ quality_gates:
 
 ## 📊 Diagrama
 
-![Diagrama de Quality Gates na Esteira de CI/CD](../diagrams/adr-033-quality-gates-cicd.png) 
+![Diagrama de Quality Gates na Esteira de CI/CD](../_assets/adr-033-quality-gates-cicd.png) 

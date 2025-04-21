@@ -39,7 +39,7 @@ Padrões específicos:
 
 ## 📊 Diagrama
 
-![Diagrama de Modelagem de Dados](../diagrams/adr-012-data-modeling.png)
+![Diagrama de Modelagem de Dados](../_assets/adr-012-data-modeling.png)
 
 ## 📊 Consequências
 
