@@ -37,39 +37,42 @@ Cada ADR deve conter:
 
 A seguir, apresentamos exemplos de decisões arquiteturais que podem ser documentadas usando o padrão ADR. Esta organização temática ajuda a visualizar os diferentes aspectos da arquitetura que podem se beneficiar deste tipo de documentação, desde escolhas fundamentais de arquitetura até decisões específicas de tecnologia e infraestrutura.
 
-### 🏛️ Arquitetura Base
-- [`adr-039-c4model-diagrams`](./adr-039-c4model-diagrams.md) - Padronização de diagramas usando C4Model
-- [`adr-011-ddd-hexagonal`](./software-architecture/adr-011-ddd-hexagonal.md) - Arquitetura hexagonal e DDD para design de domínio
+### 🏛️ Padrões Arquiteturais
+- [`adr-011-ddd-hexagonal`](./software-architecture/adr-011-ddd-hexagonal.md) - Arquitetura hexagonal e DDD
 - [`adr-019-twelve-factor`](./patterns/adr-019-twelve-factor.md) - Princípios 12-factor para aplicações cloud-native
+- [`adr-003-microservices`](./software-architecture/adr-003-microservices.md) - Arquitetura de microsserviços
+- [`adr-004-cqrs`](./software-architecture/adr-004-cqrs.md) - CQRS para separação de leitura/escrita
+- [`adr-021-microfrontends`](./frontend/adr-021-microfrontends.md) - Arquitetura de microfrontends
+- [`adr-022-event-driven`](./communication/adr-022-event-driven.md) - Arquitetura event-driven
+- [`adr-023-medallion-architecture`](./data/adr-023-medallion-architecture.md) - Arquitetura Medallion para datalake
+- [`adr-024-data-lakehouse`](./data/adr-024-data-lakehouse.md) - Implementação de data lakehouse
+- [`adr-016-messaging-patterns`](./communication/adr-016-messaging-patterns.md) - Padrões de mensageria
 
-### 💻 Tecnologias e Frameworks
+### 📐 Padrões e Convenções
+- [`adr-039-c4model-diagrams`](./adr-039-c4model-diagrams.md) - Padronização de diagramas usando C4Model
+- [`adr-013-openapi-standard`](./patterns/adr-013-openapi-standard.md) - OpenAPI para documentação
+- [`adr-015-test-patterns`](./quality/adr-015-test-patterns.md) - Padrões de teste
+
+### 💻 Tecnologias Base
 - [`adr-001-typescript-frontend`](./technologies/adr-001-typescript-frontend.md) - TypeScript para desenvolvimento frontend
 - [`adr-036-typescript-adoption`](./technologies/adr-036-typescript-adoption.md) - Adoção geral de TypeScript
 - [`adr-017-golang-adoption`](./backend/adr-017-golang-adoption.md) - Go para microsserviços
 - [`adr-018-python-adoption`](./backend/adr-018-python-adoption.md) - Python para dados e ML
 
-### 🎨 Frontend
-- [`adr-002-react-query`](./frontend/adr-002-react-query.md) - Gerenciamento de estado com React Query
-- [`adr-021-microfrontends`](./frontend/adr-021-microfrontends.md) - Arquitetura de microfrontends
-
-### 🔧 Backend
-- [`adr-003-microservices`](./software-architecture/adr-003-microservices.md) - Arquitetura de microsserviços
-- [`adr-004-cqrs`](./software-architecture/adr-004-cqrs.md) - CQRS para separação de leitura/escrita
+### 🔧 APIs e Integrações
 - [`adr-007-graphql-api`](./software-architecture/adr-007-graphql-api.md) - GraphQL para APIs
-- [`adr-013-openapi-standard`](./patterns/adr-013-openapi-standard.md) - OpenAPI para documentação
+- [`adr-020-websocket`](./communication/adr-020-websocket.md) - WebSocket para real-time
 
-### 📊 Dados
+### 📊 Dados e Persistência
 - [`adr-006-mongodb-profiles`](./data/adr-006-mongodb-profiles.md) - MongoDB para dados de perfil
 - [`adr-012-data-modeling`](./data/adr-012-data-modeling.md) - Estratégias de modelagem de dados
-- [`adr-023-medallion-architecture`](./data/adr-023-medallion-architecture.md) - Arquitetura Medallion para datalake
-- [`adr-024-data-lakehouse`](./data/adr-024-data-lakehouse.md) - Implementação de data lakehouse
 
 ### 🔒 Segurança
 - [`adr-005-oauth-openid`](./security/adr-005-oauth-openid.md) - Autenticação com OAuth 2.0/OpenID
 - [`adr-014-sso-implementation`](./security/adr-014-sso-implementation.md) - Single Sign-On (SSO)
 - [`adr-034-owasp`](./security/adr-034-owasp.md) - Práticas OWASP
 
-### 🚀 DevOps
+### 🚀 DevOps e Infraestrutura
 - [`adr-008-cd-canary`](./devops/adr-008-cd-canary.md) - Canary releases
 - [`adr-009-git-flow`](./devops/adr-009-git-flow.md) - Estratégia de branches
 - [`adr-010-cloud-aws`](./devops/adr-010-cloud-aws.md) - AWS como cloud provider
@@ -77,13 +80,7 @@ A seguir, apresentamos exemplos de decisões arquiteturais que podem ser documen
 - [`adr-028-kubernetes`](./devops/adr-028-kubernetes.md) - Orquestração Kubernetes
 - [`adr-056-application-lifecycle`](./devops/adr-056-application-lifecycle.md) - Gestão de ciclo de vida
 
-### 🔄 Comunicação e Eventos
-- [`adr-016-messaging-patterns`](./communication/adr-016-messaging-patterns.md) - Padrões com RabbitMQ
-- [`adr-020-websocket`](./communication/adr-020-websocket.md) - WebSocket para real-time
-- [`adr-022-event-driven`](./communication/adr-022-event-driven.md) - Arquitetura event-driven
-
 ### 📊 Qualidade e Observabilidade
-- [`adr-015-test-patterns`](./quality/adr-015-test-patterns.md) - Padrões de teste
 - [`adr-033-quality-gates-cicd`](./quality/adr-033-quality-gates-cicd.md) - Quality gates
 - [`adr-035-observability`](./operations/adr-035-observability.md) - Estratégia de observabilidade
 - [`adr-055-cache-strategy`](./performance/adr-055-cache-strategy.md) - Cache multi-camada
