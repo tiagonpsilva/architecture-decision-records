@@ -35,27 +35,27 @@ Cada ADR deve conter:
 
 ### 🏛️ Arquitetura Base
 - [`adr-039-c4model-diagrams`](./adr-039-c4model-diagrams.md) - Padronização de diagramas usando C4Model
-- [`adr-011-ddd-hexagonal`](./patterns/adr-011-ddd-hexagonal.md) - Arquitetura hexagonal e DDD para design de domínio
+- [`adr-011-ddd-hexagonal`](./software-architecture/adr-011-ddd-hexagonal.md) - Arquitetura hexagonal e DDD para design de domínio
 - [`adr-019-twelve-factor`](./patterns/adr-019-twelve-factor.md) - Princípios 12-factor para aplicações cloud-native
 
 ### 💻 Tecnologias e Frameworks
 - [`adr-001-typescript-frontend`](./technologies/adr-001-typescript-frontend.md) - TypeScript para desenvolvimento frontend
 - [`adr-036-typescript-adoption`](./technologies/adr-036-typescript-adoption.md) - Adoção geral de TypeScript
-- [`adr-017-golang-adoption`](./technologies/adr-017-golang-adoption.md) - Go para microsserviços
-- [`adr-018-python-adoption`](./technologies/adr-018-python-adoption.md) - Python para dados e ML
+- [`adr-017-golang-adoption`](./backend/adr-017-golang-adoption.md) - Go para microsserviços
+- [`adr-018-python-adoption`](./backend/adr-018-python-adoption.md) - Python para dados e ML
 
 ### 🎨 Frontend
 - [`adr-002-react-query`](./frontend/adr-002-react-query.md) - Gerenciamento de estado com React Query
 - [`adr-021-microfrontends`](./frontend/adr-021-microfrontends.md) - Arquitetura de microfrontends
 
 ### 🔧 Backend e Dados
-- [`adr-003-microservices`](./backend/adr-003-microservices.md) - Arquitetura de microsserviços
-- [`adr-004-cqrs`](./backend/adr-004-cqrs.md) - CQRS para separação de leitura/escrita
-- [`adr-006-mongodb-profiles`](./backend/adr-006-mongodb-profiles.md) - MongoDB para dados de perfil
-- [`adr-007-graphql-api`](./backend/adr-007-graphql-api.md) - GraphQL para APIs
-- [`adr-023-medallion-architecture`](./backend/adr-023-medallion-architecture.md) - Arquitetura Medallion para datalake
-- [`adr-024-data-lakehouse`](./backend/adr-024-data-lakehouse.md) - Implementação de data lakehouse
-- [`adr-012-data-modeling`](./patterns/adr-012-data-modeling.md) - Estratégias de modelagem de dados
+- [`adr-003-microservices`](./software-architecture/adr-003-microservices.md) - Arquitetura de microsserviços
+- [`adr-004-cqrs`](./software-architecture/adr-004-cqrs.md) - CQRS para separação de leitura/escrita
+- [`adr-006-mongodb-profiles`](./data/adr-006-mongodb-profiles.md) - MongoDB para dados de perfil
+- [`adr-007-graphql-api`](./software-architecture/adr-007-graphql-api.md) - GraphQL para APIs
+- [`adr-023-medallion-architecture`](./data/adr-023-medallion-architecture.md) - Arquitetura Medallion para datalake
+- [`adr-024-data-lakehouse`](./data/adr-024-data-lakehouse.md) - Implementação de data lakehouse
+- [`adr-012-data-modeling`](./data/adr-012-data-modeling.md) - Estratégias de modelagem de dados
 - [`adr-013-openapi-standard`](./patterns/adr-013-openapi-standard.md) - OpenAPI para documentação
 
 ### 🔒 Segurança
