@@ -4,7 +4,9 @@ Este diretório contém os Architecture Decision Records (ADRs) do projeto, que 
 
 ## 🤔 O que é uma ADR?
 
-Uma ADR (Architecture Decision Record) é um documento que captura uma decisão arquitetural importante tomada em relação ao projeto, junto com seu contexto e consequências. É uma prática que ajuda a:
+Uma ADR (Architecture Decision Record) é um documento que captura uma decisão arquitetural importante tomada em relação ao projeto, junto com seu contexto e consequências. O conceito foi introduzido por Michael Nygard em 2011 através do artigo ["Documenting Architecture Decisions"](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions), que se tornou uma referência fundamental na documentação de arquitetura de software.
+
+É uma prática que ajuda a:
 
 - **Documentar Decisões**: Registra não apenas o que foi decidido, mas também por que foi decidido, considerando o contexto temporal e técnico.
 - **Facilitar Comunicação**: Permite que toda a equipe e stakeholders entendam as escolhas arquiteturais e suas motivações.
