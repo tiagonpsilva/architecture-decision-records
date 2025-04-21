@@ -1,0 +1,1 @@
+![Diagrama de Arquitetura AWS](../_assets/adr-010-cloud-aws.png) 

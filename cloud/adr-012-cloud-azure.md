@@ -1,0 +1,1 @@
+![Diagrama de Arquitetura Azure](../_assets/adr-012-cloud-azure.png) 

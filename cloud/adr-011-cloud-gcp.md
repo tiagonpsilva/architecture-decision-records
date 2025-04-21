@@ -1,0 +1,1 @@
+![Diagrama de Arquitetura GCP](../_assets/adr-011-cloud-gcp.png) 

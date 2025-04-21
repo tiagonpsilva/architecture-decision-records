@@ -32,7 +32,7 @@ Justificativas:
 
 ## 📊 Diagrama
 
-![Diagrama de Arquitetura GraphQL API](../diagrams/adr-007-graphql-api.png)
+![Diagrama de Arquitetura GraphQL API](../_assets/adr-007-graphql-api.png)
 
 ## 📊 Consequências
 
